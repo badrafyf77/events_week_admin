@@ -1,3 +1,4 @@
+import 'package:events_week_admin/core/config/theme.dart';
 import 'package:events_week_admin/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'EW Admin Dashboard',
       debugShowCheckedModeBanner: false,
-      home: DashboardView(),
+      theme: AppThemes.appTheme,
+      home: const DashboardView(),
     );
   }
 }

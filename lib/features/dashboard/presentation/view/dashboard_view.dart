@@ -5,8 +5,23 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+    return const Scaffold(
+      body: Row(
+        children: [
+          DashDrawer(),
+        ],
+      ),
     );
+  }
+}
+
+class DashDrawer extends StatelessWidget {
+  const DashDrawer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Drawer();
   }
 }
