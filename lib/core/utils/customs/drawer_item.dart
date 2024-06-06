@@ -1,15 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/material.dart';
+
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
-import 'package:flutter/material.dart';
 
 class DrawerItem extends StatelessWidget {
   const DrawerItem({
     super.key,
+    required this.isSelected,
     required this.text,
     required this.icon,
     required this.onTap,
   });
 
+  final bool isSelected;
   final String text;
   final IconData icon;
   final void Function() onTap;
@@ -26,7 +30,7 @@ class DrawerItem extends StatelessWidget {
           Icon(
             icon,
             size: 25,
-            color: AppColors.kPrimaryColor,
+            color: isSelected ?AppColors.kPrimaryColor : Colors.grey,
           ),
           const SizedBox(
             width: 15,
@@ -34,7 +38,7 @@ class DrawerItem extends StatelessWidget {
           Text(
             text,
             style: Styles.normal16.copyWith(
-              color: AppColors.kPrimaryColor,
+              color: isSelected ?AppColors.kPrimaryColor : Colors.grey,
               fontWeight: FontWeight.bold,
             ),
           ),

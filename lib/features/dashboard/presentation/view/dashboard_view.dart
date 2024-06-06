@@ -11,7 +11,11 @@ class DashboardView extends StatelessWidget {
     return const Scaffold(
       body: Row(
         children: [
-          AppDrawer(),
+          AppDrawer(
+            isDashSelected: true,
+            isEventsSelected: false,
+            isMessagesSelected: false,
+          ),
           Expanded(
             child: Column(
               children: [
@@ -25,4 +29,3 @@ class DashboardView extends StatelessWidget {
     );
   }
 }
-
