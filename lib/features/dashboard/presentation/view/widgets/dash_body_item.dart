@@ -33,9 +33,9 @@ class _DashboardItemState extends State<DashboardItem> {
           borderRadius: BorderRadius.circular(15),
         ),
         padding: const EdgeInsets.all(10.0),
-        duration: const Duration(milliseconds: 250),
+        duration: const Duration(milliseconds: 300),
         transform: Transform.translate(
-          offset: Offset(0, isHovering ? -15 : 0),
+          offset: Offset(0, isHovering ? -8 : 0),
         ).transform,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
