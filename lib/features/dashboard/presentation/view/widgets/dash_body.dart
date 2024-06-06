@@ -1,4 +1,4 @@
-import 'package:events_week_admin/features/dashboard/presentation/view/widgets/bar_chart.dart';
+import 'package:events_week_admin/features/dashboard/presentation/view/widgets/analytic.dart';
 import 'package:events_week_admin/features/dashboard/presentation/view/widgets/dash_body_item.dart';
 import 'package:flutter/material.dart';
 
@@ -9,29 +9,27 @@ class DashboardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 40,
-        ),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            DashboardItem(),
-            DashboardItem(),
-            DashboardItem(),
-          ],
-        ),
-        const SizedBox(
-          height: 80,
-        ),
-        Container(
-          width: 500,
-          color: Colors.white,
-          child: const BarChartSample3(),
-        ),
-      ],
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 40,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              DashboardItem(),
+              DashboardItem(),
+              DashboardItem(),
+            ],
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          SiteAnalytic(),
+        ],
+      ),
     );
   }
 }
-

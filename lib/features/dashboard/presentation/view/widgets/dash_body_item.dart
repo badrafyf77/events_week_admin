@@ -27,10 +27,10 @@ class _DashboardItemState extends State<DashboardItem> {
       cursor: SystemMouseCursors.click,
       child: AnimatedContainer(
         height: 100,
-        width: 300,
+        width: 285,
         decoration: BoxDecoration(
           color: isHovering ? AppColors.kPrimaryColor : Colors.white,
-          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          borderRadius: BorderRadius.circular(15),
         ),
         padding: const EdgeInsets.all(10.0),
         duration: const Duration(milliseconds: 250),

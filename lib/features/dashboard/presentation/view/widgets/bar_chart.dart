@@ -71,25 +71,25 @@ class _BarChart extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = 'Mn';
+        text = 'Lun';
         break;
       case 1:
-        text = 'Te';
+        text = 'Mar';
         break;
       case 2:
-        text = 'Wd';
+        text = 'Mer';
         break;
       case 3:
-        text = 'Tu';
+        text = 'Jeu';
         break;
       case 4:
-        text = 'Fr';
+        text = 'ven';
         break;
       case 5:
-        text = 'St';
+        text = 'Sam';
         break;
       case 6:
-        text = 'Sn';
+        text = 'Dim';
         break;
       default:
         text = '';
@@ -214,12 +214,9 @@ class BarChartSample3 extends StatefulWidget {
 class BarChartSample3State extends State<BarChartSample3> {
   @override
   Widget build(BuildContext context) {
-    return const AspectRatio(
-      aspectRatio: 1.5,
-      child: Padding(
-        padding: EdgeInsets.only(top: 30),
-        child: _BarChart(),
-      ),
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: _BarChart(),
     );
   }
 }

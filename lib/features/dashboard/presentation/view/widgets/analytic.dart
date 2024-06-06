@@ -1,0 +1,41 @@
+import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/dashboard/presentation/view/widgets/bar_chart.dart';
+import 'package:flutter/material.dart';
+
+class SiteAnalytic extends StatelessWidget {
+  const SiteAnalytic({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              SizedBox(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Text(
+                    'Nombre de visites sur le site',
+                    style: Styles.normal16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            width: 700,
+            height: 350,
+            child: BarChartSample3(),
+          ),
+        ],
+      ),
+    );
+  }
+}
