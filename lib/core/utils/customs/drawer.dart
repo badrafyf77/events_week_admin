@@ -25,11 +25,10 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 140,
+            height: 150,
             child: Image.asset(
               AppImages.logo,
-              height: 90,
-              width: 90,
+              height: 80,
             ),
           ),
           Padding(
