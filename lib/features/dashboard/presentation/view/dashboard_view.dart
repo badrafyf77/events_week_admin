@@ -8,10 +8,100 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Row(
         children: [
-          DashDrawer(),
+          const DashDrawer(),
+          Expanded(
+            child: Column(
+              children: [
+                Container(
+                  height: 50,
+                  color: Colors.white,
+                ),
+                const Column(
+                  children: [
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        DashboardItem(),
+                        DashboardItem(),
+                        DashboardItem(),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class DashboardItem extends StatelessWidget {
+  const DashboardItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 300,
+      decoration: const BoxDecoration(
+        color: AppColors.kPrimaryColor,
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Row(
+            children: [
+              Container(
+                height: 65,
+                width: 65,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+                child: const Icon(
+                  Icons.event,
+                  color: AppColors.kPrimaryColor,
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Total Events',
+                    style: Styles.normal16.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    '384',
+                    style: Styles.normal12.copyWith(
+                      color: AppColors.kSecondColor,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.chevron_right,
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
     );
