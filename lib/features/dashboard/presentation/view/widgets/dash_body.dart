@@ -14,7 +14,7 @@ class DashboardBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 40,
+            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -25,7 +25,7 @@ class DashboardBody extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           SiteAnalytic(),
         ],

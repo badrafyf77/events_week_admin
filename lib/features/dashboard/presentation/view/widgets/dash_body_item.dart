@@ -27,7 +27,7 @@ class _DashboardItemState extends State<DashboardItem> {
       cursor: SystemMouseCursors.click,
       child: AnimatedContainer(
         height: 100,
-        width: 285,
+        width: 270,
         decoration: BoxDecoration(
           color: isHovering ? AppColors.kPrimaryColor : Colors.white,
           borderRadius: BorderRadius.circular(15),
@@ -83,7 +83,7 @@ class _DashboardItemState extends State<DashboardItem> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 8),
+              padding: const EdgeInsets.only(right: 2),
               child: IconButton(
                 onPressed: () {},
                 icon: Icon(

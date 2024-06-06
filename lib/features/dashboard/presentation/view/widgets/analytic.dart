@@ -30,8 +30,8 @@ class SiteAnalytic extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            width: 700,
-            height: 350,
+            width: 600,
+            height: 320,
             child: BarChartSample3(),
           ),
         ],
