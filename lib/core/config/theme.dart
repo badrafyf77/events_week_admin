@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/config/colors.dart';
+import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

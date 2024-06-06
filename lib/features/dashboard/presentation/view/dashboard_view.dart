@@ -22,6 +22,19 @@ class DashDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Drawer();
+    return const Drawer(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.zero,
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 200,
+            child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 20), child: Row()),
+          ),
+        ],
+      ),
+    );
   }
 }
