@@ -3,7 +3,6 @@ import 'package:events_week_admin/core/utils/images.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:events_week_admin/features/dashboard/presentation/view/widgets/bar_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -53,66 +52,98 @@ class DashboardView extends StatelessWidget {
   }
 }
 
-class DashboardItem extends StatelessWidget {
+class DashboardItem extends StatefulWidget {
   const DashboardItem({super.key});
 
   @override
+  State<DashboardItem> createState() => _DashboardItemState();
+}
+
+class _DashboardItemState extends State<DashboardItem> {
+  bool isHovering = false;
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 300,
-      decoration: const BoxDecoration(
-        color: AppColors.kPrimaryColor,
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-            children: [
-              Container(
-                height: 65,
-                width: 65,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                ),
-                child: const Icon(
-                  Icons.event,
-                  color: AppColors.kPrimaryColor,
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+    return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          isHovering = true;
+        });
+      },
+      onExit: (value) {
+        setState(() {
+          isHovering = false;
+        });
+      },
+      cursor: SystemMouseCursors.click,
+      child: AnimatedContainer(
+        height: 100,
+        width: 300,
+        decoration: BoxDecoration(
+          color: isHovering ? AppColors.kPrimaryColor : Colors.white,
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+        ),
+        padding: const EdgeInsets.all(10.0),
+        duration: const Duration(milliseconds: 250),
+        transform: Transform.translate(
+          offset: Offset(0, isHovering ? -20 : 0),
+        ).transform,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Row(
                 children: [
-                  Text(
-                    'Total Events',
-                    style: Styles.normal16.copyWith(
-                      color: Colors.white,
+                  Container(
+                    height: 65,
+                    width: 65,
+                    decoration: BoxDecoration(
+                      color: isHovering ? Colors.white : AppColors.kSecondColor,
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: const Icon(
+                      Icons.event,
+                      color: AppColors.kPrimaryColor,
                     ),
                   ),
-                  Text(
-                    '384',
-                    style: Styles.normal12.copyWith(
-                      color: AppColors.kSecondColor,
-                      fontWeight: FontWeight.normal,
-                    ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Total Events',
+                        style: Styles.normal16.copyWith(
+                          color: isHovering ? Colors.white : Colors.black,
+                        ),
+                      ),
+                      Text(
+                        '384',
+                        style: Styles.normal12.copyWith(
+                          color:
+                              isHovering ? AppColors.kSecondColor : Colors.grey,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      )
+                    ],
                   )
                 ],
-              )
-            ],
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.chevron_right,
-              color: Colors.white,
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.chevron_right,
+                  color: isHovering ? Colors.white : AppColors.kPrimaryColor,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -213,6 +244,46 @@ class DrawerItem extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class UpDown extends StatefulWidget {
+  const UpDown({super.key});
+
+  @override
+  UpDownState createState() {
+    return UpDownState();
+  }
+}
+
+class UpDownState extends State<UpDown> {
+  bool up = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: AnimatedContainer(
+          padding: const EdgeInsets.all(10.0),
+          duration: const Duration(milliseconds: 250), // Animation speed
+          transform: Transform.translate(
+            offset: Offset(0, up ? -100 : 0), // Change -100 for the y offset
+          ).transform,
+          child: SizedBox(
+            height: 50.0,
+            child: FloatingActionButton(
+              backgroundColor: Colors.red,
+              child: const Icon(Icons.ac_unit),
+              onPressed: () {
+                setState(() {
+                  up = !up;
+                });
+              },
+            ),
+          ),
+        ),
       ),
     );
   }
