@@ -10,6 +10,15 @@ class DashboardHeader extends StatelessWidget {
     return Container(
       height: 50,
       color: Colors.white,
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.settings,
+          ),
+        ),
+      ),
     );
   }
 }
