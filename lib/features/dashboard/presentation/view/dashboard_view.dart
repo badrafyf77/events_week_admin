@@ -1,7 +1,9 @@
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/images.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/dashboard/presentation/view/widgets/bar_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});
@@ -19,19 +21,27 @@ class DashboardView extends StatelessWidget {
                   height: 50,
                   color: Colors.white,
                 ),
-                const Column(
+                Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
-                    Row(
+                    const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         DashboardItem(),
                         DashboardItem(),
                         DashboardItem(),
                       ],
-                    )
+                    ),
+                    const SizedBox(
+                      height: 80,
+                    ),
+                    Container(
+                      width: 500,
+                      color: Colors.white,
+                      child: const BarChartSample3(),
+                    ),
                   ],
                 )
               ],
