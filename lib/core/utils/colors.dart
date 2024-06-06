@@ -2,5 +2,5 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const kPrimaryColor = Color(0xff3661eb);
-  static const kSecondColor = Colors.grey;
+  static const kSecondColor = Color(0xfff4f6f8);
 }

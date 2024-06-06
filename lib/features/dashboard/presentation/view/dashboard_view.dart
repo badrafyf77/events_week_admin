@@ -35,8 +35,8 @@ class DashDrawer extends StatelessWidget {
             height: 140,
             child: Image.asset(
               AppImages.logo,
-              height: 120,
-              width: 120,
+              height: 90,
+              width: 90,
             ),
           ),
           Padding(
