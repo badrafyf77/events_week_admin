@@ -19,9 +19,18 @@ class HomeBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              DashboardItem(),
-              DashboardItem(),
-              DashboardItem(),
+              DashboardItem(
+                title: 'Total d\'événements',
+                nmbr: 24,
+              ),
+              DashboardItem(
+                title: 'Total des messages',
+                nmbr: 12,
+              ),
+              DashboardItem(
+                title: 'visites aujourd\'hui',
+                nmbr: 352,
+              ),
             ],
           ),
           SizedBox(

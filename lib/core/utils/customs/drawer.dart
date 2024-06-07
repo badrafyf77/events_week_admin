@@ -42,7 +42,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 drawerItem(
                   context,
                   1,
-                  'Dashboard',
+                  'Tableau de bord',
                   Icons.dashboard,
                 ),
                 const SizedBox(
@@ -51,7 +51,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 drawerItem(
                   context,
                   2,
-                  'Events',
+                  'Événements',
                   Icons.event,
                 ),
                 const SizedBox(
@@ -60,7 +60,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 drawerItem(
                   context,
                   3,
-                  'Message',
+                  'Messages',
                   Icons.message,
                 ),
               ],
