@@ -5,26 +5,18 @@ import 'package:flutter/material.dart';
 class CustomAppbarContent extends StatelessWidget {
   const CustomAppbarContent({
     super.key,
-    required this.widget,
   });
 
-  final Widget widget;
 
   @override
   Widget build(BuildContext context) {
     return WindowTitleBarBox(
-      child: Row(
+      child: const Row(
         children: [
           Expanded(
-            child: MoveWindow(
-              child: Row(
-                children: [
-                  widget,
-                ],
-              ),
-            ),
+            child: SizedBox(),
           ),
-          const WindowButtons(),
+          WindowButtons(),
         ],
       ),
     );
