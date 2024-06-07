@@ -1,9 +1,9 @@
-import 'package:events_week_admin/features/dashboard/presentation/view/widgets/analytic.dart';
-import 'package:events_week_admin/features/dashboard/presentation/view/widgets/dash_body_item.dart';
+import 'package:events_week_admin/features/home/presentation/view/widgets/analytic.dart';
+import 'package:events_week_admin/features/home/presentation/view/widgets/home_body_item.dart';
 import 'package:flutter/material.dart';
 
-class DashboardBody extends StatelessWidget {
-  const DashboardBody({
+class HomeBody extends StatelessWidget {
+  const HomeBody({
     super.key,
   });
 

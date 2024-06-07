@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DashboardHeader extends StatelessWidget {
-  const DashboardHeader({
+class HomeHeader extends StatelessWidget {
+  const HomeHeader({
     super.key,
   });
 

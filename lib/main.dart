@@ -1,5 +1,5 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/config/theme.dart';
-import 'package:events_week_admin/features/dashboard/presentation/view/dashboard_view.dart';
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 
@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'EW Admin Dashboard',
       debugShowCheckedModeBanner: false,
       theme: AppThemes.appTheme,
-      home: const DashboardView(),
+      routerConfig: AppRouter.router,
     );
   }
 }

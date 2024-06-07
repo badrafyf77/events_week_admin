@@ -1,5 +1,5 @@
 import 'package:events_week_admin/core/utils/styles.dart';
-import 'package:events_week_admin/features/dashboard/presentation/view/widgets/bar_chart.dart';
+import 'package:events_week_admin/features/home/presentation/view/widgets/bar_chart.dart';
 import 'package:flutter/material.dart';
 
 class SiteAnalytic extends StatelessWidget {
