@@ -1,7 +1,21 @@
+import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
 import 'package:events_week_admin/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+CustomTransitionPage buildPageWithDefaultTransition<T>({
+  required BuildContext context,
+  required GoRouterState state,
+  required Widget child,
+}) {
+  return CustomTransitionPage<T>(
+    key: state.pageKey,
+    child: child,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+        FadeTransition(opacity: animation, child: child),
+  );
+}
 
 class AppRouter {
   static const home = '/home';
@@ -18,18 +32,33 @@ class AppRouter {
         routes: [
           GoRoute(
             path: home,
-            builder: (context, state) => const HomeView(),
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: const HomeView(),
+            ),
           ),
           GoRoute(
             path: events,
-            builder: (context, state) => Container(
-              color: Colors.red,
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: Container(
+                color: AppColors.kSecondColor,
+              ),
             ),
           ),
           GoRoute(
             path: messages,
-            builder: (context, state) => Container(
-              color: Colors.green,
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: Container(
+                color: Colors.green,
+              ),
             ),
           ),
         ],
