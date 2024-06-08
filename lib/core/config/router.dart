@@ -1,5 +1,5 @@
-import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
+import 'package:events_week_admin/features/events/presentation/views/events_view.dart';
 import 'package:events_week_admin/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -48,9 +48,7 @@ class AppRouter {
                 buildPageWithDefaultTransition<void>(
               context: context,
               state: state,
-              child: Container(
-                color: AppColors.kSecondColor,
-              ),
+              child: const EventsView(),
             ),
           ),
           GoRoute(
