@@ -6,20 +6,16 @@ class EventsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            EventsList(
-              width: constraints.maxWidth,
-            ),
-          ],
-        );
-      }),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 20,
+          ),
+          EventsList(),
+        ],
+      ),
     );
   }
 }

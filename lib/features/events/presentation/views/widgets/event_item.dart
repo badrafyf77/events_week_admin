@@ -5,18 +5,15 @@ import 'package:flutter/material.dart';
 class EventItem extends StatelessWidget {
   const EventItem({
     super.key,
-    required this.width,
   });
-
-  final double width;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const EventCercleTime(),
-        EventDetails(width: width),
+        EventCercleTime(),
+        EventDetails(),
       ],
     );
   }

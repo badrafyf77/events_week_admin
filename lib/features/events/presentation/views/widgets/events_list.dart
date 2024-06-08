@@ -5,20 +5,17 @@ import 'package:flutter/material.dart';
 class EventsList extends StatelessWidget {
   const EventsList({
     super.key,
-    required this.width,
   });
-
-  final double width;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return const Expanded(
         child: CustomListViewBuilder(
       itemCount: 4,
       widget: Column(
         children: [
-          EventItem(width: width),
-          const SizedBox(
+          EventItem(),
+          SizedBox(
             height: 10,
           ),
         ],
