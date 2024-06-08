@@ -119,9 +119,9 @@ class _EventDetailsState extends State<EventDetails> {
                               });
                             },
                             child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 250),
+                              duration: const Duration(milliseconds: 100),
                               transform: Transform.translate(
-                                offset: Offset(0, isHovering ? -8 : 0),
+                                offset: Offset(0, isHovering ? -4 : 0),
                               ).transform,
                               child: CustomButton(
                                 onPressed: () {},

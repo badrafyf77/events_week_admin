@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
+import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/events_list.dart';
@@ -63,46 +64,101 @@ class ChooseInitialAndAddEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> items = [
-      'Site Ain Harouda',
-      'Site Berrechid 1',
-      'Site Berrechid 2',
-      'Site Ain Sebaa',
-    ];
     return Container(
       height: 200,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
+      child: const Padding(
+        padding: EdgeInsets.all(15.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Choisir l\'événement initial',
-                  style: Styles.normal16,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                SizedBox(
-                  height: 40,
-                  width: 300,
-                  child: MyDropDownField(
-                    onChanged: (value) {},
-                    items: items,
-                  ),
-                )
-              ],
-            )
+            ChooseInitialEvent(),
+            Padding(
+              padding: EdgeInsets.only(top: 32),
+              child: AddEvent(),
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class AddEvent extends StatefulWidget {
+  const AddEvent({super.key});
+
+  @override
+  State<AddEvent> createState() => _AddEventState();
+}
+
+class _AddEventState extends State<AddEvent> {
+  bool isHovering = false;
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (event) {
+        setState(() {
+          isHovering = true;
+        });
+      },
+      onExit: (value) {
+        setState(() {
+          isHovering = false;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 100),
+        transform: Transform.translate(
+          offset: Offset(0, isHovering ? -4 : 0),
+        ).transform,
+        child: CustomButton(
+          onPressed: () {},
+          title: 'Ajouter un événement',
+          backgroundColor: AppColors.kPrimaryColor,
+          height: 38,
+          width: 220,
+        ),
+      ),
+    );
+  }
+}
+
+class ChooseInitialEvent extends StatelessWidget {
+  const ChooseInitialEvent({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final List<String> items = [
+      'Site Ain Harouda',
+      'Site Berrechid 1',
+      'Site Berrechid 2',
+      'Site Ain Sebaa',
+    ];
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Choisir l\'événement initial',
+          style: Styles.normal16,
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        SizedBox(
+          height: 40,
+          width: 300,
+          child: MyDropDownField(
+            onChanged: (value) {},
+            items: items,
+          ),
+        )
+      ],
     );
   }
 }
