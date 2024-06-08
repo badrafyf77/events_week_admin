@@ -26,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
     setState(() {
       loading1 = true;
     });
-    await Future.delayed(const Duration(seconds: 1), () {});
+    await Future.delayed(const Duration(milliseconds: 500), () {});
     setState(() {
       loading2 = true;
     });
