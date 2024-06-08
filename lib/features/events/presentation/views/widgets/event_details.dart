@@ -1,20 +1,15 @@
 import 'package:events_week_admin/core/utils/colors.dart';
+import 'package:events_week_admin/core/utils/customs/animated_container.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/images.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class EventDetails extends StatefulWidget {
+class EventDetails extends StatelessWidget {
   const EventDetails({
     super.key,
   });
 
-  @override
-  State<EventDetails> createState() => _EventDetailsState();
-}
-
-class _EventDetailsState extends State<EventDetails> {
-  bool isHovering = false;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -107,29 +102,13 @@ class _EventDetailsState extends State<EventDetails> {
                               ],
                             ),
                           ),
-                          MouseRegion(
-                            onEnter: (event) {
-                              setState(() {
-                                isHovering = true;
-                              });
-                            },
-                            onExit: (value) {
-                              setState(() {
-                                isHovering = false;
-                              });
-                            },
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 100),
-                              transform: Transform.translate(
-                                offset: Offset(0, isHovering ? -4 : 0),
-                              ).transform,
-                              child: CustomButton(
-                                onPressed: () {},
-                                title: 'Voir Plus',
-                                backgroundColor: AppColors.kPrimaryColor,
-                                height: 35,
-                                width: 120,
-                              ),
+                          CustomAnimatedContainer(
+                            child: CustomButton(
+                              onPressed: () {},
+                              title: 'Voir Plus',
+                              backgroundColor: AppColors.kPrimaryColor,
+                              height: 35,
+                              width: 120,
                             ),
                           )
                         ],
