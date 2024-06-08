@@ -65,142 +65,190 @@ class EventItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            height: 50,
-            width: 50,
-            decoration: const BoxDecoration(
-              color: AppColors.kPrimaryColor,
-              shape: BoxShape.circle,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  '11',
-                  style: Styles.normal15.copyWith(
-                    color: Colors.white,
-                  ),
-                ),
-                Text(
-                  'Mars',
-                  style: Styles.normal12.copyWith(
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        const EventCercleTime(),
+        EventDetails(width: width),
+      ],
+    );
+  }
+}
+
+class EventDetails extends StatefulWidget {
+  const EventDetails({
+    super.key,
+    required this.width,
+  });
+
+  final double width;
+
+  @override
+  State<EventDetails> createState() => _EventDetailsState();
+}
+
+class _EventDetailsState extends State<EventDetails> {
+  bool isHovering = false;
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        height: 242,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
         ),
-        Expanded(
-          child: Container(
-            height: 242,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      AppImages.event,
-                      width: width * .35,
-                      fit: BoxFit.cover,
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  AppImages.event,
+                  width: widget.width * .35,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              SizedBox(
+                width: 470,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Louis Family Party',
+                      style: Styles.normal24,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  SizedBox(
-                    width: 470,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Enim enim in ut enim duis mollit Lorem sunt sint. Cillum dolor ex incididunt labore sint fugiat sit aute sit exercitation ex magna ex. Aliqua occaecat cillum culpa qui sint ipsum proident. Magna consequat nisi magna adipisicing nostrud qui occaecat magna aute.',
+                      style: Styles.normal16.copyWith(
+                          color: Colors.grey, fontWeight: FontWeight.normal),
+                      maxLines: 4,
+                      textAlign: TextAlign.justify,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(
-                          'Louis Family Party',
-                          style: Styles.normal24,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'Enim enim in ut enim duis mollit Lorem sunt sint. Cillum dolor ex incididunt labore sint fugiat sit aute sit exercitation ex magna ex. Aliqua occaecat cillum culpa qui sint ipsum proident. Magna consequat nisi magna adipisicing nostrud qui occaecat magna aute.',
-                          style: Styles.normal16.copyWith(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.normal),
-                          maxLines: 4,
-                          textAlign: TextAlign.justify,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SizedBox(
-                              width: width * 0.24,
-                              child: Column(
+                        SizedBox(
+                          width: widget.width * 0.24,
+                          child: Column(
+                            children: [
+                              Row(
                                 children: [
-                                  Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.access_time,
-                                      ),
-                                      const SizedBox(
-                                        width: 4,
-                                      ),
-                                      Text(
-                                        '8:00 pm',
-                                        style: Styles.normal12,
-                                      ),
-                                    ],
+                                  const Icon(
+                                    Icons.access_time,
                                   ),
                                   const SizedBox(
-                                    height: 5,
+                                    width: 4,
                                   ),
-                                  Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.place,
-                                      ),
-                                      const SizedBox(
-                                        width: 4,
-                                      ),
-                                      Text(
-                                        'Agdal, Rabat',
-                                        style: Styles.normal12,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ],
+                                  Text(
+                                    '8:00 pm',
+                                    style: Styles.normal12,
                                   ),
                                 ],
                               ),
-                            ),
-                            CustomButton(
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.place,
+                                  ),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(
+                                    'Agdal, Rabat',
+                                    style: Styles.normal12,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        MouseRegion(
+                          onEnter: (event) {
+                            setState(() {
+                              isHovering = true;
+                            });
+                          },
+                          onExit: (value) {
+                            setState(() {
+                              isHovering = false;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 250),
+                            transform: Transform.translate(
+                              offset: Offset(0, isHovering ? -8 : 0),
+                            ).transform,
+                            child: CustomButton(
                               onPressed: () {},
-                              title: 'title',
+                              title: 'Voir Plus',
                               backgroundColor: AppColors.kPrimaryColor,
                               height: 35,
                               width: 120,
-                            )
-                          ],
+                            ),
+                          ),
                         )
                       ],
-                    ),
-                  ),
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
-      ],
+      ),
+    );
+  }
+}
+
+class EventCercleTime extends StatelessWidget {
+  const EventCercleTime({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 50,
+        width: 50,
+        decoration: const BoxDecoration(
+          color: AppColors.kPrimaryColor,
+          shape: BoxShape.circle,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '11',
+              style: Styles.normal15.copyWith(
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              'Mars',
+              style: Styles.normal12.copyWith(
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
