@@ -1,4 +1,5 @@
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
+import 'package:events_week_admin/features/events/presentation/views/add_event_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/events_view.dart';
 import 'package:events_week_admin/features/home/presentation/view/home_view.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
 class AppRouter {
   static const home = '/home';
   static const events = '/events';
+  static const addEvent = '/addEvent';
   static const messages = '/messages';
 
   static final router = GoRouter(
@@ -63,6 +65,10 @@ class AppRouter {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: addEvent,
+        builder: (context, state) => const AddEventView(),
       ),
     ],
   );
