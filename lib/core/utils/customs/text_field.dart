@@ -27,7 +27,7 @@ class MyTextField extends StatelessWidget {
         controller: controller,
         validator: validator,
         style: Styles.normal16.copyWith(
-          color: AppColors.kPrimaryColor,
+          fontWeight: FontWeight.normal,
         ),
         cursorColor: AppColors.kPrimaryColor,
         decoration: InputDecoration(
