@@ -12,11 +12,11 @@ class AppDrawer extends StatefulWidget {
   });
 
   @override
-  State<AppDrawer> createState() => _AppDrawerState();
+  State<AppDrawer> createState() => AppDrawerState();
 }
 
-class _AppDrawerState extends State<AppDrawer> {
-  int currentIndex = 1;
+class AppDrawerState extends State<AppDrawer> {
+  static int currentIndex = 1;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -39,30 +39,15 @@ class _AppDrawerState extends State<AppDrawer> {
                 const SizedBox(
                   height: 20,
                 ),
-                drawerItem(
-                  context,
-                  1,
-                  'Tableau de bord',
-                  Icons.dashboard,
-                ),
+                drawerItem(context, 1, 'Tableau de bord', Icons.dashboard),
                 const SizedBox(
                   height: 40,
                 ),
-                drawerItem(
-                  context,
-                  2,
-                  'Événements',
-                  Icons.event,
-                ),
+                drawerItem(context, 2, 'Événements', Icons.event),
                 const SizedBox(
                   height: 40,
                 ),
-                drawerItem(
-                  context,
-                  3,
-                  'Messages',
-                  Icons.message,
-                ),
+                drawerItem(context, 3, 'Messages', Icons.message),
               ],
             ),
           )

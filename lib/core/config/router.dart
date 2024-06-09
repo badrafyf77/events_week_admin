@@ -1,4 +1,5 @@
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
+import 'package:events_week_admin/core/utils/customs/drawer.dart';
 import 'package:events_week_admin/features/events/presentation/views/add_event_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/events_view.dart';
 import 'package:events_week_admin/features/home/presentation/view/home_view.dart';
@@ -64,19 +65,35 @@ class AppRouter {
               ),
             ),
           ),
+          GoRoute(
+            path: addEvent,
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: const AddEventView(),
+            ),
+          ),
         ],
-      ),
-      GoRoute(
-        path: addEvent,
-        builder: (context, state) => const AddEventView(),
       ),
     ],
   );
 
   static void navigateTo(BuildContext context, String path) {
-    context.go(
-      path,
-    );
+    GoRouter.of(context).go(path);
+    switch (path) {
+      case AppRouter.home:
+        AppDrawerState.currentIndex = 1;
+        break;
+      case AppRouter.events:
+        AppDrawerState.currentIndex = 2;
+        break;
+      case AppRouter.messages:
+        AppDrawerState.currentIndex = 3;
+        break;
+      default:
+        break;
+    }
   }
 
   static void navigateOff(BuildContext context, String path) {
