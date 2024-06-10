@@ -1,6 +1,16 @@
 part of 'add_event_bloc.dart';
 
 @immutable
-sealed class AddEventState {}
+abstract class AddEventState {}
 
 final class AddEventInitial extends AddEventState {}
+
+final class AddEventLaoding extends AddEventState {}
+
+final class AddEventSuccess extends AddEventState {}
+
+final class AddEventFailure extends AddEventState {
+  final String err;
+
+  AddEventFailure({required this.err});
+}
