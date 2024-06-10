@@ -8,7 +8,7 @@ class ChooseInitialAndAddEvent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 80,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -19,10 +19,7 @@ class ChooseInitialAndAddEvent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ChooseInitialEvent(),
-            Padding(
-              padding: EdgeInsets.only(top: 32),
-              child: NavigateToAddEventButton(),
-            ),
+            NavigateToAddEventButton(),
           ],
         ),
       ),

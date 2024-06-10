@@ -15,16 +15,14 @@ class ChooseInitialEvent extends StatelessWidget {
       'Site Berrechid 2',
       'Site Ain Sebaa',
     ];
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
       children: [
         Text(
           'Choisir l\'événement initial',
-          style: Styles.normal16,
+          style: Styles.normal15,
         ),
         const SizedBox(
-          height: 8,
+          width: 10,
         ),
         SizedBox(
           height: 40,
@@ -38,4 +36,3 @@ class ChooseInitialEvent extends StatelessWidget {
     );
   }
 }
-

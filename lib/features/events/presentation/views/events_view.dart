@@ -39,11 +39,11 @@ class _EventsViewState extends State<EventsView> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     ChooseInitialAndAddEvent(),
                     SizedBox(
-                      height: 20,
+                      height: 12,
                     ),
                     EventsList(),
                   ],
@@ -55,4 +55,3 @@ class _EventsViewState extends State<EventsView> {
           );
   }
 }
-
