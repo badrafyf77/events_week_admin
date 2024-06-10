@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/config/theme.dart';
+import 'package:events_week_admin/core/utils/service_locator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
@@ -18,7 +19,6 @@ void main() async {
       debugPrint('Erreur : $e');
     }
   }
-
   runApp(const MyApp());
   doWhenWindowReady(() {
     const initialSize = Size(1200, 650);
@@ -28,6 +28,7 @@ void main() async {
     appWindow.title = 'Events Week Admin';
     appWindow.show();
   });
+  setupServiceLocator();
 }
 
 class MyApp extends StatelessWidget {
