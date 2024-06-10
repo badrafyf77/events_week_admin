@@ -16,11 +16,12 @@ class AddEventBloc extends Bloc<AddEventEvent, AddEventState> {
         emit(AddEventLaoding());
         var id = const Uuid().v4();
         Event e = Event(
-            id: id,
-            title: event.title,
-            description: event.description,
-            place: event.place,
-            date: event.date);
+          id: id,
+          title: event.title,
+          description: event.description,
+          place: event.place,
+          date: Timestamp.fromDate(event.date),
+        );
         var result = await _eventsRepo.addEvent(e);
         result.fold((left) {
           emit(AddEventFailure(err: left.errMessage));

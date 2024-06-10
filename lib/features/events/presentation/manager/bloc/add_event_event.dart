@@ -7,7 +7,7 @@ final class AddEvent extends AddEventEvent {
   final String title;
   final String description;
   final String place;
-  final Timestamp date;
+  final DateTime date;
 
   AddEvent({required this.title, required this.description, required this.place, required this.date});
 }

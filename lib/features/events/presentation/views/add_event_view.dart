@@ -3,8 +3,10 @@ import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/date_time_picker.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/events/presentation/manager/bloc/add_event_bloc.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/add_event_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddEventView extends StatelessWidget {
   const AddEventView({super.key});
@@ -40,6 +42,7 @@ class _AddEventBodyState extends State<AddEventBody> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController placeController = TextEditingController();
+  DateTime date = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -123,6 +126,7 @@ class _AddEventBodyState extends State<AddEventBody> {
                     DateAndTimePicker(
                       height: 40,
                       width: constraints.maxWidth,
+                      date: date,
                     ),
                   ],
                 );
@@ -176,7 +180,16 @@ class _AddEventBodyState extends State<AddEventBody> {
               height: 30,
             ),
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                BlocProvider.of<AddEventBloc>(context).add(
+                  AddEvent(
+                    title: titleController.text,
+                    description: descriptionController.text,
+                    place: placeController.text,
+                    date: date,
+                  ),
+                );
+              },
               title: "Ajouter",
               backgroundColor: AppColors.kPrimaryColor,
               height: 35,

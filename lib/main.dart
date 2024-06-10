@@ -2,10 +2,13 @@ import 'dart:io';
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/config/theme.dart';
 import 'package:events_week_admin/core/utils/service_locator.dart';
+import 'package:events_week_admin/features/events/data/repo/events_repo_implementation.dart';
+import 'package:events_week_admin/features/events/presentation/manager/bloc/add_event_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -36,11 +39,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'EW Admin Dashboard',
-      debugShowCheckedModeBanner: false,
-      theme: AppThemes.appTheme,
-      routerConfig: AppRouter.router,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (BuildContext context) => AddEventBloc(
+            getIt.get<EventsRepoImplementation>(),
+          ),
+        ),
+      ],
+      child: MaterialApp.router(
+        title: 'EW Admin Dashboard',
+        debugShowCheckedModeBanner: false,
+        theme: AppThemes.appTheme,
+        routerConfig: AppRouter.router,
+      ),
     );
   }
 }
