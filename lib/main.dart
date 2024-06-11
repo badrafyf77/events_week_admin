@@ -4,6 +4,7 @@ import 'package:events_week_admin/core/config/theme.dart';
 import 'package:events_week_admin/core/utils/service_locator.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo_implementation.dart';
 import 'package:events_week_admin/features/events/presentation/manager/add%20event/add_event_bloc.dart';
+import 'package:events_week_admin/features/events/presentation/manager/get%20events/get_events_cubit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
@@ -43,6 +44,11 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (BuildContext context) => AddEventBloc(
+            getIt.get<EventsRepoImplementation>(),
+          ),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => GetEventsCubit(
             getIt.get<EventsRepoImplementation>(),
           ),
         ),
