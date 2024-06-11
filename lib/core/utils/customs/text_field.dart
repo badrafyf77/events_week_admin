@@ -40,7 +40,7 @@ class MyTextField extends StatelessWidget {
           fillColor: Colors.grey[200],
           errorStyle: const TextStyle(
             color: Colors.red,
-            fontSize: 12,
+            fontSize: 10,
             height: 0,
           ),
           border: OutlineInputBorder(
