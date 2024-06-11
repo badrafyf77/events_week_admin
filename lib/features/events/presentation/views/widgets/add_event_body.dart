@@ -175,11 +175,25 @@ class _AddEventBodyState extends State<AddEventBody> {
                                 ),
                               ),
                             )
-                          : Image.file(
-                              File(image!.path),
-                              fit: BoxFit.fill,
-                              height: 180,
-                              width: 250,
+                          : Column(
+                              children: [
+                                Image.file(
+                                  File(image!.path),
+                                  fit: BoxFit.fill,
+                                  height: 180,
+                                  width: 250,
+                                ),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        image = null;
+                                      });
+                                    },
+                                    icon: const Icon(Icons.delete))
+                              ],
                             ),
                     ],
                   ),
@@ -200,6 +214,13 @@ class _AddEventBodyState extends State<AddEventBody> {
                         image: image,
                       ),
                     );
+
+                    setState(() {
+                      titleController.clear();
+                      descriptionController.clear();
+                      placeController.clear();
+                      image = null;
+                    });
                   }
                 },
                 title: "Ajouter",
