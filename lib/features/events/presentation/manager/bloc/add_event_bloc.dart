@@ -3,6 +3,7 @@ import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
 part 'add_event_event.dart';
@@ -22,11 +23,11 @@ class AddEventBloc extends Bloc<AddEventEvent, AddEventState> {
           place: event.place,
           date: Timestamp.fromDate(event.date),
         );
-        var result = await _eventsRepo.addEvent(e);
+        var result = await _eventsRepo.addEvent(e,event.image);
         result.fold((left) {
           emit(AddEventFailure(err: left.errMessage));
         }, (right) {
-          emit(AddEventSuccess());
+          emit(AddEventSuccess(msg: 'Événement Ajouté'));
         });
       }
     });

@@ -7,7 +7,11 @@ final class AddEventInitial extends AddEventState {}
 
 final class AddEventLaoding extends AddEventState {}
 
-final class AddEventSuccess extends AddEventState {}
+final class AddEventSuccess extends AddEventState {
+  final String msg;
+
+  AddEventSuccess({required this.msg});
+}
 
 final class AddEventFailure extends AddEventState {
   final String err;

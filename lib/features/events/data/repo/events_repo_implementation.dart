@@ -17,16 +17,13 @@ class EventsRepoImplementation implements EventsRepo {
   EventsRepoImplementation(this._firestoreService, this._fireStorageService);
 
   @override
-  Future<Either<Failure, Unit>> addEvent(Event event) async {
+  Future<Either<Failure, Unit>> addEvent(Event event, XFile? image) async {
     try {
-      final ImagePicker picker = ImagePicker();
-      XFile? image = await picker.pickImage(source: ImageSource.gallery);
-
       if (image != null) {
         File selectedImagePath = File(image.path);
         await _fireStorageService.uploadFile(selectedImagePath, event.id);
       } else {
-        left(PickImageFailure(errMessage: 'choisir une image'));
+        return left(PickImageFailure(errMessage: 'choisir une image'));
       }
       await _firestoreService.addEvent(event);
 

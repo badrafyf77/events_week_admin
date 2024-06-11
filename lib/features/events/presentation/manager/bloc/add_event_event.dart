@@ -8,6 +8,7 @@ final class AddEvent extends AddEventEvent {
   final String description;
   final String place;
   final DateTime date;
+  final XFile? image;
 
-  AddEvent({required this.title, required this.description, required this.place, required this.date});
+  AddEvent({required this.title, required this.description, required this.place, required this.date, required this.image});
 }
