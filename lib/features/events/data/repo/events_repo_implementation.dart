@@ -21,7 +21,6 @@ class EventsRepoImplementation implements EventsRepo {
     try {
       var id = const Uuid().v4();
       String downloadUrl;
-
       if (image != null) {
         File selectedImagePath = File(image.path);
         downloadUrl =
@@ -29,7 +28,6 @@ class EventsRepoImplementation implements EventsRepo {
       } else {
         return left(PickImageFailure(errMessage: 'choisir une image'));
       }
-
       Event event = Event(
         id: id,
         title: title,
@@ -38,10 +36,22 @@ class EventsRepoImplementation implements EventsRepo {
         downloadUrl: downloadUrl,
         date: Timestamp.fromDate(date),
       );
-
       await _firestoreService.addEvent(event);
-
       return right(unit);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(FirestoreFailure.fromFirestoreFailure(e));
+      }
+      return left(FirestoreFailure(
+          errMessage: 'il y a une erreur, veuillez réessayer'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Event>>> getEvents() async {
+    try {
+      var events = await _firestoreService.getEvents();
+      return right(events);
     } catch (e) {
       if (e is FirebaseException) {
         return left(FirestoreFailure.fromFirestoreFailure(e));

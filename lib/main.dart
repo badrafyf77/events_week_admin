@@ -3,7 +3,7 @@ import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/config/theme.dart';
 import 'package:events_week_admin/core/utils/service_locator.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo_implementation.dart';
-import 'package:events_week_admin/features/events/presentation/manager/bloc/add_event_bloc.dart';
+import 'package:events_week_admin/features/events/presentation/manager/add%20event/add_event_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
