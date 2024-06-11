@@ -1,5 +1,5 @@
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
-import 'package:events_week_admin/core/utils/show_toast.dart';
+import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
 import 'package:events_week_admin/features/events/presentation/manager/get%20events/get_events_cubit.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/event_item.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +33,11 @@ class _EventsListState extends State<EventsList> {
               child: ListView.builder(
                 itemCount: state.eventsList.length,
                 itemBuilder: (context, index) {
-                  return const Column(
+                  return Column(
                     children: [
-                      EventItem(),
+                      EventItem(
+                        event: state.eventsList[index],
+                      ),
                       SizedBox(
                         height: 10,
                       ),

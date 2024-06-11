@@ -1,11 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
+import 'package:events_week_admin/core/utils/helpers/month_names.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class EventCercleTime extends StatelessWidget {
   const EventCercleTime({
     super.key,
+    required this.date,
   });
+
+  final Timestamp date;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +27,13 @@ class EventCercleTime extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '11',
+              date.toDate().day.toString(),
               style: Styles.normal15.copyWith(
                 color: Colors.white,
               ),
             ),
             Text(
-              'Mars',
+              getMonthName(date.toDate()),
               style: Styles.normal12.copyWith(
                 color: Colors.white,
               ),

@@ -1,3 +1,5 @@
+import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/animated_container.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
@@ -8,7 +10,10 @@ import 'package:flutter/material.dart';
 class EventDetails extends StatelessWidget {
   const EventDetails({
     super.key,
+    required this.event,
   });
+
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +46,7 @@ class EventDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Louis Family Party',
+                        event.title,
                         style: Styles.normal24,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -49,7 +54,7 @@ class EventDetails extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        'Enim enim in ut enim duis mollit Lorem sunt sint. Cillum dolor ex incididunt labore sint fugiat sit aute sit exercitation ex magna ex. Aliqua occaecat cillum culpa qui sint ipsum proident. Magna consequat nisi magna adipisicing nostrud qui occaecat magna aute.',
+                        event.description,
                         style: Styles.normal16.copyWith(
                             color: Colors.grey, fontWeight: FontWeight.normal),
                         maxLines: 4,
@@ -76,7 +81,8 @@ class EventDetails extends StatelessWidget {
                                       width: 4,
                                     ),
                                     Text(
-                                      '8:00 pm',
+                                      BoardDateFormat('HH:mm a')
+                                          .format(event.date.toDate()),
                                       style: Styles.normal12,
                                     ),
                                   ],
@@ -93,7 +99,7 @@ class EventDetails extends StatelessWidget {
                                       width: 4,
                                     ),
                                     Text(
-                                      'Agdal, Rabat',
+                                      event.place,
                                       style: Styles.normal12,
                                       overflow: TextOverflow.ellipsis,
                                     ),
