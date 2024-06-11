@@ -79,21 +79,9 @@ class AppRouter {
     ],
   );
 
-  static void navigateTo(BuildContext context, String path) {
+  static void navigateTo(BuildContext context, String path, int index) {
     GoRouter.of(context).go(path);
-    switch (path) {
-      case AppRouter.home:
-        AppDrawerState.currentIndex = 1;
-        break;
-      case AppRouter.events:
-        AppDrawerState.currentIndex = 2;
-        break;
-      case AppRouter.messages:
-        AppDrawerState.currentIndex = 3;
-        break;
-      default:
-        break;
-    }
+    AppDrawerState.currentIndex = index;
   }
 
   static void navigateOff(BuildContext context, String path) {

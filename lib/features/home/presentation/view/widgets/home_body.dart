@@ -24,14 +24,14 @@ class HomeBody extends StatelessWidget {
                 title: 'Total d\'événements',
                 nmbr: 24,
                 onTap: () {
-                  AppRouter.navigateTo(context, AppRouter.events);
+                  AppRouter.navigateTo(context, AppRouter.events, 2);
                 },
               ),
               DashboardItem(
                 title: 'Total des messages',
                 nmbr: 12,
                 onTap: () {
-                  AppRouter.navigateTo(context, AppRouter.messages);
+                  AppRouter.navigateTo(context, AppRouter.messages, 3);
                 },
               ),
               DashboardItem(

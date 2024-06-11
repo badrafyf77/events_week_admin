@@ -14,7 +14,7 @@ class NavigateToAddEventButton extends StatelessWidget {
     return CustomAnimatedContainer(
       child: CustomButton(
         onPressed: () {
-          AppRouter.navigateTo(context, AppRouter.addEvent);
+          AppRouter.navigateTo(context, AppRouter.addEvent, 2);
         },
         title: 'Ajouter un événement',
         backgroundColor: AppColors.kPrimaryColor,

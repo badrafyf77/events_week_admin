@@ -11,7 +11,7 @@ class AddEventHeader extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {
-            AppRouter.navigateTo(context, AppRouter.events);
+            AppRouter.navigateTo(context, AppRouter.events,2);
           },
           icon: const Icon(
             Icons.arrow_back,
