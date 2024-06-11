@@ -39,8 +39,7 @@ class FirebaseAuthFailure extends Failure {
 class FirestoreFailure extends Failure {
   FirestoreFailure({required super.errMessage});
 
-  factory FirestoreFailure.fromFirestoreFailure(
-      FirebaseException e) {
+  factory FirestoreFailure.fromFirestoreFailure(FirebaseException e) {
     switch (e.code) {
       case '':
         {
@@ -50,4 +49,23 @@ class FirestoreFailure extends Failure {
         return FirestoreFailure(errMessage: e.code);
     }
   }
+}
+
+class FirestorageFailure extends Failure {
+  FirestorageFailure({required super.errMessage});
+
+  factory FirestorageFailure.fromFirestoreFailure(FirebaseException e) {
+    switch (e.code) {
+      case '':
+        {
+          return FirestorageFailure(errMessage: 'erreur message');
+        }
+      default:
+        return FirestorageFailure(errMessage: e.code);
+    }
+  }
+}
+
+class PickImageFailure extends Failure {
+  PickImageFailure({required super.errMessage});
 }
