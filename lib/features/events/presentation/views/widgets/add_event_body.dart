@@ -214,7 +214,6 @@ class _AddEventBodyState extends State<AddEventBody> {
                         image: image,
                       ),
                     );
-
                     setState(() {
                       titleController.clear();
                       descriptionController.clear();

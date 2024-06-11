@@ -5,6 +5,7 @@ class Event {
   final String title;
   final String description;
   final String place;
+  final String downloadUrl;
   final Timestamp date;
 
   Event({
@@ -12,15 +13,17 @@ class Event {
     required this.title,
     required this.description,
     required this.place,
+    required this.downloadUrl,
     required this.date,
   });
 
   Event.fromJson(json)
       : this(
-        id: json['id'] as String,
+          id: json['id'] as String,
           title: json['title'] as String,
           description: json['description'] as String,
           place: json['place'] as String,
+          downloadUrl: json['downloadUrl'] as String,
           date: json['date'] as Timestamp,
         );
 
@@ -30,6 +33,7 @@ class Event {
       'title': title,
       'description': description,
       'place': place,
+      'downloadUrl': downloadUrl,
       'date': date,
     };
   }
