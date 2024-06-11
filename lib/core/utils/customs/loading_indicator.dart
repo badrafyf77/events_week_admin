@@ -5,7 +5,7 @@ import 'package:loading_indicator/loading_indicator.dart';
 class CustomLoadingIndicator extends StatelessWidget {
   const CustomLoadingIndicator({
     super.key,
-    this.color = Colors.white,
+    this.color = AppColors.kPrimaryColor,
   });
   final Color color;
 
