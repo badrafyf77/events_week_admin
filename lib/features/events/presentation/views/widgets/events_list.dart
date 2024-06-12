@@ -38,7 +38,7 @@ class _EventsListState extends State<EventsList> {
                       EventItem(
                         event: state.eventsList[index],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],

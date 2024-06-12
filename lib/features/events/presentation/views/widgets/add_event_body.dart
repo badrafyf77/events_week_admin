@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/date_time_picker.dart';
@@ -9,6 +9,7 @@ import 'package:events_week_admin/features/events/presentation/manager/add%20eve
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:toastification/toastification.dart';
 
 class AddEventBody extends StatefulWidget {
   const AddEventBody({
@@ -124,6 +125,33 @@ class _AddEventBodyState extends State<AddEventBody> {
                         height: 30,
                         width: constraints.maxWidth,
                         date: date,
+                        onPressed: () async {
+                          final result = await showBoardDateTimePicker(
+                            context: context,
+                            initialDate: date,
+                            pickerType: DateTimePickerType.datetime,
+                            options: const BoardDateTimeOptions(
+                              languages: BoardPickerLanguages(
+                                locale: 'fr',
+                                today: 'Aujourd’hui',
+                                tomorrow: 'Demain',
+                                now: 'Maintenant',
+                              ),
+                              startDayOfWeek: DateTime.sunday,
+                              pickerFormat: PickerFormat.ymd,
+                              pickerSubTitles: BoardDateTimeItemTitles(
+                                year: 'Année',
+                                month: 'Mois',
+                                day: 'Jour',
+                                hour: 'Heure',
+                              ),
+                            ),
+                            onResult: (val) {},
+                          );
+                          if (result != null) {
+                            setState(() => date = result);
+                          }
+                        },
                       ),
                     ],
                   );
@@ -157,10 +185,21 @@ class _AddEventBodyState extends State<AddEventBody> {
                       image == null
                           ? InkWell(
                               onTap: () async {
-                                final ImagePicker picker = ImagePicker();
-                                image = await picker.pickImage(
-                                    source: ImageSource.gallery);
-                                setState(() {});
+                                try {
+                                  final ImagePicker picker = ImagePicker();
+                                  image = await picker.pickImage(
+                                      source: ImageSource.gallery);
+                                  setState(() {});
+                                } catch (e) {
+                                  toastification.show(
+                                    title: Text(e.toString()),
+                                    autoCloseDuration:
+                                        const Duration(seconds: 5),
+                                    alignment: Alignment.bottomCenter,
+                                    type: ToastificationType.error,
+                                    style: ToastificationStyle.fillColored,
+                                  );
+                                }
                               },
                               child: Container(
                                 height: 50,

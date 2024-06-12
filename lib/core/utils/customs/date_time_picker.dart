@@ -3,57 +3,27 @@ import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
-class DateAndTimePicker extends StatefulWidget {
-  DateAndTimePicker(
+class DateAndTimePicker extends StatelessWidget {
+  const DateAndTimePicker(
       {super.key,
       required this.height,
       required this.width,
-      required this.date});
+      required this.date, required this.onPressed,});
 
   final double height;
   final double width;
-  DateTime date;
+  final DateTime date;
+  final dynamic Function() onPressed;
 
-  @override
-  State<DateAndTimePicker> createState() => _DateAndTimePickerState();
-}
-
-class _DateAndTimePickerState extends State<DateAndTimePicker> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.height,
-      width: widget.width,
+      height: height,
+      width: width,
       child: Row(
         children: [
           CustomButton(
-            onPressed: () async {
-              final result = await showBoardDateTimePicker(
-                context: context,
-                pickerType: DateTimePickerType.datetime,
-                options: const BoardDateTimeOptions(
-                  languages: BoardPickerLanguages(
-                    locale: 'fr',
-                    today: 'Aujourd’hui',
-                    tomorrow: 'Demain',
-                    now: 'Maintenant',
-                  ),
-                  startDayOfWeek: DateTime.sunday,
-                  pickerFormat: PickerFormat.ymd,
-                  pickerSubTitles: BoardDateTimeItemTitles(
-                    year: 'Année',
-                    month: 'Mois',
-                    day: 'Jour',
-                    hour: 'Heure',
-                  ),
-                ),
-                onResult: (val) {},
-              );
-              if (result != null) {
-                setState(() => widget.date = result);
-              }
-            },
+            onPressed: onPressed,
             title: 'Choisir La Date',
             backgroundColor: Colors.black.withOpacity(0.6),
             height: 35,
@@ -62,7 +32,7 @@ class _DateAndTimePickerState extends State<DateAndTimePicker> {
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              BoardDateFormat('yyyy/MM/dd HH:mm').format(widget.date),
+              BoardDateFormat('yyyy/MM/dd HH:mm').format(date),
               style: Styles.normal14,
             ),
           ),

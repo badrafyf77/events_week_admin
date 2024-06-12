@@ -45,21 +45,28 @@ class EventDetails extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        event.title,
-                        style: Styles.normal24,
-                        overflow: TextOverflow.ellipsis,
+                      SizedBox(
+                        height: 40,
+                        child: Text(
+                          event.title,
+                          style: Styles.normal24,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        event.description,
-                        style: Styles.normal16.copyWith(
-                            color: Colors.grey, fontWeight: FontWeight.normal),
-                        maxLines: 4,
-                        textAlign: TextAlign.justify,
-                        overflow: TextOverflow.ellipsis,
+                      SizedBox(
+                        height: 90,
+                        child: Text(
+                          event.description,
+                          style: Styles.normal16.copyWith(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.normal),
+                          maxLines: 4,
+                          textAlign: TextAlign.justify,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                       const SizedBox(
                         height: 10,
