@@ -25,20 +25,23 @@ class _EventsListState extends State<EventsList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetEventsCubit, GetEventsState>(
-      builder: (context, state) {
-        if (state is GetEventsSuccess) {
-          return Expanded(
-            child: CustomListViewBuilder(
+    return Expanded(
+      child: BlocBuilder<GetEventsCubit, GetEventsState>(
+        builder: (context, state) {
+          if (state is GetEventsSuccess) {
+            if (state.eventsList.isEmpty) {
+              return const Icon(Icons.error);
+            }
+            return CustomListViewBuilder(
               itemsList: state.eventsList,
-            ),
-          );
-        }
-        if (state is GetEventsFailure) {
-          myShowToastError(context, state.err);
-        }
-        return const Expanded(child: CustomEventsListLoading());
-      },
+            );
+          }
+          if (state is GetEventsFailure) {
+            myShowToastError(context, state.err);
+          }
+          return const CustomEventsListLoading();
+        },
+      ),
     );
   }
 }

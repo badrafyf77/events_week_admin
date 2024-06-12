@@ -1,4 +1,5 @@
 import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/animated_container.dart';
@@ -6,6 +7,7 @@ import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/images.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class EventDetails extends StatelessWidget {
   const EventDetails({
@@ -31,10 +33,13 @@ class EventDetails extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    AppImages.event,
+                  child: CachedNetworkImage(
+                    imageUrl: event.downloadUrl,
                     width: constraints.maxWidth * .35,
-                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Skeletonizer(
+                        enabled: true, child: Image.asset(AppImages.event)),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
                 const SizedBox(

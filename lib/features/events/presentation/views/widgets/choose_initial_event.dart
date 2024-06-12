@@ -43,10 +43,12 @@ class _ChooseInitialEventState extends State<ChooseInitialEvent> {
         SizedBox(
           height: 40,
           width: 300,
-          child: MyDropDownField(
-            onChanged: (value) {},
-            items: items,
-          ),
+          child: (items.isNotEmpty)
+              ? MyDropDownField(
+                  onChanged: (value) {},
+                  items: items,
+                )
+              : const SizedBox(),
         )
       ],
     );
