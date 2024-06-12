@@ -41,7 +41,7 @@ class _ChooseInitialEventState extends State<ChooseInitialEvent> {
           width: 10,
         ),
         SizedBox(
-          height: 40,
+          height: 42.5,
           width: 300,
           child: (items.isNotEmpty)
               ? MyDropDownField(
