@@ -6,15 +6,18 @@ class CustomLoadingIndicator extends StatelessWidget {
   const CustomLoadingIndicator({
     super.key,
     this.color = AppColors.kPrimaryColor,
+    this.height = 80,
   });
+
+  final double height;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: SizedBox(
-        height: 80,
-        child: LoadingIndicator(
+        height: height,
+        child: const LoadingIndicator(
           indicatorType: Indicator.ballClipRotateMultiple,
           colors: [AppColors.kPrimaryColor],
           strokeWidth: 3,
