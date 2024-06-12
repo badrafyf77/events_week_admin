@@ -5,7 +5,7 @@ import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/date_time_picker.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
-import 'package:events_week_admin/features/events/presentation/manager/add%20event/add_event_bloc.dart';
+import 'package:events_week_admin/features/events/presentation/manager/add%20event%20bloc/add_event_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';

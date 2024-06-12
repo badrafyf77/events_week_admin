@@ -17,4 +17,8 @@ class FirestoreService {
     });
     return eventsList;
   }
+
+  Future<void> setInitialEvent(Event event) async {
+    await events.doc('Initial_event').set(event.toJson());
+  }
 }

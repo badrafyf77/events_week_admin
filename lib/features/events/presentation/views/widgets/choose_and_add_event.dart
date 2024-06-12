@@ -1,6 +1,6 @@
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
 import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
-import 'package:events_week_admin/features/events/presentation/manager/get%20events/get_events_cubit.dart';
+import 'package:events_week_admin/features/events/presentation/manager/get%20events%20cubit/get_events_cubit.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/choose_initial_event.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/navigate_to_add_event_button.dart';
 import 'package:flutter/material.dart';
