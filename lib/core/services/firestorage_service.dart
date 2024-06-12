@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 
-class FireStorageService {
+class FirestorageService {
   Reference storageRef = FirebaseStorage.instance.ref();
 
   Future<String> uploadFile(File file, String fileName) async {

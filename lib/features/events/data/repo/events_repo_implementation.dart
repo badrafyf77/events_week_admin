@@ -11,7 +11,7 @@ import 'package:uuid/uuid.dart';
 
 class EventsRepoImplementation implements EventsRepo {
   final FirestoreService _firestoreService;
-  final FireStorageService _fireStorageService;
+  final FirestorageService _fireStorageService;
 
   EventsRepoImplementation(this._firestoreService, this._fireStorageService);
 

@@ -9,13 +9,13 @@ void setupServiceLocator() {
   getIt.registerSingleton<FirestoreService>(
     FirestoreService(),
   );
-  getIt.registerSingleton<FireStorageService>(
-    FireStorageService(),
+  getIt.registerSingleton<FirestorageService>(
+    FirestorageService(),
   );
   getIt.registerSingleton<EventsRepoImplementation>(
     EventsRepoImplementation(
       getIt.get<FirestoreService>(),
-      getIt.get<FireStorageService>(),
+      getIt.get<FirestorageService>(),
     ),
   );
 }

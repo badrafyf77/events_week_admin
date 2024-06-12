@@ -10,7 +10,7 @@ class FirestoreService {
 
   Future<List<Event>> getEvents() async {
     List<Event> eventsList = [];
-    await events.get().then((event) {
+    await events.orderBy('date', descending: true).get().then((event) {
       for (var doc in event.docs) {
         eventsList.add(Event.fromJson(doc));
       }
