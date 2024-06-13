@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/features/events/data/model/events_info.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

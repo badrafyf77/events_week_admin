@@ -18,10 +18,3 @@ final class GetEventsFailure extends GetEventsState {
 
   GetEventsFailure({required this.err});
 }
-
-class EventsInfo {
-  final List<Event> eventsList;
-  final Event initialEvent;
-
-  EventsInfo({required this.eventsList, required this.initialEvent});
-}

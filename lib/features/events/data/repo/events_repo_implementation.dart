@@ -5,8 +5,8 @@ import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/services/firestorage_service.dart';
 import 'package:events_week_admin/core/services/firestore_service.dart';
 import 'package:events_week_admin/core/utils/failures.dart';
+import 'package:events_week_admin/features/events/data/model/events_info.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo.dart';
-import 'package:events_week_admin/features/events/presentation/manager/get%20events%20cubit/get_events_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
