@@ -12,9 +12,9 @@ import 'package:uuid/uuid.dart';
 
 class EventsRepoImplementation implements EventsRepo {
   final FirestoreService _firestoreService;
-  final FirestorageService _fireStorageService;
+  final FirestorageService _firestorageService;
 
-  EventsRepoImplementation(this._firestoreService, this._fireStorageService);
+  EventsRepoImplementation(this._firestoreService, this._firestorageService);
 
   @override
   Future<Either<Failure, Unit>> addEvent(String title, String description,
@@ -25,7 +25,7 @@ class EventsRepoImplementation implements EventsRepo {
       if (image != null) {
         File selectedImagePath = File(image.path);
         downloadUrl =
-            await _fireStorageService.uploadFile(selectedImagePath, title);
+            await _firestorageService.uploadFile(selectedImagePath, title);
       } else {
         return left(PickImageFailure(errMessage: 'choisir une image'));
       }

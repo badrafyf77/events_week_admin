@@ -7,8 +7,8 @@ import 'package:firebase_core/firebase_core.dart';
 class HomeRepoImplementation implements HomeRepo {
   final FirestoreService _firestoreService;
 
-  HomeRepoImplementation({required FirestoreService firestoreService})
-      : _firestoreService = firestoreService;
+  HomeRepoImplementation(this._firestoreService);
+  
   @override
   Future<Either<Failure, int>> countEvents() async {
     try {

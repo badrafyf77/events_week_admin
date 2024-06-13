@@ -1,7 +1,9 @@
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
+import 'package:events_week_admin/features/home/presentation/manager/count%20events%20cubit/count_events_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:events_week_admin/features/home/presentation/view/widgets/home_body.dart';
 import 'package:events_week_admin/features/home/presentation/view/widgets/home_header.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({
@@ -19,6 +21,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     transitionProblemSolutionProcess();
+    BlocProvider.of<CountEventsCubit>(context).countEvents();
   }
 
   transitionProblemSolutionProcess() async {
