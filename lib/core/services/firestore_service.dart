@@ -36,4 +36,14 @@ class FirestoreService {
     event = Event.fromJson(data);
     return event;
   }
+
+  Future<int> countEvents() async {
+    AggregateQuerySnapshot query = await events.count().get();
+    int i;
+    if (query.count != null) {
+      i = query.count!;
+      return i;
+    }
+    return 0;
+  }
 }
