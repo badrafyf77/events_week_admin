@@ -1,7 +1,9 @@
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/customs/drop_down_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/events/presentation/manager/set%20initial%20event%20bloc/set_initial_event_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChooseInitialEvent extends StatefulWidget {
   const ChooseInitialEvent({
@@ -45,7 +47,16 @@ class _ChooseInitialEventState extends State<ChooseInitialEvent> {
           width: 300,
           child: (items.isNotEmpty)
               ? MyDropDownField(
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    if (value != null) {
+                      int index = items.indexOf(value);
+                      BlocProvider.of<SetInitialEventBloc>(context).add(
+                        SetInitialEvent(
+                          event: widget.eventsList[index],
+                        ),
+                      );
+                    }
+                  },
                   items: items,
                 )
               : const SizedBox(),

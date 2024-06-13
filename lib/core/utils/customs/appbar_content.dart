@@ -7,17 +7,18 @@ class CustomAppbarContent extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return WindowTitleBarBox(
-      child: const Row(
-        children: [
-          Expanded(
-            child: SizedBox(),
-          ),
-          WindowButtons(),
-        ],
+      child: MoveWindow(
+        child: const Row(
+          children: [
+            Expanded(
+              child: SizedBox(),
+            ),
+            WindowButtons(),
+          ],
+        ),
       ),
     );
   }
