@@ -11,11 +11,11 @@ class GetEventsCubit extends Cubit<GetEventsState> {
 
   Future<void> getEventsCubit() async {
     emit(GetEventsLoading());
-    var result = await _eventsRepo.getEvents();
+    var result = await _eventsRepo.getEventsInfo();
     result.fold((left) {
       emit(GetEventsFailure(err: left.errMessage));
     }, (right) {
-      emit(GetEventsSuccess(eventsList: right));
+      emit(GetEventsSuccess(eventsInfo: right));
     });
   }
 }

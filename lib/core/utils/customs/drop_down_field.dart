@@ -8,15 +8,17 @@ class MyDropDownField extends StatelessWidget {
     super.key,
     required this.onChanged,
     required this.items,
+    required this.initialValue,
   });
 
   final Function(String?)? onChanged;
   final List<String> items;
+  final String initialValue;
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField2<String>(
-      value: items[0],
+      value: initialValue,
       isExpanded: true,
       style: const TextStyle(
         fontSize: 12,

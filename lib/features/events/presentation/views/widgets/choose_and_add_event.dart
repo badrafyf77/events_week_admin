@@ -31,7 +31,8 @@ class ChooseInitialAndAddEvent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ChooseInitialEvent(
-                    eventsList: state.eventsList,
+                    eventsList: state.eventsInfo.eventsList,
+                    initialEvent: state.eventsInfo.initialEvent,
                   ),
                   const NavigateToAddEventButton(),
                 ],

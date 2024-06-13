@@ -24,10 +24,10 @@ class FirestoreService {
     await initialEvent.doc('Initial_event').set(event.toJson());
   }
 
-  Future<Event> getInitialEvent(Event e) async {
+  Future<Event> getInitialEvent() async {
     dynamic data;
     Event event;
-    await events
+    await initialEvent
         .doc('Initial_event')
         .get()
         .then<dynamic>((DocumentSnapshot snapshot) async {

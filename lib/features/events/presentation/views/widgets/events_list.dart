@@ -27,11 +27,11 @@ class _EventsListState extends State<EventsList> {
       child: BlocBuilder<GetEventsCubit, GetEventsState>(
         builder: (context, state) {
           if (state is GetEventsSuccess) {
-            if (state.eventsList.isEmpty) {
+            if (state.eventsInfo.eventsList.isEmpty) {
               return const Icon(Icons.error);
             }
             return CustomListViewBuilder(
-              itemsList: state.eventsList,
+              itemsList: state.eventsInfo.eventsList,
             );
           }
           if (state is GetEventsFailure) {
@@ -43,4 +43,3 @@ class _EventsListState extends State<EventsList> {
     );
   }
 }
-
