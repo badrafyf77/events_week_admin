@@ -1,3 +1,4 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,9 @@ class Message extends StatelessWidget {
           ),
           Expanded(
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                AppRouter.navigateTo(context, AppRouter.messageInfo, 3);
+              },
               borderRadius: BorderRadius.circular(25),
               child: Container(
                 decoration: BoxDecoration(

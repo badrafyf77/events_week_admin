@@ -3,6 +3,7 @@ import 'package:events_week_admin/core/utils/customs/drawer.dart';
 import 'package:events_week_admin/features/events/presentation/views/add_event_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/events_view.dart';
 import 'package:events_week_admin/features/home/presentation/view/home_view.dart';
+import 'package:events_week_admin/features/messages/presentation/views/message_info_view.dart';
 import 'package:events_week_admin/features/messages/presentation/views/messages_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -28,6 +29,7 @@ class AppRouter {
   static const events = '/events';
   static const addEvent = '/addEvent';
   static const messages = '/messages';
+  static const messageInfo = '/messageInfo';
 
   static final router = GoRouter(
     initialLocation: home,
@@ -62,6 +64,15 @@ class AppRouter {
               context: context,
               state: state,
               child: const MessagesView(),
+            ),
+          ),
+          GoRoute(
+            path: messageInfo,
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: const MessageInfoView(),
             ),
           ),
           GoRoute(
