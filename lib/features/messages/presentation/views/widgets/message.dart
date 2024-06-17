@@ -3,8 +3,8 @@ import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class Message extends StatelessWidget {
-  const Message({
+class MessageItem extends StatelessWidget {
+  const MessageItem({
     super.key,
     required this.read,
   });

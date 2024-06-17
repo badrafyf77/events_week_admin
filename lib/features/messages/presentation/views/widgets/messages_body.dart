@@ -14,19 +14,19 @@ class MessagesBody extends StatelessWidget {
           return const Column(
             children: [
               SizedBox(height: 15),
-              Message(
+              MessageItem(
                 read: true,
               ),
               SizedBox(height: 15),
-              Message(
+              MessageItem(
                 read: false,
               ),
               SizedBox(height: 15),
-              Message(
+              MessageItem(
                 read: true,
               ),
               SizedBox(height: 15),
-              Message(
+              MessageItem(
                 read: true,
               ),
             ],

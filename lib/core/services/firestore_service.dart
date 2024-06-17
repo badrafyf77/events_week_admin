@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/core/models/message_model.dart';
 
 class FirestoreService {
   CollectionReference events = FirebaseFirestore.instance.collection('events');
   CollectionReference initialEvent =
       FirebaseFirestore.instance.collection('initialEvent');
+  CollectionReference messages = FirebaseFirestore.instance.collection('messages');
 
   Future<void> addEvent(Event event) async {
     await events.doc(event.id).set(event.toJson());
@@ -18,6 +20,16 @@ class FirestoreService {
       }
     });
     return eventsList;
+  }
+
+  Future<List<Message>> getMessages() async {
+    List<Message> messagesList = [];
+    await messages.orderBy('date', descending: true).get().then((event) {
+      for (var doc in event.docs) {
+        messagesList.add(Message.fromJson(doc));
+      }
+    });
+    return messagesList;
   }
 
   Future<void> setInitialEvent(Event event) async {
