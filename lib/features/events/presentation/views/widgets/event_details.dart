@@ -1,5 +1,6 @@
 import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/animated_container.dart';
@@ -122,7 +123,10 @@ class EventDetails extends StatelessWidget {
                           ),
                           CustomAnimatedContainer(
                             child: CustomButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                AppRouter.navigateTo(
+                                    context, AppRouter.eventInfo, 2);
+                              },
                               title: 'Voir Plus',
                               backgroundColor: AppColors.kPrimaryColor,
                               height: 35,

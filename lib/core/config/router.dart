@@ -2,6 +2,7 @@ import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
 import 'package:events_week_admin/core/utils/customs/drawer.dart';
 import 'package:events_week_admin/features/events/presentation/views/add_event_view.dart';
+import 'package:events_week_admin/features/events/presentation/views/event_info_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/events_view.dart';
 import 'package:events_week_admin/features/home/presentation/view/home_view.dart';
 import 'package:events_week_admin/features/messages/presentation/views/message_info_view.dart';
@@ -29,6 +30,7 @@ class AppRouter {
   static const home = '/home';
   static const events = '/events';
   static const addEvent = '/addEvent';
+  static const eventInfo = '/eventInfo';
   static const messages = '/messages';
   static const messageInfo = '/messageInfo';
 
@@ -59,6 +61,24 @@ class AppRouter {
             ),
           ),
           GoRoute(
+            path: addEvent,
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: const AddEventView(),
+            ),
+          ),
+          GoRoute(
+            path: eventInfo,
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: const EventInfoView(),
+            ),
+          ),
+          GoRoute(
             path: messages,
             pageBuilder: (context, state) =>
                 buildPageWithDefaultTransition<void>(
@@ -79,15 +99,6 @@ class AppRouter {
                 ),
               );
             },
-          ),
-          GoRoute(
-            path: addEvent,
-            pageBuilder: (context, state) =>
-                buildPageWithDefaultTransition<void>(
-              context: context,
-              state: state,
-              child: const AddEventView(),
-            ),
           ),
         ],
       ),

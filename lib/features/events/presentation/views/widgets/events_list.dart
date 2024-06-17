@@ -36,6 +36,7 @@ class _EventsListState extends State<EventsList> {
           }
           if (state is GetEventsFailure) {
             myShowToastError(context, state.err);
+            return const Icon(Icons.error);
           }
           return const CustomEventsListLoading();
         },
