@@ -1,4 +1,6 @@
+import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:events_week_admin/core/config/router.dart';
+import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +8,10 @@ import 'package:flutter/material.dart';
 class MessageItem extends StatelessWidget {
   const MessageItem({
     super.key,
-    required this.read,
+    required this.message,
   });
 
-  final bool read;
+  final Message message;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class MessageItem extends StatelessWidget {
                   Icons.mail,
                   size: 30,
                 ),
-                if (!read)
+                if (!message.isReaded)
                   Positioned(
                     right: 0.1,
                     child: Container(
@@ -49,7 +51,7 @@ class MessageItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
               child: Container(
                 decoration: BoxDecoration(
-                  color: read
+                  color: message.isReaded
                       ? Colors.white
                       : AppColors.kPrimaryColor.withAlpha(170),
                   borderRadius: BorderRadius.circular(25),
@@ -62,28 +64,34 @@ class MessageItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Afyf Badreddine - email123@gmail.com',
+                            '${message.senderNom} - ${message.senderEmail}',
                             style: Styles.normal14.copyWith(
-                              color: read ? Colors.grey : Colors.white,
+                              color:
+                                  message.isReaded ? Colors.grey : Colors.white,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
                           Text(
-                            '18/05/2003',
+                            BoardDateFormat('yyyy/MM/dd HH:mm')
+                                .format(message.sendAt.toDate()),
                             style: Styles.normal14.copyWith(
-                              color: read ? Colors.grey : Colors.white,
+                              color:
+                                  message.isReaded ? Colors.grey : Colors.white,
                               fontWeight: FontWeight.normal,
                             ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 8),
-                      Text(
-                        "Ullamco officia ea do aliqua voluptate ipsum culpa consectetur quis dolore do ullamco. Nisi amet sunt veniam aliquip velit enim magna consequat. Cupidatat incididunt mollit pariatur Lorem culpa do proident sunt. Reprehenderit quis quis deserunt ad dolore irure. In incididunt aliqua aliquip ad nostrud excepteur non.",
-                        style: Styles.normal16,
-                        textAlign: TextAlign.justify,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          message.message,
+                          style: Styles.normal16,
+                          textAlign: TextAlign.justify,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
                       ),
                     ],
                   ),
