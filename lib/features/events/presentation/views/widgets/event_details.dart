@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:flutter/material.dart';
+
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
@@ -6,7 +9,6 @@ import 'package:events_week_admin/core/utils/customs/animated_container.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
-import 'package:flutter/material.dart';
 
 class EventDetails extends StatelessWidget {
   const EventDetails({
@@ -128,7 +130,7 @@ class EventDetails extends StatelessWidget {
                             ),
                           ),
                           EditEventIconButton(
-                            onPressed: () {},
+                            event: event,
                           ),
                           DeleteEventIconButton(
                             onPressed: () {},
@@ -150,10 +152,10 @@ class EventDetails extends StatelessWidget {
 class EditEventIconButton extends StatelessWidget {
   const EditEventIconButton({
     super.key,
-    required this.onPressed,
+    required this.event,
   });
 
-  final void Function() onPressed;
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +165,9 @@ class EditEventIconButton extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        onPressed: onPressed,
+        onPressed: () {
+          AppRouter.navigateToWithExtra(context, AppRouter.editEvent, event);
+        },
         icon: const Icon(
           Icons.edit,
           size: 22,
