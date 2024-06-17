@@ -16,7 +16,7 @@ class AppDrawer extends StatefulWidget {
 }
 
 class AppDrawerState extends State<AppDrawer> {
-  static int currentIndex = 1;
+  int currentIndex = 1;
   @override
   Widget build(BuildContext context) {
     return Drawer(

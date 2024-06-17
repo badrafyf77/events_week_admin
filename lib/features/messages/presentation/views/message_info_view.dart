@@ -1,3 +1,4 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
 import 'package:events_week_admin/features/messages/presentation/manager/change%20message%20to%20readed%20bloc/change_message_to_readed_bloc.dart';
@@ -36,7 +37,11 @@ class _MessageInfoViewState extends State<MessageInfoView> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            const NavigateBackIcon(),
+            NavigateBackIcon(
+              onPressed: () {
+                AppRouter.navigateTo(context, AppRouter.messages);
+              },
+            ),
             MessageInfoBody(
               message: widget.message,
             ),

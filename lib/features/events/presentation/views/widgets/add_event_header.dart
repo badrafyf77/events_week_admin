@@ -1,5 +1,6 @@
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/messages/presentation/views/widgets/navigate_back_icon.dart';
 import 'package:flutter/material.dart';
 
 class AddEventHeader extends StatelessWidget {
@@ -9,14 +10,10 @@ class AddEventHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(
+        NavigateBackIcon(
           onPressed: () {
-            AppRouter.navigateTo(context, AppRouter.events,2);
+            AppRouter.navigateTo(context, AppRouter.events);
           },
-          icon: const Icon(
-            Icons.arrow_back,
-            size: 40,
-          ),
         ),
         Text(
           'Ajouter Un Nouvel Événement',

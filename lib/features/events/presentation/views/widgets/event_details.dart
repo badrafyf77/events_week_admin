@@ -1,14 +1,12 @@
 import 'package:board_datetime_picker/board_datetime_picker.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/animated_container.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
-import 'package:events_week_admin/core/utils/images.dart';
+import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class EventDetails extends StatelessWidget {
   const EventDetails({
@@ -34,13 +32,9 @@ class EventDetails extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: CachedNetworkImage(
-                    imageUrl: event.downloadUrl,
+                  child: CustomCashedNetworkImage(
+                    url: event.downloadUrl,
                     width: constraints.maxWidth * .35,
-                    placeholder: (context, url) => Skeletonizer(
-                        enabled: true, child: Image.asset(AppImages.event)),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
                   ),
                 ),
                 const SizedBox(
@@ -124,8 +118,8 @@ class EventDetails extends StatelessWidget {
                           CustomAnimatedContainer(
                             child: CustomButton(
                               onPressed: () {
-                                AppRouter.navigateTo(
-                                    context, AppRouter.eventInfo, 2);
+                                AppRouter.navigateToWithExtra(
+                                    context, AppRouter.eventInfo,event);
                               },
                               title: 'Voir Plus',
                               backgroundColor: AppColors.kPrimaryColor,
@@ -146,3 +140,4 @@ class EventDetails extends StatelessWidget {
     );
   }
 }
+

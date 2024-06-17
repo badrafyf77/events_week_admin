@@ -46,7 +46,7 @@ class MessageItem extends StatelessWidget {
           Expanded(
             child: InkWell(
               onTap: () {
-                AppRouter.navigateToWithExtra(context, AppRouter.messageInfo, 3,message);
+                AppRouter.navigateToWithExtra(context, AppRouter.messageInfo, message);
               },
               borderRadius: BorderRadius.circular(25),
               child: Container(

@@ -1,6 +1,6 @@
+import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
-import 'package:events_week_admin/core/utils/customs/drawer.dart';
 import 'package:events_week_admin/features/events/presentation/views/add_event_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/event_info_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/events_view.dart';
@@ -70,14 +70,17 @@ class AppRouter {
             ),
           ),
           GoRoute(
-            path: eventInfo,
-            pageBuilder: (context, state) =>
-                buildPageWithDefaultTransition<void>(
-              context: context,
-              state: state,
-              child: const EventInfoView(),
-            ),
-          ),
+              path: eventInfo,
+              pageBuilder: (context, state) {
+                Event event = state.extra as Event;
+                return buildPageWithDefaultTransition<void>(
+                  context: context,
+                  state: state,
+                  child: EventInfoView(
+                    event: event,
+                  ),
+                );
+              }),
           GoRoute(
             path: messages,
             pageBuilder: (context, state) =>
@@ -105,15 +108,13 @@ class AppRouter {
     ],
   );
 
-  static void navigateTo(BuildContext context, String path, int index) {
+  static void navigateTo(BuildContext context, String path) {
     GoRouter.of(context).go(path);
-    AppDrawerState.currentIndex = index;
   }
 
   static void navigateToWithExtra(
-      BuildContext context, String path, int index, Object extra) {
+      BuildContext context, String path, Object extra) {
     GoRouter.of(context).go(path, extra: extra);
-    AppDrawerState.currentIndex = index;
   }
 
   static void navigateOff(BuildContext context, String path) {

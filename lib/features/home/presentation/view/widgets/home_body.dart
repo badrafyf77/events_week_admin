@@ -30,14 +30,14 @@ class HomeBody extends StatelessWidget {
                       title: 'Total d\'événements',
                       nmbr: state.eventsWeekInfo.events,
                       onTap: () {
-                        AppRouter.navigateTo(context, AppRouter.events, 2);
+                        AppRouter.navigateTo(context, AppRouter.events);
                       },
                     ),
                     DashboardItem(
                       title: 'Total des messages',
                       nmbr: state.eventsWeekInfo.messages,
                       onTap: () {
-                        AppRouter.navigateTo(context, AppRouter.messages, 3);
+                        AppRouter.navigateTo(context, AppRouter.messages);
                       },
                     ),
                     DashboardItem(
