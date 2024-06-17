@@ -65,4 +65,14 @@ class FirestoreService {
     }
     return 0;
   }
+
+  Future<int> countMessages() async {
+    AggregateQuerySnapshot query = await messages.count().get();
+    int i;
+    if (query.count != null) {
+      i = query.count!;
+      return i;
+    }
+    return 0;
+  }
 }

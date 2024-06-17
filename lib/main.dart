@@ -6,8 +6,8 @@ import 'package:events_week_admin/features/events/data/repo/events_repo_implemen
 import 'package:events_week_admin/features/events/presentation/manager/add%20event%20bloc/add_event_bloc.dart';
 import 'package:events_week_admin/features/events/presentation/manager/get%20events%20cubit/get_events_cubit.dart';
 import 'package:events_week_admin/features/events/presentation/manager/set%20initial%20event%20bloc/set_initial_event_bloc.dart';
-import 'package:events_week_admin/features/home/data/home_repo_implementation.dart';
-import 'package:events_week_admin/features/home/presentation/manager/count%20events%20cubit/count_events_cubit.dart';
+import 'package:events_week_admin/features/home/data/repo/home_repo_implementation.dart';
+import 'package:events_week_admin/features/home/presentation/manager/get%20events%20week%20info%20cubit/get_events_week_info_cubit.dart';
 import 'package:events_week_admin/features/messages/data/repo/messages_repo_implementation.dart';
 import 'package:events_week_admin/features/messages/presentation/manager/change%20message%20to%20readed%20bloc/change_message_to_readed_bloc.dart';
 import 'package:events_week_admin/features/messages/presentation/manager/get%20messages%20cubit/get_messages_cubit.dart';
@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (BuildContext context) => CountEventsCubit(
+          create: (BuildContext context) => EventsWeekInfoCubit(
             getIt.get<HomeRepoImplementation>(),
           ),
         ),
