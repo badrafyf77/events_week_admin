@@ -1,10 +1,14 @@
+import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
 class MessageInfoBody extends StatelessWidget {
   const MessageInfoBody({
-    super.key,
+    super.key, required this.message,
   });
+
+  final Message message;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +26,14 @@ class MessageInfoBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Afyf Badreddine - email123@gmail.com\n0707314877',
+                    '${message.senderNom} - ${message.senderEmail}\n${message.senderPhone}',
                     style: Styles.normal14.copyWith(
                       color: Colors.grey[700],
                       fontWeight: FontWeight.normal,
                     ),
                   ),
                   Text(
-                    '18/05/2003',
+                    BoardDateFormat('yyyy/MM/dd HH:mm').format(message.sendAt.toDate()),
                     style: Styles.normal14.copyWith(
                       color: Colors.grey[700],
                       fontWeight: FontWeight.normal,
@@ -43,7 +47,7 @@ class MessageInfoBody extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Eiusmod nulla mollit anim consequat. Mollit consectetur Lorem culpa eiusmod qui esse tempor proident. Ea laborum est magna labore laboris aliquip. Lorem consequat cupidatat reprehenderit proident officia veniam deserunt dolor. Et voluptate cupidatat adipisicing labore consectetur sint in laborum. Sunt ad velit anim consectetur ullamco nostrud qui voluptate adipisicing adipisicing.Quis ex ex in id irure. Voluptate veniam irure voluptate consequat do cillum pariatur qui ea qui pariatur enim laborum. Nostrud est duis aliquip voluptate irure cillum labore ea dolore do magna. Esse dolore enim aliquip consectetur aliquip magna adipisicing id aute officia. Ut est cillum non occaecat exercitation voluptate. Voluptate quis eu magna eiusmod elit veniam laboris fugiat excepteur ea. Sit proident cillum consequat ipsum mollit.Lorem et ut velit consequat do eu ipsum nostrud elit. Labore eiusmod veniam eu consectetur officia sint pariatur cupidatat Lorem aliqua amet elit enim. Nostrud officia esse nostrud proident est ullamco culpa tempor anim ad tempor pariatur adipisicing laboris. Dolor culpa aliqua velit eu sint voluptate qui amet enim minim aliqua commodo est irure.',
+                  message.message,
                   style: Styles.normal16,
                   textAlign: TextAlign.justify,
                 ),
@@ -58,4 +62,3 @@ class MessageInfoBody extends StatelessWidget {
     );
   }
 }
-

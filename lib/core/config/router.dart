@@ -1,3 +1,4 @@
+import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
 import 'package:events_week_admin/core/utils/customs/drawer.dart';
 import 'package:events_week_admin/features/events/presentation/views/add_event_view.dart';
@@ -68,12 +69,16 @@ class AppRouter {
           ),
           GoRoute(
             path: messageInfo,
-            pageBuilder: (context, state) =>
-                buildPageWithDefaultTransition<void>(
-              context: context,
-              state: state,
-              child: const MessageInfoView(),
-            ),
+            pageBuilder: (context, state) {
+              Message message = state.extra as Message;
+              return buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: MessageInfoView(
+                  message: message,
+                ),
+              );
+            },
           ),
           GoRoute(
             path: addEvent,
@@ -91,6 +96,12 @@ class AppRouter {
 
   static void navigateTo(BuildContext context, String path, int index) {
     GoRouter.of(context).go(path);
+    AppDrawerState.currentIndex = index;
+  }
+
+  static void navigateToWithExtra(
+      BuildContext context, String path, int index, Object extra) {
+    GoRouter.of(context).go(path, extra: extra);
     AppDrawerState.currentIndex = index;
   }
 
