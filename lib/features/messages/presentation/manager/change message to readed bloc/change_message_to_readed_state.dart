@@ -5,10 +5,6 @@ abstract class ChangeMessageToReadedState {}
 
 final class ChangeMessageToReadedInitial extends ChangeMessageToReadedState {}
 
-final class ChangeMessageToReadedLoading extends ChangeMessageToReadedState {}
-
-final class ChangeMessageToReadedSuccess extends ChangeMessageToReadedState {}
-
 final class ChangeMessageToReadedFailure extends ChangeMessageToReadedState {
   final String err;
 

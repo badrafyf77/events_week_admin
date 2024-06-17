@@ -12,13 +12,10 @@ class ChangeMessageToReadedBloc
       : super(ChangeMessageToReadedInitial()) {
     on<ChangeMessageToReadedEvent>((event, emit) async {
       if (event is ChangeMessageToReaded) {
-        emit(ChangeMessageToReadedLoading());
         var result = await _messagesRepo.changeMessageToReaded(event.id);
         result.fold((left) {
           emit(ChangeMessageToReadedFailure(err: left.errMessage));
-        }, (right) {
-          emit(ChangeMessageToReadedSuccess());
-        });
+        }, (right) {});
       }
     });
   }

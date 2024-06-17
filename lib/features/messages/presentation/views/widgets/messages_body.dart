@@ -29,6 +29,10 @@ class MessagesBody extends StatelessWidget {
                     MessageItem(
                       message: state.messagesList[index],
                     ),
+                    if (index == state.messagesList.length - 1)
+                      const SizedBox(
+                        height: 15,
+                      ),
                   ],
                 );
               },

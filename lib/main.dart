@@ -9,6 +9,7 @@ import 'package:events_week_admin/features/events/presentation/manager/set%20ini
 import 'package:events_week_admin/features/home/data/home_repo_implementation.dart';
 import 'package:events_week_admin/features/home/presentation/manager/count%20events%20cubit/count_events_cubit.dart';
 import 'package:events_week_admin/features/messages/data/repo/messages_repo_implementation.dart';
+import 'package:events_week_admin/features/messages/presentation/manager/change%20message%20to%20readed%20bloc/change_message_to_readed_bloc.dart';
 import 'package:events_week_admin/features/messages/presentation/manager/get%20messages%20cubit/get_messages_cubit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => CountEventsCubit(
             getIt.get<HomeRepoImplementation>(),
+          ),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => ChangeMessageToReadedBloc(
+            getIt.get<MessagesRepoImplementation>(),
           ),
         ),
       ],
