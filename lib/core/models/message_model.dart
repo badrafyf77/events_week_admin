@@ -6,6 +6,7 @@ class Message {
   final String senderNom;
   final String senderPhone;
   final String senderEmail;
+  final bool isReaded;
   final Timestamp sendAt;
 
   Message({
@@ -14,6 +15,7 @@ class Message {
     required this.senderNom,
     required this.senderPhone,
     required this.senderEmail,
+    required this.isReaded,
     required this.sendAt,
   });
 
@@ -24,7 +26,8 @@ class Message {
           senderNom: json['senderNom'] as String,
           senderPhone: json['senderPhone'] as String,
           senderEmail: json['senderEmail'] as String,
-          sendAt: json['date'] as Timestamp,
+          isReaded: json['isReaded'] as bool,
+          sendAt: json['sendAt'] as Timestamp,
         );
 
   Map<String, dynamic> toJson() {
@@ -34,6 +37,7 @@ class Message {
       'senderNom': senderNom,
       'senderPhone': senderPhone,
       'senderEmail': senderEmail,
+      'isReaded': isReaded,
       'sendAt': sendAt,
     };
   }

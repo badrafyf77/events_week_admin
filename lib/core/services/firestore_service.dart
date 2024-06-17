@@ -6,7 +6,8 @@ class FirestoreService {
   CollectionReference events = FirebaseFirestore.instance.collection('events');
   CollectionReference initialEvent =
       FirebaseFirestore.instance.collection('initialEvent');
-  CollectionReference messages = FirebaseFirestore.instance.collection('messages');
+  CollectionReference messages =
+      FirebaseFirestore.instance.collection('messages');
 
   Future<void> addEvent(Event event) async {
     await events.doc(event.id).set(event.toJson());
@@ -24,7 +25,7 @@ class FirestoreService {
 
   Future<List<Message>> getMessages() async {
     List<Message> messagesList = [];
-    await messages.orderBy('date', descending: true).get().then((event) {
+    await messages.orderBy('sendAt', descending: true).get().then((event) {
       for (var doc in event.docs) {
         messagesList.add(Message.fromJson(doc));
       }

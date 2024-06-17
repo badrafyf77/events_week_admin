@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:events_week_admin/features/messages/presentation/manager/get%20messages%20cubit/get_messages_cubit.dart';
 import 'package:events_week_admin/features/messages/presentation/views/widgets/messages_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
-import 'package:events_week_admin/features/home/presentation/manager/count%20events%20cubit/count_events_cubit.dart';
 
 class MessagesView extends StatefulWidget {
   const MessagesView({
@@ -22,7 +22,7 @@ class _MessagesViewState extends State<MessagesView> {
   void initState() {
     super.initState();
     transitionProblemSolutionProcess();
-    BlocProvider.of<CountEventsCubit>(context).countEvents();
+    BlocProvider.of<GetMessagesCubit>(context).getMessages();
   }
 
   transitionProblemSolutionProcess() async {
@@ -47,4 +47,3 @@ class _MessagesViewState extends State<MessagesView> {
           );
   }
 }
-
