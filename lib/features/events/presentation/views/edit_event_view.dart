@@ -4,6 +4,7 @@ import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
+import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/customs/date_time_picker.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
@@ -18,14 +19,13 @@ class EditEventView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NavigateBackIcon(
-            title: 'Ajouter Un Nouvel Événement',
+            title: 'Editer l\'Événement: ${event.title}',
             onPressed: () {
               AppRouter.navigateTo(context, AppRouter.events);
             },
@@ -56,11 +56,23 @@ class _EditEventBodyState extends State<EditEventBody> {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController placeController = TextEditingController();
 
-  DateTime date = DateTime.now();
+  late DateTime date;
 
   XFile? image;
 
+  bool oldImage = true;
+
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    titleController.text = widget.event.title;
+    descriptionController.text = widget.event.description;
+    placeController.text = widget.event.place;
+    date = widget.event.date.toDate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -206,57 +218,91 @@ class _EditEventBodyState extends State<EditEventBody> {
                   padding: const EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      Text(
-                        'Image de L\'événement',
-                        style: Styles.normal18,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Image de L\'événement',
+                            style: Styles.normal18,
+                          ),
+                          if (!oldImage)
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  oldImage = true;
+                                });
+                              },
+                              icon: const Icon(Icons.rotate_left),
+                              tooltip: 'Retour à l\'ancienne Image',
+                            ),
+                        ],
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      image == null
-                          ? InkWell(
-                              onTap: () async {
-                                try {
-                                  final ImagePicker picker = ImagePicker();
-                                  image = await picker.pickImage(
-                                      source: ImageSource.gallery);
-                                  setState(() {});
-                                  // ignore: empty_catches
-                                } catch (e) {}
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  color: Colors.black,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
-                          : Column(
+                      (oldImage)
+                          ? Column(
                               children: [
-                                Image.file(
-                                  File(image!.path),
-                                  fit: BoxFit.fill,
+                                CustomCashedNetworkImage(
+                                  url: widget.event.downloadUrl,
                                   height: 180,
                                   width: 250,
                                 ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
                                 IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        image = null;
-                                      });
-                                    },
-                                    icon: const Icon(Icons.delete))
+                                  onPressed: () {
+                                    setState(() {
+                                      oldImage = false;
+                                    });
+                                  },
+                                  icon: const Icon(Icons.delete),
+                                ),
                               ],
-                            ),
+                            )
+                          : image == null
+                              ? InkWell(
+                                  onTap: () async {
+                                    try {
+                                      final ImagePicker picker = ImagePicker();
+                                      image = await picker.pickImage(
+                                          source: ImageSource.gallery);
+                                      setState(() {});
+                                      // ignore: empty_catches
+                                    } catch (e) {}
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )
+                              : Column(
+                                  children: [
+                                    Image.file(
+                                      File(image!.path),
+                                      fit: BoxFit.fill,
+                                      height: 180,
+                                      width: 250,
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          image = null;
+                                        });
+                                      },
+                                      icon: const Icon(Icons.delete),
+                                    ),
+                                  ],
+                                ),
                     ],
                   ),
                 ),
@@ -275,7 +321,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                     });
                   }
                 },
-                title: "Ajouter",
+                title: "Editer",
                 backgroundColor: AppColors.kPrimaryColor,
                 height: 35,
                 width: 130,
