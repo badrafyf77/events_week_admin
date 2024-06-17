@@ -50,6 +50,12 @@ class FirestoreService {
     return event;
   }
 
+  Future<void> changeMessageToReaded(String id) async {
+    await messages.doc(id).update({
+      'isReaded': true,
+    });
+  }
+
   Future<int> countEvents() async {
     AggregateQuerySnapshot query = await events.count().get();
     int i;
