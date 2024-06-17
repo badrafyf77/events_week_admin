@@ -11,4 +11,8 @@ class FirestorageService {
     var result = await storageRef.child(fileName).putFile(file, metadata);
     return await result.ref.getDownloadURL();
   }
+
+  Future<void> deleteFile(String fileName) async {
+    await storageRef.child(fileName).delete();
+  }
 }

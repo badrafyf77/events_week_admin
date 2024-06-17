@@ -77,4 +77,38 @@ class EventsRepoImplementation implements EventsRepo {
           errMessage: 'il y a une erreur, veuillez réessayer'));
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> updateEvent(
+      Event event, bool oldImage, XFile? image) async {
+    try {
+      String downloadUrl = event.downloadUrl;
+      if (!oldImage) {
+        if (image != null) {
+          await _firestorageService.deleteFile(event.title);
+          File selectedImagePath = File(image.path);
+          downloadUrl = await _firestorageService.uploadFile(
+              selectedImagePath, event.title);
+        } else {
+          return left(PickImageFailure(errMessage: 'choisir une image'));
+        }
+      }
+      Event e = Event(
+        id: event.id,
+        title: event.title,
+        description: event.description,
+        place: event.place,
+        downloadUrl: downloadUrl,
+        date: event.date,
+      );
+      await _firestoreService.updateEvent(e);
+      return right(unit);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(FirestoreFailure.fromFirestoreFailure(e));
+      }
+      return left(FirestoreFailure(
+          errMessage: 'il y a une erreur, veuillez réessayer'));
+    }
+  }
 }

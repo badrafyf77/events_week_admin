@@ -1,6 +1,6 @@
 import 'package:events_week_admin/core/utils/customs/listview_builder.dart';
 import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
-import 'package:events_week_admin/features/events/presentation/manager/get%20events%20cubit/get_events_cubit.dart';
+import 'package:events_week_admin/features/events/presentation/manager/get%20events%20info%20cubit/get_events_cubit.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/loading_events_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -23,6 +23,10 @@ class FirestoreService {
     return eventsList;
   }
 
+  Future<void> updateEvent(Event event) async {
+    await events.doc(event.id).update(event.toJson());
+  }
+
   Future<List<Message>> getMessages() async {
     List<Message> messagesList = [];
     await messages.orderBy('sendAt', descending: true).get().then((event) {
