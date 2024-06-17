@@ -1,9 +1,9 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
 import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
-
 import 'package:events_week_admin/features/events/presentation/manager/add%20event%20bloc/add_event_bloc.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/add_event_body.dart';
-import 'package:events_week_admin/features/events/presentation/views/widgets/add_event_header.dart';
+import 'package:events_week_admin/features/messages/presentation/views/widgets/navigate_back_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,16 +25,21 @@ class AddEventView extends StatelessWidget {
         if (state is AddEventLaoding) {
           return const Center(child: CustomLoadingIndicator());
         }
-        return const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AddEventHeader(),
-              SizedBox(
+              NavigateBackIcon(
+                title: 'Ajouter Un Nouvel Événement',
+                onPressed: () {
+                  AppRouter.navigateTo(context, AppRouter.events);
+                },
+              ),
+              const SizedBox(
                 height: 20,
               ),
-              AddEventBody(),
+              const AddEventBody(),
             ],
           ),
         );

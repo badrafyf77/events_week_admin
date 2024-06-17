@@ -38,6 +38,7 @@ class _MessageInfoViewState extends State<MessageInfoView> {
         child: Column(
           children: [
             NavigateBackIcon(
+              title: 'Informations d\'un Message',
               onPressed: () {
                 AppRouter.navigateTo(context, AppRouter.messages);
               },

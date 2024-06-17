@@ -119,14 +119,20 @@ class EventDetails extends StatelessWidget {
                             child: CustomButton(
                               onPressed: () {
                                 AppRouter.navigateToWithExtra(
-                                    context, AppRouter.eventInfo,event);
+                                    context, AppRouter.eventInfo, event);
                               },
                               title: 'Voir Plus',
                               backgroundColor: AppColors.kPrimaryColor,
                               height: 35,
                               width: 120,
                             ),
-                          )
+                          ),
+                          EditEventIconButton(
+                            onPressed: () {},
+                          ),
+                          DeleteEventIconButton(
+                            onPressed: () {},
+                          ),
                         ],
                       )
                     ],
@@ -141,3 +147,56 @@ class EventDetails extends StatelessWidget {
   }
 }
 
+class EditEventIconButton extends StatelessWidget {
+  const EditEventIconButton({
+    super.key,
+    required this.onPressed,
+  });
+
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: AppColors.kPrimaryColor,
+        shape: BoxShape.circle,
+      ),
+      child: IconButton(
+        onPressed: onPressed,
+        icon: const Icon(
+          Icons.edit,
+          size: 22,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}
+
+class DeleteEventIconButton extends StatelessWidget {
+  const DeleteEventIconButton({
+    super.key,
+    required this.onPressed,
+  });
+
+  final void Function() onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.red,
+        shape: BoxShape.circle,
+      ),
+      child: IconButton(
+        onPressed: onPressed,
+        icon: const Icon(
+          Icons.delete,
+          size: 22,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}

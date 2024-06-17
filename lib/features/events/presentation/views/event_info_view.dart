@@ -14,6 +14,7 @@ class EventInfoView extends StatelessWidget {
     return Column(
       children: [
         NavigateBackIcon(
+          title: 'Informations d\'un Événement',
           onPressed: () {
             AppRouter.navigateTo(context, AppRouter.events);
           },
