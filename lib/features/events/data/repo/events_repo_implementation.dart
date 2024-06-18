@@ -80,18 +80,21 @@ class EventsRepoImplementation implements EventsRepo {
 
   @override
   Future<Either<Failure, Unit>> updateEvent(
-      Event event, bool oldImage, XFile? image) async {
+      Event event, String oldTitle, bool oldImage, XFile? image) async {
     try {
-      String downloadUrl = event.downloadUrl;
+      String downloadUrl;
       if (!oldImage) {
         if (image != null) {
-          await _firestorageService.deleteFile(event.title);
+          await _firestorageService.deleteFile(oldTitle);
           File selectedImagePath = File(image.path);
           downloadUrl = await _firestorageService.uploadFile(
               selectedImagePath, event.title);
         } else {
           return left(PickImageFailure(errMessage: 'choisir une image'));
         }
+      } else {
+        downloadUrl =
+            await _firestorageService.updateFile(oldTitle, event.title);
       }
       Event e = Event(
         id: event.id,

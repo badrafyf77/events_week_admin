@@ -4,6 +4,7 @@ import 'package:events_week_admin/core/config/theme.dart';
 import 'package:events_week_admin/core/utils/service_locator.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo_implementation.dart';
 import 'package:events_week_admin/features/events/presentation/manager/add%20event%20bloc/add_event_bloc.dart';
+import 'package:events_week_admin/features/events/presentation/manager/edit%20event%20bloc/edit_event_bloc.dart';
 import 'package:events_week_admin/features/events/presentation/manager/get%20events%20info%20cubit/get_events_cubit.dart';
 import 'package:events_week_admin/features/events/presentation/manager/set%20initial%20event%20bloc/set_initial_event_bloc.dart';
 import 'package:events_week_admin/features/home/data/repo/home_repo_implementation.dart';
@@ -55,6 +56,11 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (BuildContext context) => GetEventsCubit(
+            getIt.get<EventsRepoImplementation>(),
+          ),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => EditEventBloc(
             getIt.get<EventsRepoImplementation>(),
           ),
         ),

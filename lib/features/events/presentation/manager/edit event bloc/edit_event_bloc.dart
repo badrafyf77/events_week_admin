@@ -22,11 +22,11 @@ class EditEventBloc extends Bloc<EditEventEvent, EditEventState> {
           date: Timestamp.fromDate(event.date),
         );
         var result =
-            await _eventsRepo.updateEvent(e, event.oldImage, event.image);
+            await _eventsRepo.updateEvent(e,event.oldTitle, event.oldImage, event.image);
         result.fold((left) {
           emit(EditEventFailure(err: left.errMessage));
         }, (right) {
-          emit(EditEventSuccess());
+          emit(EditEventSuccess(msg: 'Événement éditer avec succes'));
         });
       }
     });

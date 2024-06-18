@@ -8,6 +8,6 @@ abstract class EventsRepo {
   Future<Either<Failure, Unit>> addEvent(String title, String description,
       String place, DateTime date, XFile? image);
   Future<Either<Failure, EventsInfo>> getEventsInfo();
-  Future<Either<Failure, Unit>> updateEvent(Event event, bool oldImage, XFile? image);
+  Future<Either<Failure, Unit>> updateEvent(Event event, String oldTitle, bool oldImage, XFile? image);
   Future<Either<Failure, Unit>> setInitialEvent(Event event);
 }

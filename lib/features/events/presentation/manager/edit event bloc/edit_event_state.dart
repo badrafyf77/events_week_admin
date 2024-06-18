@@ -6,7 +6,11 @@ final class EditEventInitial extends EditEventState {}
 
 final class EditEventLoading extends EditEventState {}
 
-final class EditEventSuccess extends EditEventState {}
+final class EditEventSuccess extends EditEventState {
+  final String msg;
+
+  EditEventSuccess({required this.msg});
+}
 
 final class EditEventFailure extends EditEventState {
   final String err;
