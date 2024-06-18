@@ -10,4 +10,5 @@ abstract class EventsRepo {
   Future<Either<Failure, EventsInfo>> getEventsInfo();
   Future<Either<Failure, Unit>> updateEvent(Event event, String oldTitle, bool oldImage, XFile? image);
   Future<Either<Failure, Unit>> setInitialEvent(Event event);
+  Future<Either<Failure, Unit>> deleteEvent(Event event);
 }

@@ -114,4 +114,19 @@ class EventsRepoImplementation implements EventsRepo {
           errMessage: 'il y a une erreur, veuillez réessayer'));
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> deleteEvent(Event event) async {
+    try {
+      await _firestoreService.deleteEvent(event.id);
+      await _firestorageService.deleteFile(event.title);
+      return right(unit);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(FirestoreFailure.fromFirestoreFailure(e));
+      }
+      return left(FirestoreFailure(
+          errMessage: 'il y a une erreur, veuillez réessayer'));
+    }
+  }
 }
