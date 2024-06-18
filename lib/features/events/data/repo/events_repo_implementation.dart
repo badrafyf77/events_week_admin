@@ -105,6 +105,10 @@ class EventsRepoImplementation implements EventsRepo {
         date: event.date,
       );
       await _firestoreService.updateEvent(e);
+      Event initialEvent = await _firestoreService.getInitialEvent();
+      if (initialEvent.id == event.id) {
+        await _firestoreService.setInitialEvent(e);
+      }
       return right(unit);
     } catch (e) {
       if (e is FirebaseException) {
@@ -118,6 +122,11 @@ class EventsRepoImplementation implements EventsRepo {
   @override
   Future<Either<Failure, Unit>> deleteEvent(Event event) async {
     try {
+      Event initialEvent = await _firestoreService.getInitialEvent();
+      if (initialEvent.id == event.id) {
+        return left(FirestoreFailure(
+            errMessage: "vous ne pouvez pas supprimer l'événement initial"));
+      }
       await _firestoreService.deleteEvent(event.id);
       await _firestorageService.deleteFile(event.title);
       return right(unit);
