@@ -29,6 +29,15 @@ class _AddEventBodyState extends State<AddEventBody> {
   XFile? image;
 
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void dispose() {
+    super.dispose();
+    titleController.dispose();
+    descriptionController.dispose();
+    placeController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -189,10 +198,8 @@ class _AddEventBodyState extends State<AddEventBody> {
                                   image = await picker.pickImage(
                                       source: ImageSource.gallery);
                                   setState(() {});
-                                // ignore: empty_catches
-                                } catch (e) {
-                                  
-                                }
+                                  // ignore: empty_catches
+                                } catch (e) {}
                               },
                               child: Container(
                                 height: 50,

@@ -47,7 +47,7 @@ class AppDrawerState extends State<AppDrawer> {
                 const SizedBox(
                   height: 40,
                 ),
-                drawerItem(context, 3, 'Messages', Icons.message),
+                drawerItem(context, 3, 'Messages', Icons.mail),
               ],
             ),
           )
