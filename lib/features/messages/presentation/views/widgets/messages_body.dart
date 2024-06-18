@@ -17,55 +17,60 @@ class MessagesBody extends StatelessWidget {
           return const Center(child: Icon(Icons.error));
         }
         if (state is GetMessagesSuccess) {
-          return ScrollConfiguration(
+          return Expanded(
+            child: ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: ListView.builder(
+                itemCount: state.messagesList.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      const SizedBox(height: 15),
+                      MessageItem(
+                        message: state.messagesList[index],
+                      ),
+                      if (index == state.messagesList.length - 1)
+                        const SizedBox(
+                          height: 15,
+                        ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          );
+        }
+        return Expanded(
+          child: ScrollConfiguration(
             behavior:
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),
             child: ListView.builder(
-              itemCount: state.messagesList.length,
+              itemCount: 4,
               itemBuilder: (context, index) {
+                Message message = Message(
+                  id: 'id',
+                  message:
+                      'Aliqua tempor magna non est labore laboris eu ex anim officia dolor adipisicing quis eiusmod. Nulla commodo duis proident aute excepteur in velit. Ipsum dolore ex culpa exercitation dolor sit amet fugiat cillum consectetur proident veniam quis ullamco. Dolor ex velit consequat non sunt veniam non ut nostrud sit adipisicing eu. Exercitation magna reprehenderit do elit.',
+                  senderNom: 'senderNom',
+                  senderPhone: 'senderPhone',
+                  senderEmail: 'senderEmail',
+                  isReaded: true,
+                  sendAt: Timestamp.now(),
+                );
                 return Column(
                   children: [
                     const SizedBox(height: 15),
-                    MessageItem(
-                      message: state.messagesList[index],
-                    ),
-                    if (index == state.messagesList.length - 1)
-                      const SizedBox(
-                        height: 15,
+                    Skeletonizer(
+                      enabled: true,
+                      child: MessageItem(
+                        message: message,
                       ),
+                    ),
                   ],
                 );
               },
             ),
-          );
-        }
-        return ScrollConfiguration(
-          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
-          child: ListView.builder(
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              Message message = Message(
-                id: 'id',
-                message:
-                    'Aliqua tempor magna non est labore laboris eu ex anim officia dolor adipisicing quis eiusmod. Nulla commodo duis proident aute excepteur in velit. Ipsum dolore ex culpa exercitation dolor sit amet fugiat cillum consectetur proident veniam quis ullamco. Dolor ex velit consequat non sunt veniam non ut nostrud sit adipisicing eu. Exercitation magna reprehenderit do elit.',
-                senderNom: 'senderNom',
-                senderPhone: 'senderPhone',
-                senderEmail: 'senderEmail',
-                isReaded: true,
-                sendAt: Timestamp.now(),
-              );
-              return Column(
-                children: [
-                  const SizedBox(height: 15),
-                  Skeletonizer(
-                    enabled: true,
-                    child: MessageItem(
-                      message: message,
-                    ),
-                  ),
-                ],
-              );
-            },
           ),
         );
       },
