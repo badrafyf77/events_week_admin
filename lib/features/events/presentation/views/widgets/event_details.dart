@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:events_week_admin/features/events/presentation/views/widgets/delete_event_iconbutton.dart';
+import 'package:events_week_admin/features/events/presentation/views/widgets/edit_event_iconbutton.dart';
 import 'package:flutter/material.dart';
-
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
@@ -133,7 +134,7 @@ class EventDetails extends StatelessWidget {
                             event: event,
                           ),
                           DeleteEventIconButton(
-                            onPressed: () {},
+                            event: event,
                           ),
                         ],
                       )
@@ -145,62 +146,6 @@ class EventDetails extends StatelessWidget {
           ),
         );
       }),
-    );
-  }
-}
-
-class EditEventIconButton extends StatelessWidget {
-  const EditEventIconButton({
-    super.key,
-    required this.event,
-  });
-
-  final Event event;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.kPrimaryColor,
-        shape: BoxShape.circle,
-      ),
-      child: IconButton(
-        onPressed: () {
-          AppRouter.navigateToWithExtra(context, AppRouter.editEvent, event);
-        },
-        icon: const Icon(
-          Icons.edit,
-          size: 22,
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
-
-class DeleteEventIconButton extends StatelessWidget {
-  const DeleteEventIconButton({
-    super.key,
-    required this.onPressed,
-  });
-
-  final void Function() onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.red,
-        shape: BoxShape.circle,
-      ),
-      child: IconButton(
-        onPressed: onPressed,
-        icon: const Icon(
-          Icons.delete,
-          size: 22,
-          color: Colors.white,
-        ),
-      ),
     );
   }
 }

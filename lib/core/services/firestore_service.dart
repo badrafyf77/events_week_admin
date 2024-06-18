@@ -28,7 +28,7 @@ class FirestoreService {
   }
 
   Future<void> deleteEvent(String id) async {
-    await messages.doc(id).delete();
+    await events.doc(id).delete();
   }
 
   Future<List<Message>> getMessages() async {
