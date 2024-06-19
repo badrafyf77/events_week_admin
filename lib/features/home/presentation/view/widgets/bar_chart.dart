@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class _BarChart extends StatelessWidget {
-  const _BarChart();
+  const _BarChart({required this.date, required this.visitsList});
+
+  final DateTime date;
+  final List visitsList;
 
   @override
   Widget build(BuildContext context) {
@@ -70,99 +73,100 @@ class _BarChart extends StatelessWidget {
       fontSize: 9,
     );
     String text;
+    int month = date.month;
     switch (value.toInt()) {
       case 0:
-        text = '01/03';
+        text = '01/$month';
         break;
       case 1:
-        text = '02/03';
+        text = '02/$month';
         break;
       case 2:
-        text = '03/03';
+        text = '03/$month';
         break;
       case 3:
-        text = '04/03';
+        text = '04/$month';
         break;
       case 4:
-        text = '05/03';
+        text = '05/$month';
         break;
       case 5:
-        text = '06/03';
+        text = '06/$month';
         break;
       case 6:
-        text = '07/03';
+        text = '07/$month';
         break;
       case 7:
-        text = '08/03';
+        text = '08/$month';
         break;
       case 8:
-        text = '09/03';
+        text = '09/$month';
         break;
       case 9:
-        text = '10/03';
+        text = '10/$month';
         break;
       case 10:
-        text = '11/03';
+        text = '11/$month';
         break;
       case 11:
-        text = '12/03';
+        text = '12/$month';
         break;
       case 12:
-        text = '13/03';
+        text = '13/$month';
         break;
       case 13:
-        text = '14/03';
+        text = '14/$month';
         break;
       case 14:
-        text = '15/03';
+        text = '15/$month';
         break;
       case 15:
-        text = '16/03';
+        text = '16/$month';
         break;
       case 16:
-        text = '17/03';
+        text = '17/$month';
         break;
       case 17:
-        text = '18/03';
+        text = '18/$month';
         break;
       case 18:
-        text = '19/03';
+        text = '19/$month';
         break;
       case 19:
-        text = '20/03';
+        text = '20/$month';
         break;
       case 20:
-        text = '21/03';
+        text = '21/$month';
         break;
       case 21:
-        text = '22/03';
+        text = '22/$month';
         break;
       case 22:
-        text = '23/03';
+        text = '23/$month';
         break;
       case 23:
-        text = '24/03';
+        text = '24/$month';
         break;
       case 24:
-        text = '25/03';
+        text = '25/$month';
         break;
       case 25:
-        text = '26/03';
+        text = '26/$month';
         break;
       case 26:
-        text = '27/03';
+        text = '27/$month';
         break;
       case 27:
-        text = '28/03';
+        text = '28/$month';
         break;
       case 28:
-        text = '29/03';
+        text = '29/$month';
         break;
       case 29:
-        text = '30/03';
+        text = '30/$month';
         break;
       case 30:
-        text = '31/03';
+        text = '31/$month';
         break;
       default:
         text = '';
@@ -204,333 +208,49 @@ class _BarChart extends StatelessWidget {
         show: false,
       );
 
-  List<BarChartGroupData> get barGroups => [
-        BarChartGroupData(
-          x: 0,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 1,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 2,
-          barRods: [
-            BarChartRodData(
-              toY: 12,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 3,
-          barRods: [
-            BarChartRodData(
-              toY: 20,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 4,
-          barRods: [
-            BarChartRodData(
-              toY: 30,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 5,
-          barRods: [
-            BarChartRodData(
-              toY: 80,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 6,
-          barRods: [
-            BarChartRodData(
-              toY: 50,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 7,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 8,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 9,
-          barRods: [
-            BarChartRodData(
-              toY: 12,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 10,
-          barRods: [
-            BarChartRodData(
-              toY: 20,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 11,
-          barRods: [
-            BarChartRodData(
-              toY: 30,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 12,
-          barRods: [
-            BarChartRodData(
-              toY: 80,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 13,
-          barRods: [
-            BarChartRodData(
-              toY: 50,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 14,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 15,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 16,
-          barRods: [
-            BarChartRodData(
-              toY: 12,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 17,
-          barRods: [
-            BarChartRodData(
-              toY: 20,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 18,
-          barRods: [
-            BarChartRodData(
-              toY: 30,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 19,
-          barRods: [
-            BarChartRodData(
-              toY: 80,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 20,
-          barRods: [
-            BarChartRodData(
-              toY: 50,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 21,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 22,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 23,
-          barRods: [
-            BarChartRodData(
-              toY: 12,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 24,
-          barRods: [
-            BarChartRodData(
-              toY: 20,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 25,
-          barRods: [
-            BarChartRodData(
-              toY: 30,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 26,
-          barRods: [
-            BarChartRodData(
-              toY: 80,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 27,
-          barRods: [
-            BarChartRodData(
-              toY: 50,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 28,
-          barRods: [
-            BarChartRodData(
-              toY: 8,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 29,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        BarChartGroupData(
-          x: 30,
-          barRods: [
-            BarChartRodData(
-              toY: 12,
-              color: AppColors.kPrimaryColor,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-      ];
+  List<BarChartGroupData> get barGroups {
+    List<BarChartGroupData> barList = [];
+    for (var i = 0; i < visitsList.length; i++) {
+      int value = visitsList[i];
+      barList.add(customBarChartGroupData(i, value.toDouble()));
+    }
+    return barList;
+  }
+
+  BarChartGroupData customBarChartGroupData(int index, double value) {
+    return BarChartGroupData(
+      x: index,
+      barRods: [
+        BarChartRodData(
+          toY: value,
+          color: AppColors.kPrimaryColor,
+        )
+      ],
+      showingTooltipIndicators: [0],
+    );
+  }
 }
 
 class BarChartSample3 extends StatefulWidget {
-  const BarChartSample3({super.key});
+  const BarChartSample3(
+      {super.key, required this.date, required this.visitsList});
+
+  final DateTime date;
+  final List visitsList;
 
   @override
-  State<StatefulWidget> createState() => BarChartSample3State();
+  State<BarChartSample3> createState() => _BarChartSample3State();
 }
 
-class BarChartSample3State extends State<BarChartSample3> {
+class _BarChartSample3State extends State<BarChartSample3> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: _BarChart(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: _BarChart(
+        date: widget.date,
+        visitsList: widget.visitsList,
+      ),
     );
   }
 }

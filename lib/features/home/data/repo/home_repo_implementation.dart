@@ -11,12 +11,15 @@ class HomeRepoImplementation implements HomeRepo {
   HomeRepoImplementation(this._firestoreService);
 
   @override
-  Future<Either<Failure, EventsWeekInfo>> getEventsWeekInfo() async {
+  Future<Either<Failure, EventsWeekInfo>> getEventsWeekInfo(
+      DateTime date) async {
     try {
       int events = await _firestoreService.countEvents();
       int messages = await _firestoreService.countMessages();
-      EventsWeekInfo eventsWeekInfo =
-          EventsWeekInfo(events: events, messages: messages,);
+      List visitsList =
+          await _firestoreService.getVisitsList(date.month, date.year);
+      EventsWeekInfo eventsWeekInfo = EventsWeekInfo(
+          events: events, messages: messages, visitsList: visitsList);
       return right(eventsWeekInfo);
     } catch (e) {
       if (e is FirebaseException) {

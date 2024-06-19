@@ -1,5 +1,5 @@
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
-import 'package:events_week_admin/features/home/presentation/manager/get%20events%20week%20info%20cubit/get_events_week_info_cubit.dart';
+import 'package:events_week_admin/features/home/presentation/manager/get%20events%20week%20info%20bloc/get_events_week_info_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:events_week_admin/features/home/presentation/view/widgets/home_body.dart';
 import 'package:events_week_admin/features/home/presentation/view/widgets/home_header.dart';
@@ -21,7 +21,9 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     transitionProblemSolutionProcess();
-    BlocProvider.of<EventsWeekInfoCubit>(context).getEventsWeekInfo();
+    BlocProvider.of<GetEventsWeekInfoBloc>(context).add(
+      GetEventsWeekInfo(date: DateTime.now()),
+    );
   }
 
   transitionProblemSolutionProcess() async {
