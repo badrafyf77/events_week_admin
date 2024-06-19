@@ -77,7 +77,25 @@ class FirestoreService {
       });
       return v;
     }
-    return ifNotExistsMonth(month);
+    return [];
+  }
+
+  Future<int> getTodayVisits() async {
+    int year = DateTime.now().year;
+    int month = DateTime.now().month;
+    int day = DateTime.now().day;
+    String id = '$month-$year';
+    List v = [];
+    var doc = await visits.doc(id).get();
+    if (doc.exists) {
+      await visits.doc(id).get().then((value) async {
+        final docs = value.data()!;
+        final data = docs as Map<String, dynamic>;
+        v = data['visits'] as List;
+      });
+      return v[day-1];
+    }
+    return 0;
   }
 
   Future<int> countEvents() async {
@@ -98,120 +116,5 @@ class FirestoreService {
       return i;
     }
     return 0;
-  }
-}
-
-List ifNotExistsMonth(int month) {
-  switch (month) {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-      return [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ];
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-      return [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-        ];
-    case 2:
-      return [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ];
-    default:
-      return [];
   }
 }

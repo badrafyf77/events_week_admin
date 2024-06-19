@@ -54,8 +54,7 @@ class HomeBody extends StatelessWidget {
                         ),
                         DashboardItem(
                           title: 'visites aujourd\'hui',
-                          nmbr: state.eventsWeekInfo
-                              .visitsList[DateTime.now().day - 1],
+                          nmbr: state.eventsWeekInfo.visitsToday,
                           onTap: () {},
                         ),
                       ],
@@ -64,7 +63,7 @@ class HomeBody extends StatelessWidget {
                       height: 20,
                     ),
                     SiteAnalytic(
-                      date: DateTime.now(),
+                      date: state.eventsWeekInfo.date,
                       visitsList: state.eventsWeekInfo.visitsList,
                     ),
                   ],

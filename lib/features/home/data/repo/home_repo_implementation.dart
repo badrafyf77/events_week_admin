@@ -18,8 +18,14 @@ class HomeRepoImplementation implements HomeRepo {
       int messages = await _firestoreService.countMessages();
       List visitsList =
           await _firestoreService.getVisitsList(date.month, date.year);
+      int visitsToday = await _firestoreService.getTodayVisits();
       EventsWeekInfo eventsWeekInfo = EventsWeekInfo(
-          events: events, messages: messages, visitsList: visitsList);
+        events: events,
+        messages: messages,
+        visitsToday: visitsToday,
+        visitsList: visitsList,
+        date: date,
+      );
       return right(eventsWeekInfo);
     } catch (e) {
       if (e is FirebaseException) {
