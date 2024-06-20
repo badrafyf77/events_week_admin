@@ -1,6 +1,7 @@
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
+import 'package:events_week_admin/features/auth/presentation/views/sign_in_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/add_event_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/edit_event_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/event_info_view.dart';
@@ -37,8 +38,15 @@ class AppRouter {
   static const messageInfo = '/messageInfo';
 
   static final router = GoRouter(
-    initialLocation: home,
     routes: [
+      GoRoute(
+        path: '/',
+        pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
+          context: context,
+          state: state,
+          child: const SignInView(),
+        ),
+      ),
       ShellRoute(
         builder: (context, state, child) {
           return DashboardScreen(body: child);
@@ -83,7 +91,7 @@ class AppRouter {
                   ),
                 );
               }),
-              GoRoute(
+          GoRoute(
               path: editEvent,
               pageBuilder: (context, state) {
                 Event event = state.extra as Event;
