@@ -1,10 +1,15 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/app_logo.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
+import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
+import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
 import 'package:events_week_admin/core/utils/helpers/validators.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/auth/presentation/manager/sign%20in%20bloc/sign_in_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -18,6 +23,14 @@ class _SignInFormState extends State<SignInForm> {
   TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -92,19 +105,36 @@ class _SignInFormState extends State<SignInForm> {
             const SizedBox(
               height: 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomButton(
+            BlocConsumer<SignInBloc, SignInState>(
+              listener: (context, state) {
+                if (state is SignInFailure) {
+                  myShowToastError(context, state.err);
+                }
+                if (state is SignInSuccess) {
+                  AppRouter.navigateOff(context, AppRouter.home);
+                }
+              },
+              builder: (context, state) {
+                if (state is SignInLoading) {
+                  return const CustomLoadingIndicator();
+                }
+                return CustomButton(
                   title: 'Se connecter',
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {}
+                    if (formKey.currentState!.validate()) {
+                      BlocProvider.of<SignInBloc>(context).add(
+                        SignIn(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        ),
+                      );
+                    }
                   },
                   backgroundColor: AppColors.kPrimaryColor,
                   height: 40,
                   width: size.width * 0.32,
-                ),
-              ],
+                );
+              },
             ),
             const Spacer(flex: 2),
           ],

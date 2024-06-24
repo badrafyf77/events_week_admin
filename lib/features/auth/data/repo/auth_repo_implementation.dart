@@ -12,12 +12,8 @@ class AuthRepoImplementation implements AuthRepo {
   @override
   Future<Either<Failure, Unit>> signIn(String email, String password) async {
     try {
-      bool result = await _fireauthService.signIn(email, password);
-      if (result) {
-        return right(unit);
-      }
-      return left(FirebaseAuthFailure(
-          errMessage: 'il y a une erreur, veuillez réessayer'));
+      await _fireauthService.signIn(email, password);
+      return right(unit);
     } catch (e) {
       if (e is FirebaseAuthException) {
         return left(FirebaseAuthFailure.fromFirebaseAuthException(e));

@@ -1,5 +1,7 @@
+import 'package:events_week_admin/core/services/fireauth_service.dart';
 import 'package:events_week_admin/core/services/firestorage_service.dart';
 import 'package:events_week_admin/core/services/firestore_service.dart';
+import 'package:events_week_admin/features/auth/data/repo/auth_repo_implementation.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo_implementation.dart';
 import 'package:events_week_admin/features/home/data/repo/home_repo_implementation.dart';
 import 'package:events_week_admin/features/messages/data/repo/messages_repo_implementation.dart';
@@ -13,6 +15,14 @@ void setupServiceLocator() {
   );
   getIt.registerSingleton<FirestorageService>(
     FirestorageService(),
+  );
+  getIt.registerSingleton<FireauthService>(
+    FireauthService(),
+  );
+  getIt.registerSingleton<AuthRepoImplementation>(
+    AuthRepoImplementation(
+      getIt.get<FireauthService>(),
+    ),
   );
   getIt.registerSingleton<EventsRepoImplementation>(
     EventsRepoImplementation(

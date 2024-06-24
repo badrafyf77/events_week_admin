@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/config/theme.dart';
 import 'package:events_week_admin/core/utils/service_locator.dart';
+import 'package:events_week_admin/features/auth/data/repo/auth_repo_implementation.dart';
+import 'package:events_week_admin/features/auth/presentation/manager/sign%20in%20bloc/sign_in_bloc.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo_implementation.dart';
 import 'package:events_week_admin/features/events/presentation/manager/add%20event%20bloc/add_event_bloc.dart';
 import 'package:events_week_admin/features/events/presentation/manager/delete%20event%20bloc/delete_event_bloc.dart';
@@ -50,6 +52,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (BuildContext context) => SignInBloc(
+            getIt.get<AuthRepoImplementation>(),
+          ),
+        ),
         BlocProvider(
           create: (BuildContext context) => AddEventBloc(
             getIt.get<EventsRepoImplementation>(),
