@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
+import 'package:events_week_admin/core/utils/customs/app_logo.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:events_week_admin/core/utils/images.dart';
 import 'package:go_router/go_router.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -25,13 +25,7 @@ class AppDrawerState extends State<AppDrawer> {
       ),
       child: Column(
         children: [
-          SizedBox(
-            height: 150,
-            child: Image.asset(
-              AppAssets.logo,
-              height: 80,
-            ),
-          ),
+          const AppLogo(),
           Padding(
             padding: const EdgeInsets.only(left: 40),
             child: Column(

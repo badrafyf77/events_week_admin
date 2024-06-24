@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/utils/customs/appbar.dart';
+import 'package:events_week_admin/core/utils/customs/custom_scaffold.dart';
 import 'package:events_week_admin/core/utils/customs/drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -12,8 +12,7 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar,
+    return CustomScaffold(
       body: Row(
         children: [
           const AppDrawer(),

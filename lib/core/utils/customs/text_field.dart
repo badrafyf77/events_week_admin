@@ -33,7 +33,7 @@ class MyTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: Styles.normal16.copyWith(
-            color: Colors.grey[800],
+            color: Colors.grey[500],
             fontWeight: FontWeight.normal,
           ),
           filled: true,

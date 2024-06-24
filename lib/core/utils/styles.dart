@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class Styles {
   static const basicStyle = TextStyle(
     color: Colors.black,
-    fontWeight: FontWeight.bold,
   );
 
   static final normal55 = basicStyle.copyWith(
