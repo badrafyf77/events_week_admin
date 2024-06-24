@@ -44,20 +44,10 @@ class _SignInFormState extends State<SignInForm> {
             const Spacer(),
             SizedBox(
               width: size.width * 0.32,
-              child: Column(
-                children: [
-                  const AppLogo(),
-                  Text(
-                    'Connectez-vous a votre compte',
-                    style: Styles.normal20.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+              child: const AppLogo(),
             ),
             const SizedBox(
-              height: 25,
+              height: 10,
             ),
             Text(
               'E-mail',
@@ -94,8 +84,8 @@ class _SignInFormState extends State<SignInForm> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Entrer votre mot de passe';
-                } else if (value.length < 8) {
-                  return 'Mot de passe doit être d\'au moins 8 caractères';
+                } else if (value.length < 6) {
+                  return 'Mot de passe doit être d\'au moins 6 caractères';
                 }
                 return null;
               },
@@ -116,7 +106,7 @@ class _SignInFormState extends State<SignInForm> {
               },
               builder: (context, state) {
                 if (state is SignInLoading) {
-                  return const CustomLoadingIndicator();
+                  return const Center(child: CustomLoadingIndicator());
                 }
                 return CustomButton(
                   title: 'Se connecter',

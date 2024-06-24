@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/utils/images.dart';
+import 'package:events_week_admin/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class AppLogo extends StatelessWidget {
@@ -8,11 +8,11 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 150,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Image.asset(
-        AppAssets.logo,
-        height: 80,
+        AppAssets.blackLogo,
+        height: 100,
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
-import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class EditEventIconButton extends StatelessWidget {
@@ -15,7 +14,7 @@ class EditEventIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: AppColors.kPrimaryColor,
+        color: Colors.blue,
         shape: BoxShape.circle,
       ),
       child: IconButton(

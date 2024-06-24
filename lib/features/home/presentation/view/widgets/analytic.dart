@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
-import 'package:events_week_admin/core/utils/images.dart';
+import 'package:events_week_admin/core/utils/assets.dart';
 import 'package:events_week_admin/features/home/presentation/manager/get%20events%20week%20info%20bloc/get_events_week_info_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
@@ -87,7 +87,7 @@ class _AnalyticHeaderState extends State<AnalyticHeader> {
                 context: context,
                 titleTextStyle: Styles.normal16,
                 monthTextStyle: Styles.normal14,
-                selectionColor: AppColors.kPrimaryColor,
+                selectionColor: Colors.grey,
                 yearTextStyle:
                     Styles.normal16.copyWith(color: AppColors.kPrimaryColor),
                 disableFuture: true,
@@ -101,6 +101,7 @@ class _AnalyticHeaderState extends State<AnalyticHeader> {
             },
             child: Text(
               BoardDateFormat('MM-yyyy').format(_date),
+              style: Styles.normal14,
             ),
           ),
         ],

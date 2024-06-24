@@ -1,5 +1,5 @@
 import 'package:events_week_admin/core/utils/colors.dart';
-import 'package:events_week_admin/core/utils/images.dart';
+import 'package:events_week_admin/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
