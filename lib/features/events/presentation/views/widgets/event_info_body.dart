@@ -15,72 +15,65 @@ class EventInfoBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(
-            left: 5,
-            right: 5,
-            top: 5,
-            bottom: 25,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                event.title,
-                style: Styles.normal24,
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.place,
-                    color: AppColors.kPrimaryColor,
-                  ),
-                  const SizedBox(width: 5),
-                  Text(
-                    event.place,
-                    style: Styles.normal14.copyWith(
-                      fontWeight: FontWeight.normal,
-                      color: AppColors.kPrimaryColor,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 5),
-              Row(
-                children: [
-                  const Icon(
-                    Icons.access_time,
-                    color: AppColors.kPrimaryColor,
-                  ),
-                  const SizedBox(width: 5),
-                  Text(
-                    BoardDateFormat('yyyy/MM/dd HH:mm')
-                        .format(event.date.toDate()),
-                    style: Styles.normal14.copyWith(
-                      fontWeight: FontWeight.normal,
-                      color: AppColors.kPrimaryColor,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Text(
-                event.description,
-                style: Styles.normal16.copyWith(
-                  fontWeight: FontWeight.normal,
-                  color: Colors.grey,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 15, right: 5, top: 5, bottom: 25),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 15),
+            Text(
+              event.title,
+              style: Styles.normal24.copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                const Icon(
+                  Icons.place,
+                  color: AppColors.kPrimaryColor,
                 ),
+                const SizedBox(width: 5),
+                Text(
+                  event.place,
+                  style: Styles.normal14.copyWith(
+                    fontWeight: FontWeight.normal,
+                    color: AppColors.kPrimaryColor,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            Row(
+              children: [
+                const Icon(
+                  Icons.access_time,
+                  color: AppColors.kPrimaryColor,
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  BoardDateFormat('yyyy/MM/dd HH:mm')
+                      .format(event.date.toDate()),
+                  style: Styles.normal14.copyWith(
+                    fontWeight: FontWeight.normal,
+                    color: AppColors.kPrimaryColor,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            Text(
+              event.description,
+              style: Styles.normal16.copyWith(
+                fontWeight: FontWeight.normal,
+                color: Colors.grey,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -97,10 +90,13 @@ class EventPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCashedNetworkImage(
-      url: downloadUrl,
-      height: 300,
-      width: MediaQuery.of(context).size.width,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: CustomCashedNetworkImage(
+        url: downloadUrl,
+        height: 300,
+        width: 400,
+      ),
     );
   }
 }

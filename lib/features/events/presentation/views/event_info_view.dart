@@ -25,8 +25,17 @@ class EventInfoView extends StatelessWidget {
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),
             child: ListView(
               children: [
-                EventPicture(downloadUrl: event.downloadUrl),
-                EventInfoBody(event: event),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: EventInfoBody(event: event)),
+                      const SizedBox(width: 20),
+                      EventPicture(downloadUrl: event.downloadUrl),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
