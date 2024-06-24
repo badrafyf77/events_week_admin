@@ -51,7 +51,7 @@ class MessagesBody extends StatelessWidget {
                 Message message = Message(
                   id: 'id',
                   message:
-                      'Aliqua tempor magna non est labore laboris eu ex anim officia dolor adipisicing quis eiusmod. Nulla commodo duis proident aute excepteur in velit. Ipsum dolore ex culpa exercitation dolor sit amet fugiat cillum consectetur proident veniam quis ullamco. Dolor ex velit consequat non sunt veniam non ut nostrud sit adipisicing eu. Exercitation magna reprehenderit do elit.',
+                      'Aliqua tempor magna non est labore laboris eu ex anim',
                   senderNom: 'senderNom',
                   senderPhone: 'senderPhone',
                   senderEmail: 'senderEmail',

@@ -3,6 +3,7 @@ import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/messages/presentation/views/widgets/delete_message_icon.dart';
 import 'package:flutter/material.dart';
 
 class MessageItem extends StatefulWidget {
@@ -118,7 +119,7 @@ class _MessageItemState extends State<MessageItem> {
                                   maxLines: 2,
                                 ),
                               ),
-                              if (showDeleteIcon) const DeleteMessageIcon()
+                              if (showDeleteIcon) DeleteMessageIcon(id: widget.message.id)
                             ],
                           ),
                         ),
@@ -130,23 +131,6 @@ class _MessageItemState extends State<MessageItem> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class DeleteMessageIcon extends StatelessWidget {
-  const DeleteMessageIcon({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {},
-      icon: const Icon(
-        Icons.delete,
-        color: Colors.red,
       ),
     );
   }
