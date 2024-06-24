@@ -36,4 +36,18 @@ class MessagesRepoImplementation implements MessagesRepo {
           errMessage: 'il y a une erreur, veuillez réessayer'));
     }
   }
+  
+  @override
+  Future<Either<Failure, Unit>> deleteMessage(String id) async{
+    try {
+      await _firestoreService.deleteMessage(id);
+      return right(unit);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(FirestoreFailure.fromFirestoreFailure(e));
+      }
+      return left(FirestoreFailure(
+          errMessage: 'il y a une erreur, veuillez réessayer'));
+    }
+  }
 }

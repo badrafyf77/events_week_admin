@@ -31,6 +31,14 @@ class EventInfoBody extends StatelessWidget {
               style: Styles.normal24.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
+            Text(
+              event.description,
+              style: Styles.normal16.copyWith(
+                fontWeight: FontWeight.normal,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 15),
             Row(
               children: [
                 const Icon(
@@ -47,7 +55,7 @@ class EventInfoBody extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 8),
             Row(
               children: [
                 const Icon(
@@ -64,14 +72,6 @@ class EventInfoBody extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-            const SizedBox(height: 15),
-            Text(
-              event.description,
-              style: Styles.normal16.copyWith(
-                fontWeight: FontWeight.normal,
-                color: Colors.grey,
-              ),
             ),
           ],
         ),

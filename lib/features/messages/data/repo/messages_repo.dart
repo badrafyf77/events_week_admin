@@ -5,4 +5,5 @@ import 'package:events_week_admin/core/utils/failures.dart';
 abstract class MessagesRepo {
   Future<Either<Failure, List<Message>>> getMessages();
   Future<Either<Failure, Unit>> changeMessageToReaded(String id);
+  Future<Either<Failure, Unit>> deleteMessage(String id);
 }
