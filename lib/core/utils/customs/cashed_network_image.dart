@@ -25,7 +25,7 @@ class CustomCashedNetworkImage extends StatelessWidget {
       placeholder: (context, url) => Skeletonizer(
         enabled: true,
         child: Image.asset(
-          AppImages.event,
+          AppAssets.event,
           width: width,
         ),
       ),

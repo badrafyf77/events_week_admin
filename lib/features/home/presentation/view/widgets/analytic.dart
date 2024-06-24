@@ -36,7 +36,7 @@ class SiteAnalytic extends StatelessWidget {
             width: 600,
             height: 320,
             child: (visitsList.isEmpty)
-                ? Lottie.asset(AppImages.noData)
+                ? Lottie.asset(AppAssets.noData)
                 : BarChartSample3(
                     date: date,
                     visitsList: visitsList,

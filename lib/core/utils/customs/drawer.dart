@@ -28,7 +28,7 @@ class AppDrawerState extends State<AppDrawer> {
           SizedBox(
             height: 150,
             child: Image.asset(
-              AppImages.logo,
+              AppAssets.logo,
               height: 80,
             ),
           ),
