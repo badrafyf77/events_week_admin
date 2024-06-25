@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class MyTextField extends StatelessWidget {
   const MyTextField({
     super.key,
+    this.isPass = false,
     this.isTextArea = false,
     required this.controller,
     required this.validator,
@@ -12,6 +13,7 @@ class MyTextField extends StatelessWidget {
     required this.width,
   });
 
+  final bool isPass;
   final bool isTextArea;
   final TextEditingController controller;
   final String? Function(String?)? validator;
@@ -26,6 +28,7 @@ class MyTextField extends StatelessWidget {
         maxLines: isTextArea ? 5 : 1,
         controller: controller,
         validator: validator,
+        obscureText: isPass,
         style: Styles.normal16.copyWith(
           fontWeight: FontWeight.normal,
         ),

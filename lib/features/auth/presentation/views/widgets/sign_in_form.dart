@@ -80,6 +80,7 @@ class _SignInFormState extends State<SignInForm> {
               height: 5,
             ),
             MyTextField(
+              isPass: true,
               width: size.width * 0.32,
               validator: (value) {
                 if (value == null || value.isEmpty) {
