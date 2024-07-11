@@ -109,17 +109,20 @@ class _MessageItemState extends State<MessageItem> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  widget.message.message,
-                                  style: Styles.normal16,
-                                  textAlign: TextAlign.justify,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    widget.message.message,
+                                    style: Styles.normal16,
+                                    textAlign: TextAlign.justify,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
                                 ),
                               ),
-                              if (showDeleteIcon) DeleteMessageIcon(id: widget.message.id)
+                              if (showDeleteIcon)
+                                DeleteMessageIcon(id: widget.message.id)
                             ],
                           ),
                         ),
