@@ -231,7 +231,7 @@ class _AddEventBodyState extends State<AddEventBody> {
                                         image = null;
                                       });
                                     },
-                                    icon: const Icon(Icons.delete))
+                                    icon: const Icon(Icons.delete),)
                               ],
                             ),
                     ],
