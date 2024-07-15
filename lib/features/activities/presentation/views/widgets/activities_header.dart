@@ -1,3 +1,4 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/refresh_icon.dart';
@@ -20,7 +21,9 @@ class ActivitiesHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                AppRouter.navigateTo(context, AppRouter.addActivity);
+              },
               title: "Ajouter une activité",
               backgroundColor: AppColors.kPrimaryColor,
               height: 38,
