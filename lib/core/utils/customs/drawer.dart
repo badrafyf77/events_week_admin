@@ -41,7 +41,15 @@ class AppDrawerState extends State<AppDrawer> {
                 const SizedBox(
                   height: 40,
                 ),
-                drawerItem(context, 3, 'Messages', Icons.mail),
+                drawerItem(context, 3, 'Activités proposées', Icons.assignment),
+                const SizedBox(
+                  height: 40,
+                ),
+                drawerItem(context, 4, 'Galerie', Icons.collections),
+                const SizedBox(
+                  height: 40,
+                ),
+                drawerItem(context, 5, 'Messages', Icons.mail),
               ],
             ),
           )
@@ -59,6 +67,11 @@ class AppDrawerState extends State<AppDrawer> {
         GoRouter.of(context).go(AppRouter.events);
         break;
       case 3:
+        GoRouter.of(context).go(AppRouter.activities);
+        break;
+      case 4:
+        break;
+      case 5:
         GoRouter.of(context).go(AppRouter.messages);
         break;
     }

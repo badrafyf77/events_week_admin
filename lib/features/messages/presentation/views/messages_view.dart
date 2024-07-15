@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:events_week_admin/features/messages/presentation/manager/get%20messages%20cubit/get_messages_cubit.dart';
 import 'package:events_week_admin/features/messages/presentation/views/widgets/messages_body.dart';
-import 'package:events_week_admin/features/messages/presentation/views/widgets/refresh_messages.dart';
+import 'package:events_week_admin/core/utils/customs/refresh_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,10 +41,17 @@ class _MessagesViewState extends State<MessagesView> {
   Widget build(BuildContext context) {
     return loading1
         ? loading2
-            ? const Column(
+            ? Column(
                 children: [
-                  RefreshMessages(),
-                  MessagesBody(),
+                  Align(
+                    alignment: Alignment.center,
+                    child: RefreshIcon(
+                      onPressed: () {
+                        BlocProvider.of<GetMessagesCubit>(context).getMessages();
+                      },
+                    ),
+                  ),
+                  const MessagesBody(),
                 ],
               )
             : const CustomLoadingIndicator()

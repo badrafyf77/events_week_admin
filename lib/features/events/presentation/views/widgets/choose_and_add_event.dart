@@ -3,7 +3,7 @@ import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
 import 'package:events_week_admin/features/events/presentation/manager/get%20events%20info%20cubit/get_events_cubit.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/choose_initial_event.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/navigate_to_add_event_button.dart';
-import 'package:events_week_admin/features/events/presentation/views/widgets/refresh_events.dart';
+import 'package:events_week_admin/core/utils/customs/refresh_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +36,11 @@ class ChooseInitialAndAddEvent extends StatelessWidget {
                     initialEvent: state.eventsInfo.initialEvent,
                   ),
                   const NavigateToAddEventButton(),
-                  const RefreshEvents(),
+                  RefreshIcon(
+                    onPressed: () {
+                      BlocProvider.of<GetEventsCubit>(context).getEventsCubit();
+                    },
+                  ),
                 ],
               ),
             );
