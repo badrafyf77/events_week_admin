@@ -38,7 +38,7 @@ class AppRouter {
   static const messageInfo = '/messageInfo';
 
   static final router = GoRouter(
-    initialLocation: '/',
+    initialLocation: home,
     routes: [
       GoRoute(
         path: '/',

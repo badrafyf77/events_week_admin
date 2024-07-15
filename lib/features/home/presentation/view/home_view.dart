@@ -2,7 +2,6 @@ import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
 import 'package:events_week_admin/features/home/presentation/manager/get%20events%20week%20info%20bloc/get_events_week_info_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:events_week_admin/features/home/presentation/view/widgets/home_body.dart';
-import 'package:events_week_admin/features/home/presentation/view/widgets/home_header.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
@@ -41,12 +40,7 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return loading1
         ? loading2
-            ? const Column(
-                children: [
-                  HomeHeader(),
-                  HomeBody(),
-                ],
-              )
+            ? const HomeBody()
             : const CustomLoadingIndicator()
         : AnimatedContainer(
             duration: const Duration(milliseconds: 250),
