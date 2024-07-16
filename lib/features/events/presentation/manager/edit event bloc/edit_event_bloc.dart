@@ -26,7 +26,7 @@ class EditEventBloc extends Bloc<EditEventEvent, EditEventState> {
         result.fold((left) {
           emit(EditEventFailure(err: left.errMessage));
         }, (right) {
-          emit(EditEventSuccess(msg: 'Événement éditer avec succes'));
+          emit(EditEventSuccess(msg: 'Événement éditer avec succès'));
         });
       }
     });

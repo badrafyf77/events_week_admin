@@ -15,7 +15,7 @@ class DeleteEventBloc extends Bloc<DeleteEventEvent, DeleteEventState> {
         result.fold((left) {
           emit(DeleteEventFailure(err: left.errMessage));
         }, (right) {
-          emit(DeleteEventSuccess(msg: 'Événement supprimer avec succes'));
+          emit(DeleteEventSuccess(msg: 'Événement supprimer avec succès'));
         });
       }
     });

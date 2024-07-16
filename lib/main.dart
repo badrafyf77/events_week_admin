@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/config/theme.dart';
 import 'package:events_week_admin/core/utils/service_locator.dart';
+import 'package:events_week_admin/features/activities/data/repo/activities_repo_implementation.dart';
+import 'package:events_week_admin/features/activities/presentation/manager/add%20activity%20cubit/add_activity_cubit.dart';
 import 'package:events_week_admin/features/auth/data/repo/auth_repo_implementation.dart';
 import 'package:events_week_admin/features/auth/presentation/manager/sign%20in%20bloc/sign_in_bloc.dart';
 import 'package:events_week_admin/features/events/data/repo/events_repo_implementation.dart';
@@ -71,6 +73,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => EditEventBloc(
             getIt.get<EventsRepoImplementation>(),
+          ),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => AddActivityCubit(
+            getIt.get<ActivitiesRepoImplementation>(),
           ),
         ),
         BlocProvider(

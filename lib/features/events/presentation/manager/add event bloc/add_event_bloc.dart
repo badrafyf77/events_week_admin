@@ -21,7 +21,7 @@ class AddEventBloc extends Bloc<AddEventEvent, AddEventState> {
         result.fold((left) {
           emit(AddEventFailure(err: left.errMessage));
         }, (right) {
-          emit(AddEventSuccess(msg: 'Événement Ajouté'));
+          emit(AddEventSuccess(msg: 'Événement ajouté avec succès'));
         });
       }
     });

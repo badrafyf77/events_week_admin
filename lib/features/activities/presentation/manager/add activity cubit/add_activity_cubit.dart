@@ -15,7 +15,7 @@ class AddActivityCubit extends Cubit<AddActivityState> {
     result.fold((left) {
       emit(AddActivityFailure(err: left.errMessage));
     }, (right) {
-      emit(AddActivitySuccess());
+      emit(AddActivitySuccess(msg: "Activité ajouté avec succès"));
     });
   }
 }
