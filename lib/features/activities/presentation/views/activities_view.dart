@@ -1,7 +1,9 @@
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
+import 'package:events_week_admin/features/activities/presentation/manager/activities%20cubit/activities_cubit.dart';
 import 'package:events_week_admin/features/activities/presentation/views/widgets/activities_body.dart';
 import 'package:events_week_admin/features/activities/presentation/views/widgets/activities_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ActivitiesView extends StatefulWidget {
   const ActivitiesView({
@@ -19,6 +21,7 @@ class _ActivitiesViewState extends State<ActivitiesView> {
   void initState() {
     super.initState();
     transitionProblemSolutionProcess();
+    BlocProvider.of<ActivitiesCubit>(context).getActivities();
   }
 
   transitionProblemSolutionProcess() async {

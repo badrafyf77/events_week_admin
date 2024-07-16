@@ -7,20 +7,20 @@ class CustomCashedNetworkImage extends StatelessWidget {
   const CustomCashedNetworkImage({
     super.key,
     required this.url,
-    required this.width,
+    this.width,
     this.height,
   });
 
   final String url;
   final double? height;
-  final double width;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: url,
       height: (height == null) ? null : height,
-      width: width,
+      width: (width == null) ? null : width,
       fit: BoxFit.fill,
       placeholder: (context, url) => Skeletonizer(
         enabled: true,

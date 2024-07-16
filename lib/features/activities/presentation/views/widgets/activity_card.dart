@@ -1,11 +1,14 @@
-import 'package:events_week_admin/core/utils/assets.dart';
+import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 import 'package:events_week_admin/features/activities/presentation/views/widgets/delete_activity_iconbutton.dart';
 import 'package:events_week_admin/features/activities/presentation/views/widgets/edit_activity_iconbutton.dart';
 import 'package:flutter/material.dart';
 
 class ActivityCard extends StatelessWidget {
-  const ActivityCard({super.key});
+  const ActivityCard({super.key, required this.activity});
+
+  final Activity activity;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +26,8 @@ class ActivityCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  AppAssets.event,
+                child: CustomCashedNetworkImage(
+                  url: activity.downloadUrl,
                 ),
               ),
               const SizedBox(width: 15),
@@ -33,14 +36,14 @@ class ActivityCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Théâtre pour enfants et adolescents",
+                      activity.title,
                       style: Styles.normal24,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      "Cours de théâtre d'improvisation pour enfants et adolescents. 2 vendredis par mois cours enfants à 17h30 cours adolescents à 18h30",
+                      activity.description,
                       style: Styles.normal16.copyWith(color: Colors.grey),
                       textAlign: TextAlign.justify,
                       overflow: TextOverflow.ellipsis,
