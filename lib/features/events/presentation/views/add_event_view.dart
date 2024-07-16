@@ -31,7 +31,7 @@ class AddEventView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               NavigateBackIcon(
-                title: 'Ajouter Un Nouvel Événement',
+                title: 'Ajouter un événement',
                 onPressed: () {
                   AppRouter.navigateTo(context, AppRouter.events);
                 },

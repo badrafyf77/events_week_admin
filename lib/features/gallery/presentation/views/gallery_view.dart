@@ -1,3 +1,4 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/assets.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
@@ -78,7 +79,9 @@ class GalleryHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                AppRouter.navigateTo(context, AppRouter.addGallery);
+              },
               title: "Ajouter une galerie",
               backgroundColor: AppColors.kPrimaryColor,
               height: 38,

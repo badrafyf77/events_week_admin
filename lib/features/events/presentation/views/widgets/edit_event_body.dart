@@ -79,7 +79,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                         height: 15,
                       ),
                       Text(
-                        'Titre De L\'événement',
+                        'Titre de l\'événement',
                         style: Styles.normal15,
                       ),
                       const SizedBox(
@@ -89,7 +89,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                         controller: titleController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer Le Titre';
+                            return 'Entrer le titre';
                           }
                           return null;
                         },
@@ -100,7 +100,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                         height: 10,
                       ),
                       Text(
-                        'Description De L\'événement',
+                        'Description de l\'événement',
                         style: Styles.normal15,
                       ),
                       const SizedBox(
@@ -111,7 +111,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                         controller: descriptionController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer La Description';
+                            return 'Entrer la description';
                           }
                           return null;
                         },
@@ -122,7 +122,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                         height: 10,
                       ),
                       Text(
-                        'Lieu De L\'événement',
+                        'Lieu de l\'événement',
                         style: Styles.normal15,
                       ),
                       const SizedBox(
@@ -132,7 +132,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                         controller: placeController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer Le Lieu';
+                            return 'Entrer le lieu';
                           }
                           return null;
                         },
@@ -200,7 +200,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Image de L\'événement',
+                            'Image de l\'événement',
                             style: Styles.normal18,
                           ),
                           if (!oldImage)

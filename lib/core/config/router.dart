@@ -9,6 +9,7 @@ import 'package:events_week_admin/features/events/presentation/views/add_event_v
 import 'package:events_week_admin/features/events/presentation/views/edit_event_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/event_info_view.dart';
 import 'package:events_week_admin/features/events/presentation/views/events_view.dart';
+import 'package:events_week_admin/features/gallery/presentation/views/add_gallery_view.dart';
 import 'package:events_week_admin/features/gallery/presentation/views/gallery_view.dart';
 import 'package:events_week_admin/features/home/presentation/view/home_view.dart';
 import 'package:events_week_admin/features/messages/presentation/views/message_info_view.dart';
@@ -42,6 +43,7 @@ class AppRouter {
   static const addActivity = '/addActivity';
   static const editActivity = '/editActivity';
   static const gallery = '/gallery';
+  static const addGallery = '/addGallery';
   static const messages = '/messages';
   static const messageInfo = '/messageInfo';
 
@@ -146,6 +148,15 @@ class AppRouter {
               context: context,
               state: state,
               child: const GalleryView(),
+            ),
+          ),
+          GoRoute(
+            path: addGallery,
+            pageBuilder: (context, state) =>
+                buildPageWithDefaultTransition<void>(
+              context: context,
+              state: state,
+              child: const AddGalleryView(),
             ),
           ),
           GoRoute(

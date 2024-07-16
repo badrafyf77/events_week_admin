@@ -59,7 +59,7 @@ class _AddActivityBodyState extends State<AddActivityBody> {
                         height: 15,
                       ),
                       Text(
-                        'Titre De L\'activité',
+                        'Titre de l\'activité',
                         style: Styles.normal15,
                       ),
                       const SizedBox(
@@ -69,7 +69,7 @@ class _AddActivityBodyState extends State<AddActivityBody> {
                         controller: titleController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer Le Titre';
+                            return 'Entrer le titre';
                           }
                           return null;
                         },
@@ -80,7 +80,7 @@ class _AddActivityBodyState extends State<AddActivityBody> {
                         height: 10,
                       ),
                       Text(
-                        'Description De L\'activité',
+                        'Description de l\'activité',
                         style: Styles.normal15,
                       ),
                       const SizedBox(
@@ -91,7 +91,7 @@ class _AddActivityBodyState extends State<AddActivityBody> {
                         controller: descriptionController,
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer La Description';
+                            return 'Entrer la description';
                           }
                           return null;
                         },
@@ -121,7 +121,7 @@ class _AddActivityBodyState extends State<AddActivityBody> {
                   child: Column(
                     children: [
                       Text(
-                        'Image de L\'activité',
+                        'Image de l\'activité',
                         style: Styles.normal18,
                       ),
                       const SizedBox(

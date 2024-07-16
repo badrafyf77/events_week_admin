@@ -1,28 +1,51 @@
 import 'dart:io';
+
 import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/date_time_picker.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
-import 'package:events_week_admin/features/events/presentation/manager/add%20event%20bloc/add_event_bloc.dart';
+import 'package:events_week_admin/features/messages/presentation/views/widgets/navigate_back_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-class AddEventBody extends StatefulWidget {
-  const AddEventBody({
-    super.key,
-  });
+class AddGalleryView extends StatelessWidget {
+  const AddGalleryView({super.key});
 
   @override
-  State<AddEventBody> createState() => _AddEventBodyState();
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          NavigateBackIcon(
+            title: 'Ajouter une galerie',
+            onPressed: () {
+              AppRouter.navigateTo(context, AppRouter.gallery);
+            },
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const AddGalleryBody(),
+        ],
+      ),
+    );
+  }
 }
 
-class _AddEventBodyState extends State<AddEventBody> {
+class AddGalleryBody extends StatefulWidget {
+  const AddGalleryBody({super.key});
+
+  @override
+  State<AddGalleryBody> createState() => _AddGalleryBodyState();
+}
+
+class _AddGalleryBodyState extends State<AddGalleryBody> {
   TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
-  TextEditingController placeController = TextEditingController();
 
   DateTime date = DateTime.now();
 
@@ -34,8 +57,6 @@ class _AddEventBodyState extends State<AddEventBody> {
   void dispose() {
     super.dispose();
     titleController.dispose();
-    descriptionController.dispose();
-    placeController.dispose();
   }
 
   @override
@@ -47,7 +68,7 @@ class _AddEventBodyState extends State<AddEventBody> {
         children: [
           Expanded(
             child: Container(
-              height: 520,
+              height: 270,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -66,7 +87,7 @@ class _AddEventBodyState extends State<AddEventBody> {
                         height: 15,
                       ),
                       Text(
-                        'Titre de l\'événement',
+                        'Titre de galerie',
                         style: Styles.normal15,
                       ),
                       const SizedBox(
@@ -81,49 +102,6 @@ class _AddEventBodyState extends State<AddEventBody> {
                           return null;
                         },
                         hintText: 'Titre',
-                        width: constraints.maxWidth,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Description de l\'événement',
-                        style: Styles.normal15,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      MyTextField(
-                        isTextArea: true,
-                        controller: descriptionController,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Entrer la description';
-                          }
-                          return null;
-                        },
-                        hintText: 'Description',
-                        width: constraints.maxWidth,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Lieu de l\'événement',
-                        style: Styles.normal15,
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      MyTextField(
-                        controller: placeController,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Entrer le lieu';
-                          }
-                          return null;
-                        },
-                        hintText: 'Lieu',
                         width: constraints.maxWidth,
                       ),
                       const SizedBox(
@@ -184,7 +162,7 @@ class _AddEventBodyState extends State<AddEventBody> {
                   child: Column(
                     children: [
                       Text(
-                        'Image de l\'événement',
+                        'Image de galerie',
                         style: Styles.normal18,
                       ),
                       const SizedBox(
@@ -245,19 +223,8 @@ class _AddEventBodyState extends State<AddEventBody> {
               CustomButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    BlocProvider.of<AddEventBloc>(context).add(
-                      AddEvent(
-                        title: titleController.text,
-                        description: descriptionController.text,
-                        place: placeController.text,
-                        date: date,
-                        image: image,
-                      ),
-                    );
                     setState(() {
                       titleController.clear();
-                      descriptionController.clear();
-                      placeController.clear();
                       image = null;
                     });
                   }

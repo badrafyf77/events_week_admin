@@ -35,7 +35,7 @@ class EditEventView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               NavigateBackIcon(
-                title: 'Editer l\'Événement: ${event.title}',
+                title: 'Editer l\'événement: ${event.title}',
                 onPressed: () {
                   AppRouter.navigateTo(context, AppRouter.events);
                 },

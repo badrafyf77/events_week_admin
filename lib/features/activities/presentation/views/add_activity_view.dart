@@ -14,7 +14,7 @@ class AddActivityView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NavigateBackIcon(
-            title: 'Ajouter Une Activité',
+            title: 'Ajouter une activité',
             onPressed: () {
               AppRouter.navigateTo(context, AppRouter.activities);
             },

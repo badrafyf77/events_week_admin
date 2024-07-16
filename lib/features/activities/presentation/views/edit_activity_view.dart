@@ -14,7 +14,7 @@ class EditActivityView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NavigateBackIcon(
-            title: "Éditer L'activité xxxxx",
+            title: "Éditer l'activité xxxxx",
             onPressed: () {
               AppRouter.navigateTo(context, AppRouter.activities);
             },
