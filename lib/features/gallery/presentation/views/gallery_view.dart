@@ -191,7 +191,9 @@ class EditGallery extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          AppRouter.navigateTo(context, AppRouter.editGallery);
+        },
         icon: const Icon(
           Icons.edit,
           size: 22,
