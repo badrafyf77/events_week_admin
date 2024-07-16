@@ -39,6 +39,16 @@ class FirestoreService {
     await activities.doc(activity.id).set(activity.toJson());
   }
 
+  Future<List<Activity>> getActivities() async {
+    List<Activity> activitiesList = [];
+    await activities.get().then((activity) {
+      for (var doc in activity.docs) {
+        activitiesList.add(Activity.fromJson(doc));
+      }
+    });
+    return activitiesList;
+  }
+
   Future<List<Message>> getMessages() async {
     List<Message> messagesList = [];
     await messages.orderBy('sendAt', descending: true).get().then((event) {

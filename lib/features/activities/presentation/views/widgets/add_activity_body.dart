@@ -4,7 +4,7 @@ import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
-import 'package:events_week_admin/features/activities/presentation/manager/add%20activity%20cubit/add_activity_cubit.dart';
+import 'package:events_week_admin/features/activities/presentation/manager/activities%20cubit/activities_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -184,7 +184,7 @@ class _AddActivityBodyState extends State<AddActivityBody> {
               CustomButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
-                    BlocProvider.of<AddActivityCubit>(context).addActivity(
+                    BlocProvider.of<ActivitiesCubit>(context).addActivity(
                       titleController.text,
                       descriptionController.text,
                       image,

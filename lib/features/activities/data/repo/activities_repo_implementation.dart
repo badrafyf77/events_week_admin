@@ -18,6 +18,19 @@ class ActivitiesRepoImplementation implements ActivitiesRepo {
       this._firestoreService, this._firestorageService);
 
   @override
+  Future<Either<Failure, List<Activity>>> getActivities() async{
+    try {
+      var activitiesList = await _firestoreService.getActivities();
+      return right(activitiesList);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(FirestoreFailure.fromFirestoreFailure(e));
+      }
+      return left(FirestoreFailure(errMessage: e.toString()));
+    }
+  }
+
+  @override
   Future<Either<Failure, Unit>> addActivity(
       String title, String description, XFile? image) async {
     try {

@@ -4,6 +4,7 @@ import 'package:events_week_admin/features/activities/data/model/activity_model.
 import 'package:image_picker/image_picker.dart';
 
 abstract class ActivitiesRepo {
+  Future<Either<Failure, List<Activity>>> getActivities();
   Future<Either<Failure, Unit>> addActivity(String title, String description, XFile? image);
   Future<Either<Failure, Unit>> updateActivity(Activity activity, String oldTitle, bool oldImage, XFile? image);
   Future<Either<Failure, Unit>> deleteActivity(Activity activity);
