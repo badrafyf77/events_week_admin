@@ -3,21 +3,26 @@ import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class FirestorageService {
+  final eventsFolderName = "events";
   Reference storageRef = FirebaseStorage.instance.ref();
 
-  Future<String> uploadFile(File file, String fileName) async {
-    var result = await storageRef.child(fileName).putFile(file);
+  Future<String> uploadFile(
+      File file, String folderName, String fileName) async {
+    var result = await storageRef.child("$folderName/$fileName").putFile(file);
     return await result.ref.getDownloadURL();
   }
 
-  Future<String> updateFile(String oldfileName, String newfileName) async {
-    Uint8List? file = await storageRef.child(oldfileName).getData();
-    await deleteFile(oldfileName);
-    var result = await storageRef.child(newfileName).putData(file!);
+  Future<String> updateFile(
+      String oldfileName, String folderName, String newfileName) async {
+    Uint8List? file =
+        await storageRef.child("$folderName/$oldfileName").getData();
+    await deleteFile(folderName, oldfileName);
+    var result =
+        await storageRef.child("$folderName/$newfileName").putData(file!);
     return await result.ref.getDownloadURL();
   }
 
-  Future<void> deleteFile(String fileName) async {
-    await storageRef.child(fileName).delete();
+  Future<void> deleteFile(String folderName, String fileName) async {
+    await storageRef.child("$folderName/$fileName").delete();
   }
 }

@@ -24,8 +24,8 @@ class EventsRepoImplementation implements EventsRepo {
       String downloadUrl;
       if (image != null) {
         File selectedImagePath = File(image.path);
-        downloadUrl =
-            await _firestorageService.uploadFile(selectedImagePath, title);
+        downloadUrl = await _firestorageService.uploadFile(
+            selectedImagePath, _firestorageService.eventsFolderName, title);
       } else {
         return left(PickImageFailure(errMessage: 'choisir une image'));
       }
@@ -85,16 +85,17 @@ class EventsRepoImplementation implements EventsRepo {
       String downloadUrl;
       if (!oldImage) {
         if (image != null) {
-          await _firestorageService.deleteFile(oldTitle);
+          await _firestorageService.deleteFile(
+              _firestorageService.eventsFolderName, oldTitle);
           File selectedImagePath = File(image.path);
-          downloadUrl = await _firestorageService.uploadFile(
-              selectedImagePath, event.title);
+          downloadUrl = await _firestorageService.uploadFile(selectedImagePath,
+              _firestorageService.eventsFolderName, event.title);
         } else {
           return left(PickImageFailure(errMessage: 'choisir une image'));
         }
       } else {
-        downloadUrl =
-            await _firestorageService.updateFile(oldTitle, event.title);
+        downloadUrl = await _firestorageService.updateFile(
+            oldTitle, _firestorageService.eventsFolderName, event.title);
       }
       Event e = Event(
         id: event.id,
@@ -128,7 +129,8 @@ class EventsRepoImplementation implements EventsRepo {
             errMessage: "vous ne pouvez pas supprimer l'événement initial"));
       }
       await _firestoreService.deleteEvent(event.id);
-      await _firestorageService.deleteFile(event.title);
+      await _firestorageService.deleteFile(
+          _firestorageService.eventsFolderName, event.title);
       return right(unit);
     } catch (e) {
       if (e is FirebaseException) {
