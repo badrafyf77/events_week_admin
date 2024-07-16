@@ -1,11 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/models/message_model.dart';
+import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 
 class FirestoreService {
   CollectionReference events = FirebaseFirestore.instance.collection('events');
   CollectionReference initialEvent =
       FirebaseFirestore.instance.collection('initialEvent');
+  CollectionReference activities =
+      FirebaseFirestore.instance.collection('activities');
   CollectionReference messages =
       FirebaseFirestore.instance.collection('messages');
   CollectionReference visits = FirebaseFirestore.instance.collection('visits');
@@ -30,6 +33,10 @@ class FirestoreService {
 
   Future<void> deleteEvent(String id) async {
     await events.doc(id).delete();
+  }
+
+  Future<void> addActivity(Activity activity) async {
+    await activities.doc(activity.id).set(activity.toJson());
   }
 
   Future<List<Message>> getMessages() async {
@@ -97,7 +104,7 @@ class FirestoreService {
         final data = docs as Map<String, dynamic>;
         v = data['visits'] as List;
       });
-      return v[day-1];
+      return v[day - 1];
     }
     return 0;
   }
