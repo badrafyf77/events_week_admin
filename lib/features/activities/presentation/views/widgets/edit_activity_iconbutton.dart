@@ -1,3 +1,4 @@
+import 'package:events_week_admin/core/config/router.dart';
 import 'package:flutter/material.dart';
 
 class EditActivity extends StatelessWidget {
@@ -11,7 +12,9 @@ class EditActivity extends StatelessWidget {
         shape: BoxShape.circle,
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          AppRouter.navigateTo(context, AppRouter.editActivity);
+        },
         icon: const Icon(
           Icons.edit,
           size: 22,
