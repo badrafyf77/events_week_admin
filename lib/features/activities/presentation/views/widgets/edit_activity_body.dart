@@ -6,12 +6,15 @@ import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
+import 'package:events_week_admin/features/activities/presentation/manager/activities%20cubit/activities_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditActivityBody extends StatefulWidget {
   const EditActivityBody({
-    super.key, required this.activity,
+    super.key,
+    required this.activity,
   });
 
   final Activity activity;
@@ -228,6 +231,18 @@ class _EditActivityBodyState extends State<EditActivityBody> {
               CustomButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
+                    Activity activity = Activity(
+                      id: widget.activity.id,
+                      title: titleController.text,
+                      description: descriptionController.text,
+                      downloadUrl: widget.activity.downloadUrl,
+                    );
+                    BlocProvider.of<ActivitiesCubit>(context).editActivity(
+                      activity,
+                      widget.activity.title,
+                      oldImage,
+                      image,
+                    );
                     setState(() {
                       titleController.clear();
                       descriptionController.clear();

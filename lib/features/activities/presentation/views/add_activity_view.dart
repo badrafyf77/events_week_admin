@@ -19,6 +19,7 @@ class AddActivityView extends StatelessWidget {
         }
         if (state is AddActivitySuccess) {
           myShowToastSuccess(context, state.msg);
+          AppRouter.navigateTo(context, AppRouter.activities);
         }
       },
       builder: (context, state) {

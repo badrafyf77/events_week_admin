@@ -19,6 +19,7 @@ class AddEventView extends StatelessWidget {
         }
         if (state is AddEventSuccess) {
           myShowToastSuccess(context, state.msg);
+          AppRouter.navigateTo(context, AppRouter.events);
         }
       },
       builder: (context, state) {
