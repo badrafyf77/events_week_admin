@@ -134,12 +134,12 @@ class FirestoreService {
     return [];
   }
 
-  Future<int> getTodayVisits() async {
+  Future<int> getMonthVisits() async {
     int year = DateTime.now().year;
     int month = DateTime.now().month;
-    int day = DateTime.now().day;
     String id = '$month-$year';
     List v = [];
+    num x = 0;
     var doc = await visits.doc(id).get();
     if (doc.exists) {
       await visits.doc(id).get().then((value) async {
@@ -147,7 +147,10 @@ class FirestoreService {
         final data = docs as Map<String, dynamic>;
         v = data['visits'] as List;
       });
-      return v[day - 1];
+      for (var i = 0; i < v.length; i++) {
+        x += v[i];
+      }
+      return x.toInt();
     }
     return 0;
   }

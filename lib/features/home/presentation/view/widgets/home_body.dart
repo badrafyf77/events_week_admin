@@ -54,8 +54,8 @@ class HomeBody extends StatelessWidget {
                             onTap: () {},
                           ),
                           DashboardItem(
-                            title: 'visites aujourd\'hui',
-                            nmbr: state.eventsWeekInfo.visitsToday,
+                            title: 'visites de ce mois',
+                            nmbr: state.eventsWeekInfo.monthVisits,
                             onTap: () {},
                           ),
                         ],
