@@ -5,6 +5,7 @@ import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
 import 'package:events_week_admin/features/home/presentation/manager/get%20events%20week%20info%20bloc/get_events_week_info_bloc.dart';
 import 'package:events_week_admin/features/home/presentation/view/widgets/analytic.dart';
 import 'package:events_week_admin/features/home/presentation/view/widgets/home_body_item.dart';
+import 'package:events_week_admin/features/home/presentation/view/widgets/home_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,6 +36,7 @@ class HomeBody extends StatelessWidget {
                 ScrollConfiguration.of(context).copyWith(scrollbars: false),
             child: ListView(
               children: [
+                const HomeHeader(),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 20),

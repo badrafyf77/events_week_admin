@@ -37,6 +37,7 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
 }
 
 class AppRouter {
+  static const signIn = "/";
   static const home = '/home';
   static const events = '/events';
   static const addEvent = '/addEvent';
@@ -52,10 +53,9 @@ class AppRouter {
   static const messageInfo = '/messageInfo';
 
   static final router = GoRouter(
-    initialLocation: home,
     routes: [
       GoRoute(
-        path: '/',
+        path: signIn,
         pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
           context: context,
           state: state,
