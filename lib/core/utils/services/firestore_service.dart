@@ -171,4 +171,24 @@ class FirestoreService {
     }
     return 0;
   }
+
+  Future<int> countActivities() async {
+    AggregateQuerySnapshot query = await activities.count().get();
+    int i;
+    if (query.count != null) {
+      i = query.count!;
+      return i;
+    }
+    return 0;
+  }
+
+  Future<int> countGalleries() async {
+    AggregateQuerySnapshot query = await galleries.count().get();
+    int i;
+    if (query.count != null) {
+      i = query.count!;
+      return i;
+    }
+    return 0;
+  }
 }

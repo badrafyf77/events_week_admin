@@ -66,12 +66,12 @@ class HomeBody extends StatelessWidget {
                         children: [
                           DashboardItem(
                             title: 'Total d\'activités proposées',
-                            nmbr: 6,
+                            nmbr: state.eventsWeekInfo.activities,
                             onTap: () {},
                           ),
                           DashboardItem(
                             title: 'Galerie',
-                            nmbr: 27,
+                            nmbr: state.eventsWeekInfo.galleries,
                             onTap: () {},
                           ),
                           const SizedBox(

@@ -16,12 +16,16 @@ class HomeRepoImplementation implements HomeRepo {
     try {
       int events = await _firestoreService.countEvents();
       int messages = await _firestoreService.countMessages();
+      int activities = await _firestoreService.countActivities();
+      int galleries = await _firestoreService.countGalleries();
       List visitsList =
           await _firestoreService.getVisitsList(date.month, date.year);
       int visitsToday = await _firestoreService.getTodayVisits();
       EventsWeekInfo eventsWeekInfo = EventsWeekInfo(
         events: events,
         messages: messages,
+        activities: activities,
+        galleries: galleries,
         visitsToday: visitsToday,
         visitsList: visitsList,
         date: date,
