@@ -1,7 +1,9 @@
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
+import 'package:events_week_admin/features/gallery/presentation/manager/galleries%20cubit/galleries_cubit.dart';
 import 'package:events_week_admin/features/gallery/presentation/views/widgets/gallery_body.dart';
 import 'package:events_week_admin/features/gallery/presentation/views/widgets/gallery_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class GalleryView extends StatefulWidget {
   const GalleryView({
@@ -19,6 +21,7 @@ class _GalleryViewState extends State<GalleryView> {
   void initState() {
     super.initState();
     transitionProblemSolutionProcess();
+    BlocProvider.of<GalleriesCubit>(context).getGalleries();
   }
 
   transitionProblemSolutionProcess() async {

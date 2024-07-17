@@ -142,7 +142,7 @@ class _EditEventBodyState extends State<EditEventBody> {
                       const SizedBox(
                         height: 10,
                       ),
-                      DateAndTimePicker(
+                      CustomDateAndTimePicker(
                         height: 30,
                         width: constraints.maxWidth,
                         date: date,

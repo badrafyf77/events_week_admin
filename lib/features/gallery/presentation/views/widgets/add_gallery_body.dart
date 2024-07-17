@@ -81,7 +81,7 @@ class _AddGalleryBodyState extends State<AddGalleryBody> {
                       const SizedBox(
                         height: 10,
                       ),
-                      DateAndTimePicker(
+                      CustomDateAndTimePicker(
                         height: 30,
                         width: constraints.maxWidth,
                         date: date,

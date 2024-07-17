@@ -3,12 +3,14 @@ import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class DateAndTimePicker extends StatelessWidget {
-  const DateAndTimePicker(
-      {super.key,
-      required this.height,
-      required this.width,
-      required this.date, required this.onPressed,});
+class CustomDateAndTimePicker extends StatelessWidget {
+  const CustomDateAndTimePicker({
+    super.key,
+    required this.height,
+    required this.width,
+    required this.date,
+    required this.onPressed,
+  });
 
   final double height;
   final double width;

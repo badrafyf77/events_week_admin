@@ -1,11 +1,15 @@
-import 'package:events_week_admin/core/utils/assets.dart';
+import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/gallery/data/model/gallery_model.dart';
 import 'package:events_week_admin/features/gallery/presentation/views/widgets/delete_gallery_iconbutton.dart';
 import 'package:events_week_admin/features/gallery/presentation/views/widgets/edit_gallery_iconbutton.dart';
 import 'package:flutter/material.dart';
 
 class GalleryCard extends StatelessWidget {
-  const GalleryCard({super.key});
+  const GalleryCard({super.key, required this.gallery});
+
+  final Gallery gallery;
 
   @override
   Widget build(BuildContext context) {
@@ -23,37 +27,41 @@ class GalleryCard extends StatelessWidget {
             child: Column(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    AppAssets.event,
-                    width: constraints.maxWidth * 0.55,
-                  ),
+                borderRadius: BorderRadius.circular(15),
+                child: CustomCashedNetworkImage(
+                  url: gallery.downloadUrl,
+                  width: constraints.maxWidth * 0.55,
                 ),
+              ),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Théâtre pour enfants et adolescents",
+                        gallery.title,
                         style: Styles.normal24,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        "18/05/2023",
+                        BoardDateFormat('yyyy/MM/dd').format(gallery.date.toDate()),
                         style: Styles.normal16.copyWith(color: Colors.grey),
                         textAlign: TextAlign.justify,
                       ),
                       const SizedBox(height: 8),
                       const Spacer(),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          EditGallery(),
-                          SizedBox(width: 25),
-                          DeleteGallery(),
+                          EditGallery(
+                            gallery: gallery,
+                          ),
+                          const SizedBox(width: 25),
+                          DeleteGallery(
+                            gallery: gallery,
+                          ),
                         ],
                       )
                     ],
