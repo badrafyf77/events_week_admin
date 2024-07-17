@@ -6,7 +6,9 @@ import 'package:events_week_admin/core/utils/customs/button.dart';
 import 'package:events_week_admin/core/utils/customs/date_time_picker.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/gallery/presentation/manager/galleries%20cubit/galleries_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddGalleryBody extends StatefulWidget {
@@ -195,6 +197,11 @@ class _AddGalleryBodyState extends State<AddGalleryBody> {
               CustomButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
+                    BlocProvider.of<GalleriesCubit>(context).addGallery(
+                      titleController.text,
+                      date,
+                      image,
+                    );
                     setState(() {
                       titleController.clear();
                       image = null;

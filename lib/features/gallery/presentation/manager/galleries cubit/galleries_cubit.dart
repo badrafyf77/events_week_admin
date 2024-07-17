@@ -9,9 +9,9 @@ class GalleriesCubit extends Cubit<GalleriesState> {
   final GalleryRepo _galleryRepo;
   GalleriesCubit(this._galleryRepo) : super(GalleriesInitial());
 
-  Future<void> addGallery(String title, XFile? image) async {
+  Future<void> addGallery(String title,DateTime date, XFile? image) async {
     emit(GalleriesLoading());
-    var result = await _galleryRepo.addGallery(title, image);
+    var result = await _galleryRepo.addGallery(title, date, image);
     result.fold((left) {
       emit(GalleriesFailure(err: left.errMessage));
     }, (right) {

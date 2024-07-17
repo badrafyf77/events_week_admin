@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 abstract class GalleryRepo {
   Future<Either<Failure, List<Gallery>>> getGalleries();
-  Future<Either<Failure, Unit>> addGallery(String title, XFile? image);
+  Future<Either<Failure, Unit>> addGallery(String title, DateTime date, XFile? image);
   Future<Either<Failure, Unit>> updateGallery(Gallery gallery, String oldTitle, bool oldImage, XFile? image);
   Future<Either<Failure, Unit>> deleteGallery(Gallery gallery);
 }

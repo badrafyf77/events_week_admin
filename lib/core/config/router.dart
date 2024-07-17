@@ -44,7 +44,7 @@ class AppRouter {
   static const activities = '/activities';
   static const addActivity = '/addActivity';
   static const editActivity = '/editActivity';
-  static const gallery = '/gallery';
+  static const galleries = '/gallery';
   static const addGallery = '/addGallery';
   static const editGallery = '/editGallery';
   static const messages = '/messages';
@@ -150,7 +150,7 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: gallery,
+            path: galleries,
             pageBuilder: (context, state) =>
                 buildPageWithDefaultTransition<void>(
               context: context,

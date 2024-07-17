@@ -12,6 +12,8 @@ import 'package:events_week_admin/features/events/presentation/manager/delete%20
 import 'package:events_week_admin/features/events/presentation/manager/edit%20event%20bloc/edit_event_bloc.dart';
 import 'package:events_week_admin/features/events/presentation/manager/get%20events%20info%20cubit/get_events_cubit.dart';
 import 'package:events_week_admin/features/events/presentation/manager/set%20initial%20event%20bloc/set_initial_event_bloc.dart';
+import 'package:events_week_admin/features/gallery/data/repo/gallery_repo_implementation.dart';
+import 'package:events_week_admin/features/gallery/presentation/manager/galleries%20cubit/galleries_cubit.dart';
 import 'package:events_week_admin/features/home/data/repo/home_repo_implementation.dart';
 import 'package:events_week_admin/features/home/presentation/manager/get%20events%20week%20info%20bloc/get_events_week_info_bloc.dart';
 import 'package:events_week_admin/features/messages/data/repo/messages_repo_implementation.dart';
@@ -78,6 +80,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => ActivitiesCubit(
             getIt.get<ActivitiesRepoImplementation>(),
+          ),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => GalleriesCubit(
+            getIt.get<GalleryRepoImplementation>(),
           ),
         ),
         BlocProvider(

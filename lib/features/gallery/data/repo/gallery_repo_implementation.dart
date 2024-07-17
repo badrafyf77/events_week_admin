@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:events_week_admin/core/utils/failures.dart';
 import 'package:events_week_admin/core/utils/services/firestorage_service.dart';
@@ -30,7 +31,7 @@ class GalleryRepoImplementation implements GalleryRepo {
   }
 
   @override
-  Future<Either<Failure, Unit>> addGallery(String title, XFile? image) async {
+  Future<Either<Failure, Unit>> addGallery(String title,DateTime date, XFile? image) async {
     try {
       var id = const Uuid().v4();
       String downloadUrl;
@@ -44,6 +45,7 @@ class GalleryRepoImplementation implements GalleryRepo {
       Gallery gallery = Gallery(
         id: id,
         title: title,
+        date: Timestamp.fromDate(date),
         downloadUrl: downloadUrl,
       );
       await _firestoreService.addGallery(gallery);
@@ -95,6 +97,7 @@ class GalleryRepoImplementation implements GalleryRepo {
       Gallery g = Gallery(
         id: gallery.id,
         title: gallery.title,
+        date: gallery.date,
         downloadUrl: downloadUrl,
       );
       await _firestoreService.updateGallery(g);

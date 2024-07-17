@@ -16,7 +16,7 @@ class EditGalleryView extends StatelessWidget {
           NavigateBackIcon(
             title: 'Éditer galerie xxxxxx',
             onPressed: () {
-              AppRouter.navigateTo(context, AppRouter.gallery);
+              AppRouter.navigateTo(context, AppRouter.galleries);
             },
           ),
           const SizedBox(
