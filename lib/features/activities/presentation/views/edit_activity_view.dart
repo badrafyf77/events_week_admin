@@ -20,7 +20,7 @@ class EditActivityView extends StatelessWidget {
         if (state is ActivitiesFailure) {
           myShowToastError(context, state.err);
         }
-        if (state is EditActivitySuccess) {
+        if (state is ActivitiesSuccess) {
           myShowToastSuccess(context, state.msg);
           AppRouter.navigateTo(context, AppRouter.activities);
         }

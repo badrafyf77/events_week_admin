@@ -16,7 +16,7 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
     result.fold((left) {
       emit(ActivitiesFailure(err: left.errMessage));
     }, (right) {
-      emit(AddActivitySuccess(msg: "Activité ajouté avec succès"));
+      emit(ActivitiesSuccess(msg: "Activité ajouté avec succès"));
     });
   }
 
@@ -30,13 +30,26 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
     });
   }
 
-  Future<void> editActivity(Activity activity, String oldTitle, bool oldImage, XFile? image) async {
+  Future<void> editActivity(
+      Activity activity, String oldTitle, bool oldImage, XFile? image) async {
     emit(ActivitiesLaoding());
-    var result = await _activitiesRepo.updateActivity(activity, oldTitle, oldImage, image);
+    var result = await _activitiesRepo.updateActivity(
+        activity, oldTitle, oldImage, image);
     result.fold((left) {
       emit(ActivitiesFailure(err: left.errMessage));
     }, (right) {
-      emit(EditActivitySuccess(msg: "Activité édité avec succès"));
+      emit(ActivitiesSuccess(msg: "Activité édité avec succès"));
+    });
+  }
+
+  Future<void> deleteActivity(Activity activity) async {
+    emit(ActivitiesLaoding());
+    var result = await _activitiesRepo.deleteActivity(activity);
+    result.fold((left) {
+      emit(ActivitiesFailure(err: left.errMessage));
+    }, (right) {
+      emit(ActivitiesSuccess(msg: "Activité supprimé avec succès"));
+      getActivities();
     });
   }
 }

@@ -18,7 +18,7 @@ class ActivitiesRepoImplementation implements ActivitiesRepo {
       this._firestoreService, this._firestorageService);
 
   @override
-  Future<Either<Failure, List<Activity>>> getActivities() async{
+  Future<Either<Failure, List<Activity>>> getActivities() async {
     try {
       var activitiesList = await _firestoreService.getActivities();
       return right(activitiesList);
@@ -61,13 +61,24 @@ class ActivitiesRepoImplementation implements ActivitiesRepo {
   }
 
   @override
-  Future<Either<Failure, Unit>> deleteActivity(Activity activity) {
-    throw UnimplementedError();
+  Future<Either<Failure, Unit>> deleteActivity(Activity activity) async {
+    try {
+      await _firestoreService.deleteActivity(activity);
+      await _firestorageService.deleteFile(
+          _firestorageService.activitiesFolderName, activity.title);
+      return right(unit);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(FirestoreFailure.fromFirestoreFailure(e));
+      }
+      return left(FirestoreFailure(
+          errMessage: 'il y a une erreur, veuillez réessayer'));
+    }
   }
 
   @override
   Future<Either<Failure, Unit>> updateActivity(
-      Activity activity, String oldTitle, bool oldImage, XFile? image) async{
+      Activity activity, String oldTitle, bool oldImage, XFile? image) async {
     try {
       String downloadUrl;
       if (!oldImage) {

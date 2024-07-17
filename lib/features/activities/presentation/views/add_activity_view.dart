@@ -17,7 +17,7 @@ class AddActivityView extends StatelessWidget {
         if (state is ActivitiesFailure) {
           myShowToastError(context, state.err);
         }
-        if (state is AddActivitySuccess) {
+        if (state is ActivitiesSuccess) {
           myShowToastSuccess(context, state.msg);
           AppRouter.navigateTo(context, AppRouter.activities);
         }

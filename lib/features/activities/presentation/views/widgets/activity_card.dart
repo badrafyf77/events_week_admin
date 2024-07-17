@@ -58,7 +58,9 @@ class ActivityCard extends StatelessWidget {
                           activity: activity,
                         ),
                         const SizedBox(width: 25),
-                        const DeleteActivity(),
+                        DeleteActivity(
+                          activity: activity,
+                        ),
                       ],
                     )
                   ],

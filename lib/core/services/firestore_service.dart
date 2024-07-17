@@ -53,6 +53,10 @@ class FirestoreService {
     await activities.doc(activity.id).update(activity.toJson());
   }
 
+  Future<void> deleteActivity(Activity activity) async {
+    await activities.doc(activity.id).delete();
+  }
+
   Future<List<Message>> getMessages() async {
     List<Message> messagesList = [];
     await messages.orderBy('sendAt', descending: true).get().then((event) {

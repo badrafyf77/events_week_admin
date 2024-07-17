@@ -22,6 +22,9 @@ class ActivitiesBody extends StatelessWidget {
           if (state is ActivitiesFailure) {
             myShowToastError(context, state.err);
           }
+          if (state is ActivitiesSuccess) {
+            myShowToastSuccess(context, state.msg);
+          }
         },
         builder: (context, state) {
           return ScrollConfiguration(
