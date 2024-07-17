@@ -10,7 +10,7 @@ class FirestoreService {
       FirebaseFirestore.instance.collection('initialEvent');
   CollectionReference activities =
       FirebaseFirestore.instance.collection('activities');
-      CollectionReference galleries =
+  CollectionReference galleries =
       FirebaseFirestore.instance.collection('galleries');
   CollectionReference messages =
       FirebaseFirestore.instance.collection('messages');
@@ -66,7 +66,7 @@ class FirestoreService {
 
   Future<List<Gallery>> getGalleries() async {
     List<Gallery> galleriesList = [];
-    await galleries.get().then((gallery) {
+    await galleries.orderBy('date', descending: true).get().then((gallery) {
       for (var doc in gallery.docs) {
         galleriesList.add(Gallery.fromJson(doc));
       }

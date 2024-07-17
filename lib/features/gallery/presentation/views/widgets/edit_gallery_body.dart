@@ -1,16 +1,23 @@
 import 'dart:io';
 
 import 'package:board_datetime_picker/board_datetime_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
+import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/customs/date_time_picker.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/gallery/data/model/gallery_model.dart';
+import 'package:events_week_admin/features/gallery/presentation/manager/galleries%20cubit/galleries_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditGalleryBody extends StatefulWidget {
-  const EditGalleryBody({super.key});
+  const EditGalleryBody({super.key, required this.gallery});
+
+  final Gallery gallery;
 
   @override
   State<EditGalleryBody> createState() => _EditGalleryBodyState();
@@ -21,9 +28,18 @@ class _EditGalleryBodyState extends State<EditGalleryBody> {
 
   DateTime date = DateTime.now();
 
+  bool oldImage = true;
+
   XFile? image;
 
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void initState() {
+    titleController.text = widget.gallery.title;
+    date = widget.gallery.date.toDate();
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -133,58 +149,91 @@ class _EditGalleryBodyState extends State<EditGalleryBody> {
                   padding: const EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      Text(
-                        'Image de galerie',
-                        style: Styles.normal18,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Image de l\'événement',
+                            style: Styles.normal18,
+                          ),
+                          if (!oldImage)
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  oldImage = true;
+                                });
+                              },
+                              icon: const Icon(Icons.rotate_left),
+                              tooltip: 'Retour à l\'ancienne Image',
+                            ),
+                        ],
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      image == null
-                          ? InkWell(
-                              onTap: () async {
-                                try {
-                                  final ImagePicker picker = ImagePicker();
-                                  image = await picker.pickImage(
-                                      source: ImageSource.gallery);
-                                  setState(() {});
-                                  // ignore: empty_catches
-                                } catch (e) {}
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  color: Colors.black,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
-                          : Column(
+                      (oldImage)
+                          ? Column(
                               children: [
-                                Image.file(
-                                  File(image!.path),
-                                  fit: BoxFit.fill,
+                                CustomCashedNetworkImage(
+                                  url: widget.gallery.downloadUrl,
                                   height: 180,
                                   width: 250,
-                                ),
-                                const SizedBox(
-                                  height: 5,
                                 ),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {
-                                      image = null;
+                                      oldImage = false;
                                     });
                                   },
                                   icon: const Icon(Icons.delete),
-                                )
+                                ),
                               ],
-                            ),
+                            )
+                          : image == null
+                              ? InkWell(
+                                  onTap: () async {
+                                    try {
+                                      final ImagePicker picker = ImagePicker();
+                                      image = await picker.pickImage(
+                                          source: ImageSource.gallery);
+                                      setState(() {});
+                                      // ignore: empty_catches
+                                    } catch (e) {}
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )
+                              : Column(
+                                  children: [
+                                    Image.file(
+                                      File(image!.path),
+                                      fit: BoxFit.fill,
+                                      height: 180,
+                                      width: 250,
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          image = null;
+                                        });
+                                      },
+                                      icon: const Icon(Icons.delete),
+                                    ),
+                                  ],
+                                ),
                     ],
                   ),
                 ),
@@ -195,6 +244,17 @@ class _EditGalleryBodyState extends State<EditGalleryBody> {
               CustomButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
+                    Gallery gallery = Gallery(
+                        id: widget.gallery.id,
+                        title: titleController.text,
+                        date: Timestamp.fromDate(date),
+                        downloadUrl: widget.gallery.downloadUrl);
+                    BlocProvider.of<GalleriesCubit>(context).editGallery(
+                      gallery,
+                      widget.gallery.title,
+                      oldImage,
+                      image,
+                    );
                     setState(() {
                       titleController.clear();
                       image = null;

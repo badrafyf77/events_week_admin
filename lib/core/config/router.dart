@@ -1,4 +1,5 @@
 import 'package:events_week_admin/features/events/data/model/event_model.dart';
+import 'package:events_week_admin/features/gallery/data/model/gallery_model.dart';
 import 'package:events_week_admin/features/messages/data/model/message_model.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
 import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
@@ -169,12 +170,16 @@ class AppRouter {
           ),
           GoRoute(
             path: editGallery,
-            pageBuilder: (context, state) =>
-                buildPageWithDefaultTransition<void>(
-              context: context,
-              state: state,
-              child: const EditGalleryView(),
-            ),
+            pageBuilder: (context, state) {
+              Gallery gallery = state.extra as Gallery;
+              return buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: EditGalleryView(
+                  gallery: gallery,
+                ),
+              );
+            },
           ),
           GoRoute(
             path: messages,

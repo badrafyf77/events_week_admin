@@ -21,56 +21,55 @@ class GalleryCard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(18),
         ),
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                ClipRRect(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: CustomCashedNetworkImage(
                   url: gallery.downloadUrl,
-                  width: constraints.maxWidth * 0.55,
+                  height: 300,
                 ),
               ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        gallery.title,
-                        style: Styles.normal24,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        BoardDateFormat('yyyy/MM/dd').format(gallery.date.toDate()),
-                        style: Styles.normal16.copyWith(color: Colors.grey),
-                        textAlign: TextAlign.justify,
-                      ),
-                      const SizedBox(height: 8),
-                      const Spacer(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          EditGallery(
-                            gallery: gallery,
-                          ),
-                          const SizedBox(width: 25),
-                          DeleteGallery(
-                            gallery: gallery,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      gallery.title,
+                      style: Styles.normal24,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      BoardDateFormat('yyyy/MM/dd')
+                          .format(gallery.date.toDate()),
+                      style: Styles.normal16.copyWith(color: Colors.grey),
+                      textAlign: TextAlign.justify,
+                    ),
+                    const SizedBox(height: 8),
+                    const Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        EditGallery(
+                          gallery: gallery,
+                        ),
+                        const SizedBox(width: 25),
+                        DeleteGallery(
+                          gallery: gallery,
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-              ],
-            ),
-          );
-        }),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
