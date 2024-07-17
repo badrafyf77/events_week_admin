@@ -1,5 +1,5 @@
 import 'package:events_week_admin/core/config/router.dart';
-import 'package:events_week_admin/core/models/message_model.dart';
+import 'package:events_week_admin/features/messages/data/model/message_model.dart';
 import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
 import 'package:events_week_admin/features/messages/presentation/manager/change%20message%20to%20readed%20bloc/change_message_to_readed_bloc.dart';
 import 'package:events_week_admin/features/messages/presentation/views/widgets/message_info_body.dart';

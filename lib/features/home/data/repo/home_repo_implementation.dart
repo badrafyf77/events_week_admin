@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:events_week_admin/core/services/firestore_service.dart';
+import 'package:events_week_admin/core/utils/services/firestore_service.dart';
 import 'package:events_week_admin/core/utils/failures.dart';
 import 'package:events_week_admin/features/home/data/model/events_week_info.dart';
 import 'package:events_week_admin/features/home/data/repo/home_repo.dart';

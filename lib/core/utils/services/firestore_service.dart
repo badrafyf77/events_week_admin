@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:events_week_admin/core/models/event_model.dart';
-import 'package:events_week_admin/core/models/message_model.dart';
+import 'package:events_week_admin/features/events/data/model/event_model.dart';
+import 'package:events_week_admin/features/messages/data/model/message_model.dart';
 import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 
 class FirestoreService {

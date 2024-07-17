@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/features/events/data/model/event_model.dart';
 import 'package:events_week_admin/core/utils/customs/loading_indicator.dart';
 import 'package:events_week_admin/core/utils/helpers/show_toast.dart';
 import 'package:events_week_admin/features/events/presentation/manager/delete%20event%20bloc/delete_event_bloc.dart';

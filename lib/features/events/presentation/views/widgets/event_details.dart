@@ -4,7 +4,7 @@ import 'package:events_week_admin/features/events/presentation/views/widgets/del
 import 'package:events_week_admin/features/events/presentation/views/widgets/edit_event_iconbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:events_week_admin/core/config/router.dart';
-import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/features/events/data/model/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/animated_container.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';

@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/features/events/data/model/event_model.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:events_week_admin/features/events/presentation/manager/edit%20event%20bloc/edit_event_bloc.dart';

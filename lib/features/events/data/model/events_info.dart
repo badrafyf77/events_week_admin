@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/features/events/data/model/event_model.dart';
 
 class EventsInfo {
   final List<Event> eventsList;

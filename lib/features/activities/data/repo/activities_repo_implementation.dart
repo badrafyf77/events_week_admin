@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:events_week_admin/core/services/firestorage_service.dart';
-import 'package:events_week_admin/core/services/firestore_service.dart';
+import 'package:events_week_admin/core/utils/services/firestorage_service.dart';
+import 'package:events_week_admin/core/utils/services/firestore_service.dart';
 import 'package:events_week_admin/core/utils/failures.dart';
 import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 import 'package:events_week_admin/features/activities/data/repo/activities_repo.dart';

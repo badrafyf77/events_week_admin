@@ -1,4 +1,4 @@
-import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/features/events/data/model/event_model.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/event_circle_time.dart';
 import 'package:events_week_admin/features/events/presentation/views/widgets/event_details.dart';
 import 'package:flutter/material.dart';

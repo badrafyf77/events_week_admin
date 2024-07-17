@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:events_week_admin/core/services/fireauth_service.dart';
+import 'package:events_week_admin/core/utils/services/fireauth_service.dart';
 import 'package:events_week_admin/core/utils/failures.dart';
 import 'package:events_week_admin/features/auth/data/repo/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';

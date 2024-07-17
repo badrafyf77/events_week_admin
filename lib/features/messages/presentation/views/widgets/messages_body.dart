@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:events_week_admin/core/models/message_model.dart';
+import 'package:events_week_admin/features/messages/data/model/message_model.dart';
 import 'package:events_week_admin/features/messages/presentation/manager/get%20messages%20cubit/get_messages_cubit.dart';
 import 'package:events_week_admin/features/messages/presentation/views/widgets/message_item.dart';
 import 'package:flutter/material.dart';

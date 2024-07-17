@@ -1,6 +1,6 @@
 import 'package:board_datetime_picker/board_datetime_picker.dart';
 import 'package:events_week_admin/core/config/router.dart';
-import 'package:events_week_admin/core/models/message_model.dart';
+import 'package:events_week_admin/features/messages/data/model/message_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
 import 'package:events_week_admin/features/messages/presentation/views/widgets/delete_message_icon.dart';

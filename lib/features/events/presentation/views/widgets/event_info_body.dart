@@ -1,5 +1,5 @@
 import 'package:board_datetime_picker/board_datetime_picker.dart';
-import 'package:events_week_admin/core/models/event_model.dart';
+import 'package:events_week_admin/features/events/data/model/event_model.dart';
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/styles.dart';

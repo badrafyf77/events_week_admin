@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:events_week_admin/core/models/message_model.dart';
-import 'package:events_week_admin/core/services/firestore_service.dart';
+import 'package:events_week_admin/features/messages/data/model/message_model.dart';
+import 'package:events_week_admin/core/utils/services/firestore_service.dart';
 import 'package:events_week_admin/core/utils/failures.dart';
 import 'package:events_week_admin/features/messages/data/repo/messages_repo.dart';
 
