@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:events_week_admin/features/events/data/model/event_model.dart';
+import 'package:events_week_admin/features/gallery/data/model/gallery_model.dart';
 import 'package:events_week_admin/features/messages/data/model/message_model.dart';
 import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 
@@ -9,6 +10,8 @@ class FirestoreService {
       FirebaseFirestore.instance.collection('initialEvent');
   CollectionReference activities =
       FirebaseFirestore.instance.collection('activities');
+      CollectionReference galleries =
+      FirebaseFirestore.instance.collection('galleries');
   CollectionReference messages =
       FirebaseFirestore.instance.collection('messages');
   CollectionReference visits = FirebaseFirestore.instance.collection('visits');
@@ -55,6 +58,28 @@ class FirestoreService {
 
   Future<void> deleteActivity(Activity activity) async {
     await activities.doc(activity.id).delete();
+  }
+
+  Future<void> addGallery(Gallery gallery) async {
+    await galleries.doc(gallery.id).set(gallery.toJson());
+  }
+
+  Future<List<Gallery>> getGalleries() async {
+    List<Gallery> galleriesList = [];
+    await galleries.get().then((gallery) {
+      for (var doc in gallery.docs) {
+        galleriesList.add(Gallery.fromJson(doc));
+      }
+    });
+    return galleriesList;
+  }
+
+  Future<void> updateGallery(Gallery gallery) async {
+    await galleries.doc(gallery.id).update(gallery.toJson());
+  }
+
+  Future<void> deleteGallery(Gallery gallery) async {
+    await galleries.doc(gallery.id).delete();
   }
 
   Future<List<Message>> getMessages() async {

@@ -5,7 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 class FirestorageService {
   final eventsFolderName = "events";
   final activitiesFolderName = "activities";
-  final galleryFolderName = "gallery";
+  final galleriesFolderName = "galleries";
   Reference storageRef = FirebaseStorage.instance.ref();
 
   Future<String> uploadFile(
