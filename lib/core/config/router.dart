@@ -1,6 +1,7 @@
 import 'package:events_week_admin/core/models/event_model.dart';
 import 'package:events_week_admin/core/models/message_model.dart';
 import 'package:events_week_admin/core/utils/customs/dashboard_screen.dart';
+import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 import 'package:events_week_admin/features/activities/presentation/views/activities_view.dart';
 import 'package:events_week_admin/features/activities/presentation/views/add_activity_view.dart';
 import 'package:events_week_admin/features/activities/presentation/views/edit_activity_view.dart';
@@ -105,17 +106,18 @@ class AppRouter {
                 );
               }),
           GoRoute(
-              path: editEvent,
-              pageBuilder: (context, state) {
-                Event event = state.extra as Event;
-                return buildPageWithDefaultTransition<void>(
-                  context: context,
-                  state: state,
-                  child: EditEventView(
-                    event: event,
-                  ),
-                );
-              }),
+            path: editEvent,
+            pageBuilder: (context, state) {
+              Event event = state.extra as Event;
+              return buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: EditEventView(
+                  event: event,
+                ),
+              );
+            },
+          ),
           GoRoute(
             path: activities,
             pageBuilder: (context, state) =>
@@ -136,12 +138,16 @@ class AppRouter {
           ),
           GoRoute(
             path: editActivity,
-            pageBuilder: (context, state) =>
-                buildPageWithDefaultTransition<void>(
-              context: context,
-              state: state,
-              child: const EditActivityView(),
-            ),
+            pageBuilder: (context, state) {
+              Activity activity = state.extra as Activity;
+              return buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: EditActivityView(
+                  activity: activity,
+                ),
+              );
+            },
           ),
           GoRoute(
             path: gallery,

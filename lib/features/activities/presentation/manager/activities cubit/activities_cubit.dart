@@ -29,4 +29,14 @@ class ActivitiesCubit extends Cubit<ActivitiesState> {
       emit(GetActivitiesSuccess(activitiesList: right));
     });
   }
+
+  Future<void> editActivity(Activity activity, String oldTitle, bool oldImage, XFile? image) async {
+    emit(ActivitiesLaoding());
+    var result = await _activitiesRepo.updateActivity(activity, oldTitle, oldImage, image);
+    result.fold((left) {
+      emit(ActivitiesFailure(err: left.errMessage));
+    }, (right) {
+      emit(EditActivitySuccess(msg: "Activité édité avec succès"));
+    });
+  }
 }

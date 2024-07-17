@@ -2,15 +2,19 @@ import 'dart:io';
 
 import 'package:events_week_admin/core/utils/colors.dart';
 import 'package:events_week_admin/core/utils/customs/button.dart';
+import 'package:events_week_admin/core/utils/customs/cashed_network_image.dart';
 import 'package:events_week_admin/core/utils/customs/text_field.dart';
 import 'package:events_week_admin/core/utils/styles.dart';
+import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditActivityBody extends StatefulWidget {
   const EditActivityBody({
-    super.key,
+    super.key, required this.activity,
   });
+
+  final Activity activity;
 
   @override
   State<EditActivityBody> createState() => _EditActivityBodyState();
@@ -20,9 +24,18 @@ class _EditActivityBodyState extends State<EditActivityBody> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
+  bool oldImage = true;
+
   XFile? image;
 
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void initState() {
+    titleController.text = widget.activity.title;
+    descriptionController.text = widget.activity.description;
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -120,58 +133,91 @@ class _EditActivityBodyState extends State<EditActivityBody> {
                   padding: const EdgeInsets.all(15),
                   child: Column(
                     children: [
-                      Text(
-                        'Image de l\'activité',
-                        style: Styles.normal18,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Image de l\'événement',
+                            style: Styles.normal18,
+                          ),
+                          if (!oldImage)
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  oldImage = true;
+                                });
+                              },
+                              icon: const Icon(Icons.rotate_left),
+                              tooltip: 'Retour à l\'ancienne Image',
+                            ),
+                        ],
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      image == null
-                          ? InkWell(
-                              onTap: () async {
-                                try {
-                                  final ImagePicker picker = ImagePicker();
-                                  image = await picker.pickImage(
-                                      source: ImageSource.gallery);
-                                  setState(() {});
-                                  // ignore: empty_catches
-                                } catch (e) {}
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: const BoxDecoration(
-                                  color: Colors.black,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            )
-                          : Column(
+                      (oldImage)
+                          ? Column(
                               children: [
-                                Image.file(
-                                  File(image!.path),
-                                  fit: BoxFit.fill,
+                                CustomCashedNetworkImage(
+                                  url: widget.activity.downloadUrl,
                                   height: 180,
                                   width: 250,
-                                ),
-                                const SizedBox(
-                                  height: 5,
                                 ),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {
-                                      image = null;
+                                      oldImage = false;
                                     });
                                   },
                                   icon: const Icon(Icons.delete),
-                                )
+                                ),
                               ],
-                            ),
+                            )
+                          : image == null
+                              ? InkWell(
+                                  onTap: () async {
+                                    try {
+                                      final ImagePicker picker = ImagePicker();
+                                      image = await picker.pickImage(
+                                          source: ImageSource.gallery);
+                                      setState(() {});
+                                      // ignore: empty_catches
+                                    } catch (e) {}
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                )
+                              : Column(
+                                  children: [
+                                    Image.file(
+                                      File(image!.path),
+                                      fit: BoxFit.fill,
+                                      height: 180,
+                                      width: 250,
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          image = null;
+                                        });
+                                      },
+                                      icon: const Icon(Icons.delete),
+                                    ),
+                                  ],
+                                ),
                     ],
                   ),
                 ),

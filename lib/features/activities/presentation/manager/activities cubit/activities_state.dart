@@ -23,3 +23,9 @@ final class GetActivitiesSuccess extends ActivitiesState {
 
   GetActivitiesSuccess({required this.activitiesList});
 }
+
+final class EditActivitySuccess extends ActivitiesState {
+  final String msg;
+
+  EditActivitySuccess({required this.msg});
+}

@@ -1,10 +1,13 @@
 import 'package:events_week_admin/core/config/router.dart';
+import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 import 'package:events_week_admin/features/activities/presentation/views/widgets/edit_activity_body.dart';
 import 'package:events_week_admin/features/messages/presentation/views/widgets/navigate_back_icon.dart';
 import 'package:flutter/material.dart';
 
 class EditActivityView extends StatelessWidget {
-  const EditActivityView({super.key});
+  const EditActivityView({super.key, required this.activity});
+
+  final Activity activity;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,9 @@ class EditActivityView extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const EditActivityBody(),
+          EditActivityBody(
+            activity: activity,
+          ),
         ],
       ),
     );

@@ -51,12 +51,14 @@ class ActivityCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     const Spacer(),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        EditActivity(),
-                        SizedBox(width: 25),
-                        DeleteActivity(),
+                        EditActivity(
+                          activity: activity,
+                        ),
+                        const SizedBox(width: 25),
+                        const DeleteActivity(),
                       ],
                     )
                   ],

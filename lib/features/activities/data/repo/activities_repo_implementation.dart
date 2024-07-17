@@ -67,7 +67,37 @@ class ActivitiesRepoImplementation implements ActivitiesRepo {
 
   @override
   Future<Either<Failure, Unit>> updateActivity(
-      Activity activity, String oldTitle, bool oldImage, XFile? image) {
-    throw UnimplementedError();
+      Activity activity, String oldTitle, bool oldImage, XFile? image) async{
+    try {
+      String downloadUrl;
+      if (!oldImage) {
+        if (image != null) {
+          await _firestorageService.deleteFile(
+              _firestorageService.activitiesFolderName, oldTitle);
+          File selectedImagePath = File(image.path);
+          downloadUrl = await _firestorageService.uploadFile(selectedImagePath,
+              _firestorageService.activitiesFolderName, activity.title);
+        } else {
+          return left(PickImageFailure(errMessage: 'choisir une image'));
+        }
+      } else {
+        downloadUrl = await _firestorageService.updateFile(
+            oldTitle, _firestorageService.activitiesFolderName, activity.title);
+      }
+      Activity a = Activity(
+        id: activity.id,
+        title: activity.title,
+        description: activity.description,
+        downloadUrl: downloadUrl,
+      );
+      await _firestoreService.updateActivity(a);
+      return right(unit);
+    } catch (e) {
+      if (e is FirebaseException) {
+        return left(FirestoreFailure.fromFirestoreFailure(e));
+      }
+      return left(FirestoreFailure(
+          errMessage: 'il y a une erreur, veuillez réessayer'));
+    }
   }
 }

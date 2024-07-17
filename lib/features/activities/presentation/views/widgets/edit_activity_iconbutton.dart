@@ -1,8 +1,11 @@
 import 'package:events_week_admin/core/config/router.dart';
+import 'package:events_week_admin/features/activities/data/model/activity_model.dart';
 import 'package:flutter/material.dart';
 
 class EditActivity extends StatelessWidget {
-  const EditActivity({super.key});
+  const EditActivity({super.key, required this.activity});
+
+  final Activity activity;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,7 @@ class EditActivity extends StatelessWidget {
       ),
       child: IconButton(
         onPressed: () {
-          AppRouter.navigateTo(context, AppRouter.editActivity);
+          AppRouter.navigateToWithExtra(context, AppRouter.editActivity, activity);
         },
         icon: const Icon(
           Icons.edit,
