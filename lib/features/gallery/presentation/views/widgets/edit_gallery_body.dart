@@ -248,7 +248,10 @@ class _EditGalleryBodyState extends State<EditGalleryBody> {
                         id: widget.gallery.id,
                         title: titleController.text,
                         date: Timestamp.fromDate(date),
-                        downloadUrl: widget.gallery.downloadUrl);
+                        downloadUrl: widget.gallery.downloadUrl,
+                        height: widget.gallery.height,
+                        width: widget.gallery.width,
+                        );
                     BlocProvider.of<GalleriesCubit>(context).editGallery(
                       gallery,
                       widget.gallery.title,

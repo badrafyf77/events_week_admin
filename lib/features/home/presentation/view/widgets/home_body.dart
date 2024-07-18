@@ -93,14 +93,6 @@ class HomeBody extends StatelessWidget {
               ],
             ),
           );
-          // return Padding(
-          //   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-          //   child: ListView(
-          //     children: [
-
-          //     ],
-          //   ),
-          // );
         }
         return const Center(child: CustomLoadingIndicator());
       },

@@ -13,10 +13,13 @@ class GalleryBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Gallery fakeGallery = Gallery(
-        id: 'id',
-        title: 'title',
-        date: Timestamp.now(),
-        downloadUrl: 'downloadUrl');
+      id: 'id',
+      title: 'title',
+      date: Timestamp.now(),
+      downloadUrl: 'downloadUrl',
+      height: 200,
+      width: 200,
+    );
     return Expanded(
       child: BlocConsumer<GalleriesCubit, GalleriesState>(
         listener: (context, state) {
