@@ -37,7 +37,7 @@ class EditGalleryView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               NavigateBackIcon(
-                title: 'Éditer galerie xxxxxx',
+                title: 'Éditer galerie : ${gallery.title}',
                 onPressed: () {
                   AppRouter.navigateTo(context, AppRouter.galleries);
                 },

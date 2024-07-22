@@ -20,40 +20,38 @@ class GalleryBody extends StatelessWidget {
       height: 200,
       width: 200,
     );
-    return Expanded(
-      child: BlocConsumer<GalleriesCubit, GalleriesState>(
-        listener: (context, state) {
-          if (state is GalleriesFailure) {
-            myShowToastError(context, state.err);
-          }
-          if (state is GalleriesSuccess) {
-            myShowToastSuccess(context, state.msg);
-          }
-        },
-        builder: (context, state) {
-          return Expanded(
-            child: ScrollConfiguration(
-              behavior:
-                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
-              child: ListView.builder(
-                itemCount: (state is GetGalleriesSuccess)
-                    ? state.galleriesList.length
-                    : 3,
-                itemBuilder: (context, index) {
-                  return Skeletonizer(
-                    enabled: (state is GetGalleriesSuccess) ? false : true,
-                    child: GalleryCard(
-                      gallery: (state is GetGalleriesSuccess)
-                          ? state.galleriesList[index]
-                          : fakeGallery,
-                    ),
-                  );
-                },
-              ),
+    return BlocConsumer<GalleriesCubit, GalleriesState>(
+      listener: (context, state) {
+        if (state is GalleriesFailure) {
+          myShowToastError(context, state.err);
+        }
+        if (state is GalleriesSuccess) {
+          myShowToastSuccess(context, state.msg);
+        }
+      },
+      builder: (context, state) {
+        return Expanded(
+          child: ScrollConfiguration(
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: ListView.builder(
+              itemCount: (state is GetGalleriesSuccess)
+                  ? state.galleriesList.length
+                  : 3,
+              itemBuilder: (context, index) {
+                return Skeletonizer(
+                  enabled: (state is GetGalleriesSuccess) ? false : true,
+                  child: GalleryCard(
+                    gallery: (state is GetGalleriesSuccess)
+                        ? state.galleriesList[index]
+                        : fakeGallery,
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

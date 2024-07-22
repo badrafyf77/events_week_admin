@@ -54,6 +54,7 @@ class EventDetails extends StatelessWidget {
                           event.title,
                           style: Styles.normal24,
                           overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
                       ),
                       const SizedBox(
@@ -108,10 +109,13 @@ class EventDetails extends StatelessWidget {
                                     const SizedBox(
                                       width: 4,
                                     ),
-                                    Text(
-                                      event.place,
-                                      style: Styles.normal12,
-                                      overflow: TextOverflow.ellipsis,
+                                    Expanded(
+                                      child: Text(
+                                        event.place,
+                                        style: Styles.normal12,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                      ),
                                     ),
                                   ],
                                 ),
